@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C1.Win.C1FlexGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Service;
 using wModels;
+using static C1.Util.Win.Win32;
 using static WindowsFormsApp1.Service.cPstService;
 
 namespace WindowsFormsApp1
@@ -29,37 +31,78 @@ namespace WindowsFormsApp1
         {
             odgPdt.Row.ToString();
 
-            List<cmlResPdt> data = new cPstService().C_GEToProduct();
+            List<cmlResPdt> oaPdt = new cPstService().C_GEToProduct();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
 
-            odgPdt.DataSource = data;
+            odgPdt.DataSource = oaPdt;
         }
 
 
         private void C_GetSalData()
         {
-            odgSal.Row.ToString();
 
-            List<cmlSale> data = new cSaleService().C_GETSale();
+            List<cmlSale> oaSale = new cSaleService().C_GETSale();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
+            string[] ColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ" };
 
-            odgSal.DataSource = data;
+            odgSal.DataSource = oaSale;
+            //odgSal.Rows.Count = odgSal.Rows.Fixed;
+            //odgSal.Cols["rnSalID"].AllowEditing = false;
+            //odgSal.Cols["rtSalCod"].AllowEditing = false;
+            //odgSal.Cols["rtSalPdtCod"].AllowEditing = false;
+            //odgSal.Cols["rnSalQty"].AllowEditing = false;
+            //odgSal.Cols["rcSalPri"].AllowEditing = false;
+            //odgSal.Cols["rcSalAmt"].AllowEditing = false;
+            //odgSal.Cols["rtSalCstCod"].AllowEditing = false;
+            //odgSal.Cols["rdSalDate"].AllowEditing = false;
+            //odgSal.Cols["rdSalSMPT"].AllowEditing = false;
+
+            foreach (cmlSale oSal in oaSale)
+            {
+                odgSal.Rows.Add();
+                int nIndex = odgSal.Rows.Count - odgSal.Rows.Fixed;
+                CellStyle oCellStyle;
+                oCellStyle = odgSal.Styles.Add("Receive");
+                oCellStyle.DataType = typeof(Boolean);
+                odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
+                odgSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
+
+            }
+
+
+
+            odgSal.Cols[1].Caption = ColsName[0];
+            odgSal.Cols[2].Caption = ColsName[1];
+            odgSal.Cols[3].Caption = ColsName[2];
+            odgSal.Cols[4].Caption = ColsName[3];
+            odgSal.Cols[5].Caption = ColsName[4];
+            odgSal.Cols[6].Caption = ColsName[5];
+            odgSal.Cols[7].Caption = ColsName[6];
+            odgSal.Cols[8].Caption = ColsName[7];
+            odgSal.Cols[9].Caption = ColsName[8];
+
+
+
+            odgSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
+            odgSal.Cols[2].AllowMerging = true;
+            odgSal.Cols[3].AllowMerging = true;
+            odgSal.Cols[7].AllowMerging = true;
         }
 
         private void C_GetCstData()
         {
             odgSal.Row.ToString();
 
-            List<cmlCst> data = new cCstService().C_GEToCustomer();
+            List<cmlCst> oaCst = new cCstService().C_GEToCustomer();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
 
-            odgCst.DataSource = data;
+            odgCst.DataSource = oaCst;
         }
 
         private void c1Button1_Click(object sender, EventArgs e)
@@ -141,7 +184,7 @@ namespace WindowsFormsApp1
             cmlSale mSale = new cmlSale();
             try
             {
-               
+
 
                 if (string.IsNullOrEmpty(otbSalCod.Text))
                     MessageBox.Show("ระบุรหัสการขาย");
@@ -173,7 +216,7 @@ namespace WindowsFormsApp1
                     mSale.rdSalDate = DateTime.Parse(otbSalDate.Value.ToString());
 
                 mSale.rdSalSMPT = DateTime.Now;
-                
+
             }
             catch (Exception ex)
             {
@@ -190,6 +233,11 @@ namespace WindowsFormsApp1
             bool res = new cSaleService().C_POSToUpdateSale(mSale);
             C_GetPdtData();
             C_GetSalData();
+        }
+
+        private void otbSalDate_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         //ogdCst
