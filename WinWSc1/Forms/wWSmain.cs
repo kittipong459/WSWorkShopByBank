@@ -240,6 +240,12 @@ namespace WindowsFormsApp1
 
         }
 
+        private void c1Button6_Click(object sender, EventArgs e)
+        {
+            wSalDetail wSalDetail = new wSalDetail();
+            wSalDetail.Show();
+        }
+
         //ogdCst
 
 

@@ -407,6 +407,7 @@
             this.c1Button6.Text = "ออกรายงาน";
             this.c1Button6.UseVisualStyleBackColor = true;
             this.c1Button6.UseVisualStyleForeColor = true;
+            this.c1Button6.Click += new System.EventHandler(this.c1Button6_Click);
             // 
             // odgSal
             // 
