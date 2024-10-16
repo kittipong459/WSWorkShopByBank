@@ -44,6 +44,7 @@ namespace WindowsFormsApp1.Service
                 Console.WriteLine(oResponse.Content);
                 cmlResList<cmlResPdt> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);
                 aoResPdt = aoResList.raItems;
+                return aoResPdt;
             }
             catch (Exception oEx)
             {

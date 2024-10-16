@@ -47,6 +47,7 @@ namespace WindowsFormsApp1.Service
                 Console.WriteLine(oResponse.Content);
                 cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
                 aoResSal = aoResList.raItems;
+                return aoResSal;
             }
             catch (Exception oEx)
             {
@@ -84,6 +85,7 @@ namespace WindowsFormsApp1.Service
                 {
                     bReqAddsal = false;
                 }
+                return bReqAddsal;
             }
             catch (Exception oEx)
             {
@@ -121,6 +123,7 @@ namespace WindowsFormsApp1.Service
                 {
                     bReqUpSal = false;
                 }
+                return bReqUpSal;
             }
             catch (Exception oEx)
             {

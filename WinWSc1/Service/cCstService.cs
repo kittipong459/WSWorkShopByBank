@@ -47,6 +47,7 @@ namespace WindowsFormsApp1.Service
                 cmlResList<cmlResCst> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oResponse.Content);
                 //return aoResList.raItems;
                 aoResCst = aoResList.raItems;
+                return aoResCst;
             }
             catch (Exception oEx)
             {

@@ -46,7 +46,7 @@ FROM TWsMPdt ";
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
-
+                return oResult;
             }
             catch (Exception oEx)
             {
@@ -114,6 +114,7 @@ FROM TWsMPdt ";
                     oResult.rtCode = cMS.tMS_RespCode907;
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
+                return oResult;
             }
             catch (Exception oEx)
             {
@@ -182,7 +183,7 @@ FROM TWsMPdt ";
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
 
-
+                return oResult;
             }
             catch (Exception oEx)
             {
@@ -241,7 +242,7 @@ FROM TWsMPdt ";
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
-
+                return oResult;
             }
             catch (Exception oEx)
             {
@@ -295,7 +296,7 @@ FROM TWsMPdt ";
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
-                
+                return oResult;
             }
             catch (Exception oEx)
             {
@@ -368,7 +369,7 @@ FROM TWsMPdt ";
                     oResult.rtCode = cMS.tMS_RespCode907;
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
-
+                return oResult;
 
             }
             catch (Exception oEx)
@@ -441,7 +442,7 @@ FROM TWsMPdt ";
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
 
-                
+                return oResult;
             }
             catch (Exception oEx)
             {
