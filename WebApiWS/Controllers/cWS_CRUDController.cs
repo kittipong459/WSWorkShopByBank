@@ -16,7 +16,7 @@ namespace WebApiWS.Controllers
 
         [HttpGet]
         [Route("GetProduct")]
-        public cmlResList<cmlResPdt> GET_WSoGetPdt()
+        public cmlResList<cmlResPdt> C_GET_oGetPdt()
         {
             cmlResList<cmlResPdt> oResult;
             string tErrAPI;
@@ -66,7 +66,7 @@ FROM TWsMPdt ";
 
         [HttpPost]
         [Route("AddProduct")]
-        public cmlResBase POST_WSoAddPdt([FromBody] cmlResPdt paoDataProduct)
+        public cmlResBase C_POST_oAddPdt([FromBody] cmlReqPdt paoDataProduct)
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
@@ -135,7 +135,7 @@ FROM TWsMPdt ";
 
         [HttpPost]
         [Route("UpdateProduct")]
-        public cmlResBase POST_WSoUpPdt([FromBody] cmlResPdt paoDataProduct)
+        public cmlResBase C_POST_oUpPdt([FromBody] cmlReqPdt paoDataProduct)
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
@@ -205,13 +205,13 @@ FROM TWsMPdt ";
 
         [HttpGet]
         [Route("GetSale")]
-        public cmlResList<cmlSale> GET_WSoGetSale()
+        public cmlResList<cmlResSale> C_GET_oGetSale()
         {
-            cmlResList<cmlSale> oResult;
+            cmlResList<cmlResSale> oResult;
             string tErrAPI;
             try
             {
-                oResult = new cmlResList<cmlSale>();
+                oResult = new cmlResList<cmlResSale>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -240,7 +240,7 @@ FROM TWsMPdt ";
       ,FDSalSMPT as rdSalSMPT
   FROM TWsTSal ";
                 oSql.AppendLine(toSql);
-                List<cmlSale> oResultPdt = oDatabase.C_GETaDataQuery<cmlSale>(oSql.ToString());
+                List<cmlResSale> oResultPdt = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
@@ -248,7 +248,7 @@ FROM TWsMPdt ";
             }
             catch (Exception oEx)
             {
-                oResult = new cmlResList<cmlSale>();
+                oResult = new cmlResList<cmlResSale>();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
                 return oResult;
@@ -261,13 +261,13 @@ FROM TWsMPdt ";
 
         [HttpGet]
         [Route("GetCustomer")]
-        public cmlResList<cmlCst> GET_WSoGetCst()
+        public cmlResList<cmlResCst> C_GET_oGetCst()
         {
-            cmlResList<cmlCst> oResult;
+            cmlResList<cmlResCst> oResult;
             string tErrAPI;
             try
             {
-                oResult = new cmlResList<cmlCst>();
+                oResult = new cmlResList<cmlResCst>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -294,7 +294,7 @@ FROM TWsMPdt ";
       ,FDCstSMPT as rdCstSMPT
   FROM AdaWSbyBank.dbo.TWsMCst ";
                 oSql.AppendLine(toSql);
-                List<cmlCst> oResultPdt = oDatabase.C_GETaDataQuery<cmlCst>(oSql.ToString());
+                List<cmlResCst> oResultPdt = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
@@ -302,7 +302,7 @@ FROM TWsMPdt ";
             }
             catch (Exception oEx)
             {
-                oResult = new cmlResList<cmlCst>();
+                oResult = new cmlResList<cmlResCst>();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
                 return oResult;
@@ -321,7 +321,7 @@ FROM TWsMPdt ";
 
         [HttpPost]
         [Route("AddSale")]
-        public cmlResBase POST_APIoAddSale([FromBody] cmlSale paoSale)
+        public cmlResBase C_POST_oAddSale([FromBody] cmlReqSale paoSale)
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
@@ -391,7 +391,7 @@ FROM TWsMPdt ";
 
         [HttpPost]
         [Route("UpdateSale")]
-        public cmlResBase POST_APIoUpdateSale([FromBody] cmlSale paoSale)
+        public cmlResBase C_POST_oUpdateSale([FromBody] cmlReqSale paoSale)
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;

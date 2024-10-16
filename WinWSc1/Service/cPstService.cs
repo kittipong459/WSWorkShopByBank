@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Service
             C_tUrlApi = ConfigurationManager.AppSettings["tUrlApi"];
         }
 
-        public List<cmlResPdt> C_GEToProduct(string tSearchPdtCode = "")
+        public List<cmlReqPdt> C_GEToProduct(string tSearchPdtCode = "")
         {
             try
             {
@@ -33,12 +33,12 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("X-Api-Key", C_tAccess);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                var aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);
+                var aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqPdt>>(oResponse.Content);
                 return aoResList.raItems;
             }
             catch (Exception e)
             {
-                return new List<cmlResPdt>();
+                return new List<cmlReqPdt>();
             }
         }
 

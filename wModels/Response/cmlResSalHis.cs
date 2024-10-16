@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace wModels
 {
-    public class cmlSalHis
+    public class cmlResSalHis
     {
         public string rtSalCod { get; set; }
         public string rtSalPdtCod { get; set; }

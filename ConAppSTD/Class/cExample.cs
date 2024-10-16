@@ -7,7 +7,7 @@ namespace ConAppSTD.Class
 {
     public class cExample
     {
-        public static bool C_PRCxAddPdtTransaction(cmlResPdt poPdt)
+        public static bool C_ADPbAddPdtTransaction(cmlReqPdt poPdt)
         {
             cDatabase oDB = new cDatabase();
             StringBuilder oSql = new StringBuilder();
@@ -17,7 +17,7 @@ namespace ConAppSTD.Class
                 oSql.AppendLine("    BEGIN TRAN");
 
                 oSql.AppendLine("    INSERT INTO TWsMPdt (FTPdtCod,FTPdtName, FTPdtDes, FCPdtPri, FNPdtQty, FDPdtSMPT,FNPdtTyp)");
-                oSql.AppendLine($"    VALUES (N'{poPdt.rtPdtCod}', N'{poPdt.rtPdtName}',  N'{poPdt.rtPdtDes}',{poPdt.rcPdtPri}, {poPdt.rnPdtQty}, GETDATE(), {poPdt.rnPdtTyp});");
+                oSql.AppendLine($"    VALUES (N'{poPdt.ptPdtCod}', N'{poPdt.ptPdtName}',  N'{poPdt.ptPdtDes}',{poPdt.pcPdtPri}, {poPdt.pnPdtQty}, GETDATE(), {poPdt.pnPdtTyp});");
 
                 oSql.AppendLine("    COMMIT TRAN");
                 oSql.AppendLine("    SELECT 1");
@@ -45,7 +45,7 @@ namespace ConAppSTD.Class
             return false;
         }
 
-        public static bool C_PRCxUpdPdtTransaction(cmlResPdt poPdt)
+        public static bool C_UPPbUpdPdtTransaction(cmlReqPdt poPdt)
         {
             cDatabase oDB = new cDatabase();
             StringBuilder oSql = new StringBuilder();
@@ -54,8 +54,8 @@ namespace ConAppSTD.Class
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
-                oSql.AppendLine($"    UPDATE TWsMPdt SET FTPdtName = N'{poPdt.rtPdtName}', FTPdtDes = N'{poPdt.rtPdtDes}', FCPdtPri = {poPdt.rcPdtPri}, FNPdtQty = {poPdt.rnPdtQty}, FDPdtSMPT = GETDATE(), FNPdtTyp = {poPdt.rnPdtTyp}");
-                oSql.AppendLine($"    WHERE FTPdtCod = N'{poPdt.rtPdtCod}';");
+                oSql.AppendLine($"    UPDATE TWsMPdt SET FTPdtName = N'{poPdt.ptPdtName}', FTPdtDes = N'{poPdt.ptPdtDes}', FCPdtPri = {poPdt.pcPdtPri}, FNPdtQty = {poPdt.pnPdtQty}, FDPdtSMPT = GETDATE(), FNPdtTyp = {poPdt.pnPdtTyp}");
+                oSql.AppendLine($"    WHERE FTPdtCod = N'{poPdt.ptPdtCod}';");
 
                 oSql.AppendLine("    COMMIT TRAN");
                 oSql.AppendLine("    SELECT 1");
@@ -86,7 +86,7 @@ namespace ConAppSTD.Class
             return false;
         }
 
-        public static bool C_PRCxAddSaleTransaction(cmlSale paoSal)
+        public static bool C_ADSbAddSaleTransaction(cmlReqSale paoSal)
         {
             cDatabase oDB = new cDatabase();
             StringBuilder oSql = new StringBuilder();
@@ -96,7 +96,7 @@ namespace ConAppSTD.Class
                 oSql.AppendLine("    BEGIN TRAN");
 
                 oSql.AppendLine("    INSERT INTO TWsTSal (FTSalCod,FTSalPdtCod,FNSalQty,FCSalPri,FCSalAmt,FTSalCstCod,FDSalDate,FDSalSMPT)");
-                oSql.AppendLine($"    VALUES (N'{paoSal.rtSalCod}', N'{paoSal.rtSalPdtCod}', {paoSal.rnSalQty},{paoSal.rcSalPri}, {paoSal.rcSalAmt}, N'{paoSal.rtSalCstCod}',N'{paoSal.rdSalDate}', GETDATE());");
+                oSql.AppendLine($"    VALUES (N'{paoSal.ptSalCod}', N'{paoSal.ptSalPdtCod}', {paoSal.pnSalQty},{paoSal.pcSalPri}, {paoSal.pcSalAmt}, N'{paoSal.ptSalCstCod}',N'{paoSal.pdSalDate}', GETDATE());");
 
                 oSql.AppendLine("    COMMIT TRAN");
                 oSql.AppendLine("    SELECT 1");
@@ -125,7 +125,7 @@ namespace ConAppSTD.Class
             return false;
         }
 
-        public static bool C_PRCxUpdateSaleTransaction(cmlSale paoSal)
+        public static bool C_UPSbUpdateSaleTransaction(cmlReqSale paoSal)
         {
             cDatabase oDB = new cDatabase();
             StringBuilder oSql = new StringBuilder();
@@ -134,8 +134,8 @@ namespace ConAppSTD.Class
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
-                oSql.AppendLine($"    Update TWsTSal set FTSalPdtCod = N'{paoSal.rtSalPdtCod}',FNSalQty = {paoSal.rnSalQty},FCSalPri = {paoSal.rcSalPri},FCSalAmt = {paoSal.rcSalAmt},FTSalCstCod = N'{paoSal.rtSalCstCod}',FDSalDate = N'{paoSal.rdSalDate}'");
-                oSql.AppendLine($"    where FTSalCod = N'{paoSal.rtSalCod}'");
+                oSql.AppendLine($"    Update TWsTSal set FTSalPdtCod = N'{paoSal.ptSalPdtCod}',FNSalQty = {paoSal.pnSalQty},FCSalPri = {paoSal.pcSalPri},FCSalAmt = {paoSal.pcSalAmt},FTSalCstCod = N'{paoSal.ptSalCstCod}',FDSalDate = N'{paoSal.pdSalDate}'");
+                oSql.AppendLine($"    where FTSalCod = N'{paoSal.ptSalCod}'");
 
                 oSql.AppendLine("    COMMIT TRAN");
                 oSql.AppendLine("    SELECT 1");

@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Service
             tUrlApi = ConfigurationManager.AppSettings["tUrlApi"];
         }
 
-        public List<cmlSale> C_GETxSale(string tSearchPdtCode = "")
+        public List<cmlResSale> C_GETxSale(string tSearchPdtCode = "")
         {
             try
             {
@@ -35,17 +35,17 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("X-Api-Key", tAccess);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                var aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlSale>>(oResponse.Content);
+                var aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
                 return aoResList.raItems;
             }
             catch (Exception e)
             {
-                return new List<cmlSale>();
+                return new List<cmlResSale>();
             }
         }
 
 
-        public bool C_POSToSaveSale(cmlSale SalData)
+        public bool C_POSToSaveSale(cmlResSale SalData)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                var oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlSale>>(oResponse.Content);
+                var oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
                 if (oRes.rtCode == "001")
                 {
                     return true;
@@ -71,7 +71,7 @@ namespace WindowsFormsApp1.Service
             }
         }
 
-        public bool C_POSToUpdateSale(cmlSale SalData)
+        public bool C_POSToUpdateSale(cmlResSale SalData)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                var oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlSale>>(oResponse.Content);
+                var oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
                 if (oRes.rtCode == "001")
                 {
                     return true;

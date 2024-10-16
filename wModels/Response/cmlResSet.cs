@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace wModels
 {
-    public class cmlSet
+    public class cmlResSet
     {
         public Nullable<int> rnstID { get; set; }
         public string rtWstCode { get; set; }

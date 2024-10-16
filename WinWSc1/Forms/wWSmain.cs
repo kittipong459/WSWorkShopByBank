@@ -27,9 +27,9 @@ namespace WindowsFormsApp1
         }
 
 
-        private cmlSale W_CheckSalData()
+        private cmlResSale W_CheckSalData()
         {
-            cmlSale mSale = new cmlSale();
+            cmlResSale mSale = new cmlResSale();
             try
             {
 
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
         {
             odgPdt.Row.ToString();
 
-            List<cmlResPdt> oaPdt = new cPstService().C_GEToProduct();
+            List<cmlReqPdt> oaPdt = new cPstService().C_GEToProduct();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
         private void C_GetxSalData()
         {
 
-            List<cmlSale> oaSale = new cSaleService().C_GETxSale();
+            List<cmlResSale> oaSale = new cSaleService().C_GETxSale();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
             //odgSal.Cols["rdSalDate"].AllowEditing = false;
             //odgSal.Cols["rdSalSMPT"].AllowEditing = false;
 
-            foreach (cmlSale oSal in oaSale)
+            foreach (cmlResSale oSal in oaSale)
             {
                 odgSal.Rows.Add();
                 int nIndex = odgSal.Rows.Count - odgSal.Rows.Fixed;
@@ -143,7 +143,7 @@ namespace WindowsFormsApp1
         {
             odgSal.Row.ToString();
 
-            List<cmlCst> W_oaCst = new cCstService().C_GEToCustomer();
+            List<cmlResCst> W_oaCst = new cCstService().C_GEToCustomer();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
@@ -155,7 +155,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                cmlSale mSale = new cmlSale();
+                cmlResSale mSale = new cmlResSale();
                 mSale = W_CheckSalData();
 
                 bool res = new cSaleService().C_POSToSaveSale(mSale);
@@ -229,7 +229,7 @@ namespace WindowsFormsApp1
 
         private void c1Button2_Click(object sender, EventArgs e)
         {
-            cmlSale mSale = new cmlSale();
+            cmlResSale mSale = new cmlResSale();
             mSale = W_CheckSalData();
 
             bool W_res = new cSaleService().C_POSToUpdateSale(mSale);

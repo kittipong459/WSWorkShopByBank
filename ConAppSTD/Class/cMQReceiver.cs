@@ -213,11 +213,11 @@ namespace ConAppSTD.Class
                                     {
                                         Console.WriteLine("Receive Queue Nmae: " + ptQueue + " start.");
                                         //Process 
-                                        cmlResPdt oRcvData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResPdt>(tMessage);
+                                        cmlReqPdt oPdtData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqPdt>(tMessage);
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_PRCxAddPdtTransaction(oRcvData);
+                                        bPrc = cExample.C_ADPbAddPdtTransaction(oPdtData);
 
                                         if (bPrc)
                                         {
@@ -254,11 +254,11 @@ namespace ConAppSTD.Class
                                     {
                                         Console.WriteLine("Receive Queue Nmae: " + ptQueue + " start.");
                                         //Process 
-                                        cmlResPdt oRcvData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResPdt>(tMessage);
+                                        cmlReqPdt oPdtData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqPdt>(tMessage);
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_PRCxUpdPdtTransaction(oRcvData);
+                                        bPrc = cExample.C_UPPbUpdPdtTransaction(oPdtData);
 
                                         if (bPrc)
                                         {
@@ -295,11 +295,11 @@ namespace ConAppSTD.Class
                                     {
                                         Console.WriteLine("Receive Queue Nmae: " + ptQueue + " start.");
                                         //Process 
-                                        cmlSale oRcvData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlSale>(tMessage);
+                                        cmlReqSale oSalData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqSale>(tMessage);
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_PRCxAddSaleTransaction(oRcvData);
+                                        bPrc = cExample.C_ADSbAddSaleTransaction(oSalData);
 
                                         if (bPrc)
                                         {
@@ -336,11 +336,11 @@ namespace ConAppSTD.Class
                                     {
                                         Console.WriteLine("Receive Queue Nmae: " + ptQueue + " start.");
                                         //Process 
-                                        cmlSale oRcvData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlSale>(tMessage);
+                                        cmlReqSale oSalData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqSale>(tMessage);
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_PRCxUpdateSaleTransaction(oRcvData);
+                                        bPrc = cExample.C_UPSbUpdateSaleTransaction(oSalData);
 
                                         if (bPrc)
                                         {
