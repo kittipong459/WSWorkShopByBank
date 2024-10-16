@@ -393,6 +393,7 @@
             this.odgSal.Name = "odgSal";
             this.odgSal.Size = new System.Drawing.Size(903, 189);
             this.odgSal.TabIndex = 3;
+            this.odgSal.Click += new System.EventHandler(this.odgSal_Click);
             // 
             // ocmSalDet
             // 

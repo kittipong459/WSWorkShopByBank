@@ -102,55 +102,65 @@ namespace WindowsFormsApp1
 
         private void W_GetxSalData()
         {
-
-            List<cmlResSale> oaSale = new cSaleService().C_GETaoSale();
-
-            //cPstService cPdtService = new cPstService();
-            //cPdtService.C_GETaoProduct();
-            string[] W_ColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ" };
-
-            odgSal.DataSource = oaSale;
-            //odgSal.Rows.Count = odgSal.Rows.Fixed;
-            //odgSal.Cols["rnSalID"].AllowEditing = false;
-            //odgSal.Cols["rtSalCod"].AllowEditing = false;
-            //odgSal.Cols["rtSalPdtCod"].AllowEditing = false;
-            //odgSal.Cols["rnSalQty"].AllowEditing = false;
-            //odgSal.Cols["rcSalPri"].AllowEditing = false;
-            //odgSal.Cols["rcSalAmt"].AllowEditing = false;
-            //odgSal.Cols["rtSalCstCod"].AllowEditing = false;
-            //odgSal.Cols["rdSalDate"].AllowEditing = false;
-            //odgSal.Cols["rdSalSMPT"].AllowEditing = false;
-
-            foreach (cmlResSale oSal in oaSale)
+            try
             {
-                odgSal.Rows.Add();
-                int nIndex = odgSal.Rows.Count - odgSal.Rows.Fixed;
-                CellStyle oCellStyle;
-                oCellStyle = odgSal.Styles.Add("Receive");
-                oCellStyle.DataType = typeof(Boolean);
-                odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
-                odgSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
+                List<cmlResSale> oaSale = new cSaleService().C_GETaoSale();
+                //odgSal.DataSource = oaSale;
 
+                //odgSal.Rows.Count = odgSal.Rows.Fixed;
+
+                odgSal.Cols.Count = 10;
+                odgSal.Cols[1].Name = "rnSalID";
+                odgSal.Cols[2].Name = "rtSalCod";
+                odgSal.Cols[3].Name = "rtSalPdtCod";
+                odgSal.Cols[4].Name = "rnSalQty";
+                odgSal.Cols[5].Name = "rcSalPri";
+                odgSal.Cols[6].Name = "rcSalAmt";
+                odgSal.Cols[7].Name = "rtSalCstCod";
+                odgSal.Cols[8].Name = "rdSalDate";
+                odgSal.Cols[9].Name = "rdSalSMPT";
+                int nIndex = 1;
+                foreach (cmlResSale oSal in oaSale)
+                {
+                    odgSal.Rows.Add();
+                   
+                    CellStyle oCellStyle;
+                    oCellStyle = odgSal.Styles.Add("Receive");
+                    oCellStyle.DataType = typeof(Boolean);
+                    odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
+                    odgSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
+                    odgSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
+                    odgSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
+                    odgSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
+                    odgSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
+                    odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
+                    odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
+                    odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
+                    nIndex++;
+                }
+
+
+                string[] W_ColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ" };
+                odgSal.Cols[1].Caption = W_ColsName[0];
+                odgSal.Cols[2].Caption = W_ColsName[1];
+                odgSal.Cols[3].Caption = W_ColsName[2];
+                odgSal.Cols[4].Caption = W_ColsName[3];
+                odgSal.Cols[5].Caption = W_ColsName[4];
+                odgSal.Cols[6].Caption = W_ColsName[5];
+                odgSal.Cols[7].Caption = W_ColsName[6];
+                odgSal.Cols[8].Caption = W_ColsName[7];
+                odgSal.Cols[9].Caption = W_ColsName[8];
+
+                odgSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
+                odgSal.Cols[2].AllowMerging = true;
+                odgSal.Cols[3].AllowMerging = true;
+                odgSal.Cols[7].AllowMerging = true;
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
 
-
-
-            odgSal.Cols[1].Caption = W_ColsName[0];
-            odgSal.Cols[2].Caption = W_ColsName[1];
-            odgSal.Cols[3].Caption = W_ColsName[2];
-            odgSal.Cols[4].Caption = W_ColsName[3];
-            odgSal.Cols[5].Caption = W_ColsName[4];
-            odgSal.Cols[6].Caption = W_ColsName[5];
-            odgSal.Cols[7].Caption = W_ColsName[6];
-            odgSal.Cols[8].Caption = W_ColsName[7];
-            odgSal.Cols[9].Caption = W_ColsName[8];
-
-
-
-            odgSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
-            odgSal.Cols[2].AllowMerging = true;
-            odgSal.Cols[3].AllowMerging = true;
-            odgSal.Cols[7].AllowMerging = true;
         }
 
         private void W_GetxCstData()
@@ -294,6 +304,30 @@ namespace WindowsFormsApp1
         {
             wSalDetail wSalDetail = new wSalDetail();
             wSalDetail.Show();
+        }
+
+        private void odgSal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //if (e.Col == odgSal.Cols["ockColSel"].Index)
+                //{
+                //    if (Convert.ToBoolean(odgSal.GetData(e.Row, e.Col)) == true)
+                //    {
+                //        string tPdtCode = odgSal.GetData(e.Row, odgSal.Cols["tColPdtCode"].Index).ToString();
+                //        MessageBox.Show($"{tPdtCode}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        return;
+                //    }
+                //}
+            }
+            catch (Exception oEx)
+            {
+
+            }
+            finally
+            {
+
+            }
         }
 
         //ogdCst
