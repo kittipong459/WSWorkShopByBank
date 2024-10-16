@@ -21,75 +21,89 @@ namespace WindowsFormsApp1
         public wWSmain()
         {
             InitializeComponent();
-            C_GetxPdtData();
-            C_GetxSalData();
-            C_GetxCstData();
+            W_GetxPdtData();
+            W_GetxSalData();
+            W_GetxCstData();
         }
 
 
-        private cmlResSale W_CheckSalData()
+        private cmlReqSale W_oCheckSalData()
         {
-            cmlResSale mSale = new cmlResSale();
+            cmlReqSale mSale = new cmlReqSale();
             try
             {
-
-
                 if (string.IsNullOrEmpty(otbSalCod.Text))
                     MessageBox.Show("ระบุรหัสการขาย");
                 else
-                    mSale.rtSalCod = otbSalCod.Text;
+                    mSale.ptSalCod = otbSalCod.Text;
                 if (string.IsNullOrEmpty(otbSalPdtCod.Text))
                     MessageBox.Show("ระบุรหัสิสนค้า");
                 else
-                    mSale.rtSalPdtCod = otbSalPdtCod.Text;
+                    mSale.ptSalPdtCod = otbSalPdtCod.Text;
                 if (string.IsNullOrEmpty(otbSalCstCod.Text))
                     MessageBox.Show("ระบุรหัสลูกค้า");
                 else
-                    mSale.rtSalCstCod = otbSalCstCod.Text;
+                    mSale.ptSalCstCod = otbSalCstCod.Text;
                 if (string.IsNullOrEmpty(otbSalPri.Text))
                     MessageBox.Show("ระบุราคา");
                 else
-                    mSale.rcSalPri = decimal.Parse(otbSalPri.Text);
+                    mSale.pcSalPri = decimal.Parse(otbSalPri.Text);
                 if (string.IsNullOrEmpty(otbSalQty.Text))
                     MessageBox.Show("ระบุจำนวน");
                 else
-                    mSale.rnSalQty = int.Parse(otbSalQty.Text);
+                    mSale.pnSalQty = int.Parse(otbSalQty.Text);
                 if (string.IsNullOrEmpty(otbSalAmt.Text))
                     MessageBox.Show("ราคารวม");
                 else
-                    mSale.rcSalAmt = decimal.Parse(otbSalAmt.Text);
+                    mSale.pcSalAmt = decimal.Parse(otbSalAmt.Text);
                 if (string.IsNullOrEmpty(otbSalDate.Value.ToString()))
                     MessageBox.Show("ระบุวันที่ขาย");
                 else
-                    mSale.rdSalDate = DateTime.Parse(otbSalDate.Value.ToString());
+                    mSale.pdSalDate = DateTime.Parse(otbSalDate.Value.ToString());
 
-                mSale.rdSalSMPT = DateTime.Now;
+                mSale.pdSalSMPT = DateTime.Now;
 
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+                mSale = null;
             }
             return mSale;
         }
 
-        private void C_GetxPdtData()
+        private void W_GetxPdtData()
         {
-            odgPdt.Row.ToString();
+            try
+            {
+                odgPdt.Row.ToString();
 
-            List<cmlReqPdt> oaPdt = new cPstService().C_GEToProduct();
+                List<cmlResPdt> oaPdt = new cPstService().C_GETaoProduct();
 
-            //cPstService cPdtService = new cPstService();
-            //cPdtService.C_GETaoProduct();
+                //cPstService cPdtService = new cPstService();
+                //cPdtService.C_GETaoProduct();
 
-            odgPdt.DataSource = oaPdt;
+                odgPdt.DataSource = oaPdt;
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+
         }
 
 
-        private void C_GetxSalData()
+        private void W_GetxSalData()
         {
 
-            List<cmlResSale> oaSale = new cSaleService().C_GETxSale();
+            List<cmlResSale> oaSale = new cSaleService().C_GETaoSale();
 
             //cPstService cPdtService = new cPstService();
             //cPdtService.C_GETaoProduct();
@@ -139,32 +153,48 @@ namespace WindowsFormsApp1
             odgSal.Cols[7].AllowMerging = true;
         }
 
-        private void C_GetxCstData()
+        private void W_GetxCstData()
         {
-            odgSal.Row.ToString();
+            try
+            {
+                odgSal.Row.ToString();
 
-            List<cmlResCst> W_oaCst = new cCstService().C_GEToCustomer();
+                List<cmlResCst> W_oaCst = new cCstService().C_GETaoCustomer();
 
-            //cPstService cPdtService = new cPstService();
-            //cPdtService.C_GETaoProduct();
+                //cPstService cPdtService = new cPstService();
+                //cPdtService.C_GETaoProduct();
 
-            odgCst.DataSource = W_oaCst;
+                odgCst.DataSource = W_oaCst;
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+
         }
 
         private void c1Button1_Click(object sender, EventArgs e)
         {
             try
             {
-                cmlResSale mSale = new cmlResSale();
-                mSale = W_CheckSalData();
+                cmlReqSale mSale = new cmlReqSale();
+                mSale = W_oCheckSalData();
 
-                bool res = new cSaleService().C_POSToSaveSale(mSale);
-                C_GetxPdtData();
-                C_GetxSalData();
+                bool res = new cSaleService().C_POSTbSaveSale(mSale);
+                W_GetxPdtData();
+                W_GetxSalData();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+            }
+            finally
+            {
+
             }
 
         }
@@ -223,18 +253,31 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
             }
+            finally
+            {
+
+            }
         }
 
-        
+
 
         private void c1Button2_Click(object sender, EventArgs e)
         {
-            cmlResSale mSale = new cmlResSale();
-            mSale = W_CheckSalData();
+            try
+            {
 
-            bool W_res = new cSaleService().C_POSToUpdateSale(mSale);
-            C_GetxPdtData();
-            C_GetxSalData();
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally { }
+            cmlReqSale mSale = new cmlReqSale();
+            mSale = W_oCheckSalData();
+
+            bool W_res = new cSaleService().C_POSTbUpdateSale(mSale);
+            W_GetxPdtData();
+            W_GetxSalData();
         }
 
         private void otbSalDate_ValueChanged(object sender, EventArgs e)
@@ -244,7 +287,7 @@ namespace WindowsFormsApp1
 
         private void c1Button6_Click(object sender, EventArgs e)
         {
-         
+
         }
 
         private void c1Button5_Click(object sender, EventArgs e)

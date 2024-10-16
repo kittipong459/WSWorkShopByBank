@@ -16,14 +16,12 @@ namespace WebApiWS.Controllers
 
         [HttpGet]
         [Route("GetProduct")]
-        public cmlResList<cmlResPdt> C_GET_oGetPdt()
+        public cmlResList<cmlResPdt> C_GET_aoGetPdt()
         {
-            cmlResList<cmlResPdt> oResult;
+            cmlResList<cmlResPdt> oResult = new cmlResList<cmlResPdt>();
             string tErrAPI;
             try
             {
-                oResult = new cmlResList<cmlResPdt>();
-
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
                 {
@@ -48,19 +46,20 @@ FROM TWsMPdt ";
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
-                return oResult;
+
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResList<cmlResPdt>();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
+
             }
             finally
             {
-
+                oResult = null;
             }
+            return oResult;
         }
 
 
@@ -68,13 +67,12 @@ FROM TWsMPdt ";
         [Route("AddProduct")]
         public cmlResBase C_POST_oAddPdt([FromBody] cmlReqPdt paoDataProduct)
         {
-            cmlResBase oResult;
-            cRabbitMQ oRabbitMQ;
+            cmlResBase oResult = new cmlResBase();
+            cRabbitMQ oRabbitMQ = new cRabbitMQ();
             string tErrAPI;
 
             try
             {
-                oResult = new cmlResBase();
 
                 //Check Model
                 if (paoDataProduct == null)
@@ -101,7 +99,7 @@ FROM TWsMPdt ";
                 }
 
                 //To do..
-                oRabbitMQ = new cRabbitMQ();
+
 
                 //Convert to string json
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoDataProduct);
@@ -116,34 +114,33 @@ FROM TWsMPdt ";
                     oResult.rtCode = cMS.tMS_RespCode907;
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
-
-                return oResult;
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
+
             }
             finally
             {
                 paoDataProduct = null;
                 oRabbitMQ = null;
+                oResult = null;
             }
+            return oResult;
         }
 
         [HttpPost]
         [Route("UpdateProduct")]
         public cmlResBase C_POST_oUpPdt([FromBody] cmlReqPdt paoDataProduct)
         {
-            cmlResBase oResult;
-            cRabbitMQ oRabbitMQ;
+            cmlResBase oResult = new cmlResBase();
+            cRabbitMQ oRabbitMQ = new cRabbitMQ();
             string tErrAPI;
 
             try
             {
-                oResult = new cmlResBase();
 
                 //Check Model
                 if (paoDataProduct == null)
@@ -170,7 +167,6 @@ FROM TWsMPdt ";
                 }
 
                 //To do..
-                oRabbitMQ = new cRabbitMQ();
 
                 //Convert to string json
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoDataProduct);
@@ -186,32 +182,33 @@ FROM TWsMPdt ";
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
 
-                return oResult;
+
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
             }
             finally
             {
                 paoDataProduct = null;
                 oRabbitMQ = null;
+                oResult = null;
             }
+            return oResult;
         }
 
 
         [HttpGet]
         [Route("GetSale")]
-        public cmlResList<cmlResSale> C_GET_oGetSale()
+        public cmlResList<cmlResSale> C_GET_aoGetSale()
         {
-            cmlResList<cmlResSale> oResult;
+            cmlResList<cmlResSale> oResult = new cmlResList<cmlResSale>();
             string tErrAPI;
             try
             {
-                oResult = new cmlResList<cmlResSale>();
+
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -244,30 +241,30 @@ FROM TWsMPdt ";
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
-                return oResult;
+
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResList<cmlResSale>();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
             }
             finally
             {
-
+                oResult = null;
             }
+            return oResult;
         }
 
         [HttpGet]
         [Route("GetCustomer")]
-        public cmlResList<cmlResCst> C_GET_oGetCst()
+        public cmlResList<cmlResCst> C_GET_aoGetCst()
         {
-            cmlResList<cmlResCst> oResult;
+            cmlResList<cmlResCst> oResult = new cmlResList<cmlResCst>();
             string tErrAPI;
             try
             {
-                oResult = new cmlResList<cmlResCst>();
+                
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -298,19 +295,19 @@ FROM TWsMPdt ";
                 oResult.raItems = oResultPdt;
                 oResult.rtCode = cMS.tMS_RespCode001;
                 oResult.rtDesc = cMS.tMS_RespDesc001;
-                return oResult;
+                
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResList<cmlResCst>();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
             }
             finally
             {
-
+                oResult = null;
             }
+            return oResult;
         }
 
 
@@ -323,13 +320,13 @@ FROM TWsMPdt ";
         [Route("AddSale")]
         public cmlResBase C_POST_oAddSale([FromBody] cmlReqSale paoSale)
         {
-            cmlResBase oResult;
-            cRabbitMQ oRabbitMQ;
+            cmlResBase oResult = new cmlResList<cmlResSale>();
+            cRabbitMQ oRabbitMQ = new cRabbitMQ();
             string tErrAPI;
 
             try
             {
-                oResult = new cmlResBase();
+
 
                 //Check Model
                 if (paoSale == null)
@@ -356,7 +353,7 @@ FROM TWsMPdt ";
                 }
 
                 //To do..
-                oRabbitMQ = new cRabbitMQ();
+
 
                 //Convert to string json
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoSale);
@@ -372,20 +369,22 @@ FROM TWsMPdt ";
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
 
-                return oResult;
+
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
+               
             }
             finally
             {
                 paoSale = null;
                 oRabbitMQ = null;
+                oResult = null;
             }
+            return oResult;
         }
 
 
@@ -393,13 +392,13 @@ FROM TWsMPdt ";
         [Route("UpdateSale")]
         public cmlResBase C_POST_oUpdateSale([FromBody] cmlReqSale paoSale)
         {
-            cmlResBase oResult;
-            cRabbitMQ oRabbitMQ;
+            cmlResBase oResult = new cmlResBase();
+            cRabbitMQ oRabbitMQ = new cRabbitMQ();
             string tErrAPI;
 
             try
             {
-                oResult = new cmlResBase();
+               
 
                 //Check Model
                 if (paoSale == null)
@@ -426,7 +425,7 @@ FROM TWsMPdt ";
                 }
 
                 //To do..
-                oRabbitMQ = new cRabbitMQ();
+                
 
                 //Convert to string json
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoSale);
@@ -442,20 +441,22 @@ FROM TWsMPdt ";
                     oResult.rtDesc = cMS.tMS_RespDesc907;
                 }
 
-                return oResult;
+                
             }
             catch (Exception oEx)
             {
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                return oResult;
+                
             }
             finally
             {
                 paoSale = null;
                 oRabbitMQ = null;
+                oResult = null;
             }
+            return oResult;
         }
 
 
