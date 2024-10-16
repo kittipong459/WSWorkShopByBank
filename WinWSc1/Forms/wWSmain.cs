@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO.Packaging;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -308,29 +309,12 @@ namespace WindowsFormsApp1
 
         private void odgSal_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //if (e.Col == odgSal.Cols["ockColSel"].Index)
-                //{
-                //    if (Convert.ToBoolean(odgSal.GetData(e.Row, e.Col)) == true)
-                //    {
-                //        string tPdtCode = odgSal.GetData(e.Row, odgSal.Cols["tColPdtCode"].Index).ToString();
-                //        MessageBox.Show($"{tPdtCode}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //        return;
-                //    }
-                //}
-            }
-            catch (Exception oEx)
-            {
-
-            }
-            finally
-            {
-
-            }
+            int dsd = odgSal.Col;
+            string ds = odgSal.Cols["rtSalCod"].Index.ToString();
+            int noRegisId = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));
         }
 
-        //ogdCst
+      
 
 
     }

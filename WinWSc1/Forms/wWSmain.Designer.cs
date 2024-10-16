@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using C1.Win.C1FlexGrid;
+using System;
+namespace WindowsFormsApp1
 {
     partial class wWSmain
     {
