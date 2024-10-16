@@ -12,25 +12,25 @@ namespace WindowsFormsApp1.Service
 {
     public class cPstService
     {
-        string tAccess;
-        string tUrlApi;
+        string C_tAccess;
+        string C_tUrlApi;
         public cPstService()
         {
             // Get configuration values
             /*tAccess = "123456789";
             tUrlApi = "http://localhost:14589";*/
-            tAccess = ConfigurationManager.AppSettings["tAccess"];
-            tUrlApi = ConfigurationManager.AppSettings["tUrlApi"];
+            C_tAccess = ConfigurationManager.AppSettings["tAccess"];
+            C_tUrlApi = ConfigurationManager.AppSettings["tUrlApi"];
         }
 
         public List<cmlResPdt> C_GEToProduct(string tSearchPdtCode = "")
         {
             try
             {
-                RestClientOptions oPtions = new RestClientOptions(tUrlApi);
+                RestClientOptions oPtions = new RestClientOptions(C_tUrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetProduct", Method.Get);
-                oRrequest.AddHeader("X-Api-Key", tAccess);
+                oRrequest.AddHeader("X-Api-Key", C_tAccess);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
                 var aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);

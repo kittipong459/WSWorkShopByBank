@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.odgSalDet = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
-            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
+            this.otdSchSal = new C1.Win.C1Input.C1TextBox();
+            this.ocmSsh = new C1.Win.C1Input.C1Button();
+            ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).BeginInit();
             this.SuspendLayout();
             // 
-            // c1FlexGrid1
+            // odgSalDet
             // 
-            this.c1FlexGrid1.ColumnInfo = "10,1,0,0,0,-1,Columns:";
-            this.c1FlexGrid1.Location = new System.Drawing.Point(23, 95);
-            this.c1FlexGrid1.Name = "c1FlexGrid1";
-            this.c1FlexGrid1.Size = new System.Drawing.Size(729, 306);
-            this.c1FlexGrid1.TabIndex = 0;
+            this.odgSalDet.ColumnInfo = "10,1,0,0,0,-1,Columns:";
+            this.odgSalDet.Location = new System.Drawing.Point(23, 95);
+            this.odgSalDet.Name = "odgSalDet";
+            this.odgSalDet.Size = new System.Drawing.Size(729, 306);
+            this.odgSalDet.TabIndex = 0;
             // 
             // label1
             // 
@@ -59,58 +59,58 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.c1TextBox1);
-            this.panel1.Controls.Add(this.c1Button1);
+            this.panel1.Controls.Add(this.otdSchSal);
+            this.panel1.Controls.Add(this.ocmSsh);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.c1FlexGrid1);
+            this.panel1.Controls.Add(this.odgSalDet);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 426);
             this.panel1.TabIndex = 2;
             // 
-            // c1Button1
+            // otdSchSal
             // 
-            this.c1Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button1.Location = new System.Drawing.Point(650, 42);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(102, 34);
-            this.c1Button1.TabIndex = 2;
-            this.c1Button1.Text = "ค้นหา";
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.UseVisualStyleForeColor = true;
+            this.otdSchSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.otdSchSal.Location = new System.Drawing.Point(34, 44);
+            this.otdSchSal.Name = "otdSchSal";
+            this.otdSchSal.Size = new System.Drawing.Size(597, 27);
+            this.otdSchSal.TabIndex = 3;
+            this.otdSchSal.Tag = null;
             // 
-            // c1TextBox1
+            // ocmSsh
             // 
-            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox1.Location = new System.Drawing.Point(34, 44);
-            this.c1TextBox1.Name = "c1TextBox1";
-            this.c1TextBox1.Size = new System.Drawing.Size(597, 27);
-            this.c1TextBox1.TabIndex = 3;
-            this.c1TextBox1.Tag = null;
+            this.ocmSsh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmSsh.Location = new System.Drawing.Point(650, 42);
+            this.ocmSsh.Name = "ocmSsh";
+            this.ocmSsh.Size = new System.Drawing.Size(102, 34);
+            this.ocmSsh.TabIndex = 2;
+            this.ocmSsh.Text = "ค้นหา";
+            this.ocmSsh.UseVisualStyleBackColor = true;
+            this.ocmSsh.UseVisualStyleForeColor = true;
             // 
             // wSalDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 554);
             this.Controls.Add(this.panel1);
             this.Name = "wSalDetail";
             this.Text = "wSalDetail";
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid1;
+        private C1.Win.C1FlexGrid.C1FlexGrid odgSalDet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private C1.Win.C1Input.C1TextBox c1TextBox1;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1TextBox otdSchSal;
+        private C1.Win.C1Input.C1Button ocmSsh;
     }
 }

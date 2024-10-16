@@ -40,7 +40,7 @@
             this.otbSalAmt = new C1.Win.C1Input.C1TextBox();
             this.otbSalCstCod = new C1.Win.C1Input.C1TextBox();
             this.otbSalDate = new C1.Win.C1Input.C1DateEdit();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.comAddSal = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,17 +48,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
-            this.c1Button3 = new C1.Win.C1Input.C1Button();
-            this.c1Button4 = new C1.Win.C1Input.C1Button();
+            this.ocmEdtSal = new C1.Win.C1Input.C1Button();
+            this.ocmDelSal = new C1.Win.C1Input.C1Button();
+            this.comClrSal = new C1.Win.C1Input.C1Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.c1Button5 = new C1.Win.C1Input.C1Button();
-            this.c1Button6 = new C1.Win.C1Input.C1Button();
             this.odgSal = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.ocmSalDet = new C1.Win.C1Input.C1Button();
+            this.ocmReprt = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.odgPdt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.odgCst)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).BeginInit();
@@ -68,17 +68,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.otbSalAmt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCstCod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comAddSal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmEdtSal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmDelSal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comClrSal)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.odgSal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmSalDet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmReprt)).BeginInit();
             this.SuspendLayout();
             // 
             // odgPdt
@@ -202,17 +202,17 @@
             this.otbSalDate.Tag = null;
             this.otbSalDate.ValueChanged += new System.EventHandler(this.otbSalDate_ValueChanged);
             // 
-            // c1Button1
+            // comAddSal
             // 
-            this.c1Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button1.Location = new System.Drawing.Point(11, 359);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(89, 35);
-            this.c1Button1.TabIndex = 16;
-            this.c1Button1.Text = "เพิ่ม";
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.UseVisualStyleForeColor = true;
-            this.c1Button1.Click += new System.EventHandler(this.c1Button1_Click);
+            this.comAddSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.comAddSal.Location = new System.Drawing.Point(11, 359);
+            this.comAddSal.Name = "comAddSal";
+            this.comAddSal.Size = new System.Drawing.Size(89, 35);
+            this.comAddSal.TabIndex = 16;
+            this.comAddSal.Text = "เพิ่ม";
+            this.comAddSal.UseVisualStyleBackColor = true;
+            this.comAddSal.UseVisualStyleForeColor = true;
+            this.comAddSal.Click += new System.EventHandler(this.c1Button1_Click);
             // 
             // label4
             // 
@@ -284,40 +284,40 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "วันที่ขาย";
             // 
-            // c1Button2
+            // ocmEdtSal
             // 
-            this.c1Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button2.Location = new System.Drawing.Point(106, 359);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(89, 35);
-            this.c1Button2.TabIndex = 24;
-            this.c1Button2.Text = "แก้ไข";
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.UseVisualStyleForeColor = true;
-            this.c1Button2.Click += new System.EventHandler(this.c1Button2_Click);
+            this.ocmEdtSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmEdtSal.Location = new System.Drawing.Point(106, 359);
+            this.ocmEdtSal.Name = "ocmEdtSal";
+            this.ocmEdtSal.Size = new System.Drawing.Size(89, 35);
+            this.ocmEdtSal.TabIndex = 24;
+            this.ocmEdtSal.Text = "แก้ไข";
+            this.ocmEdtSal.UseVisualStyleBackColor = true;
+            this.ocmEdtSal.UseVisualStyleForeColor = true;
+            this.ocmEdtSal.Click += new System.EventHandler(this.c1Button2_Click);
             // 
-            // c1Button3
+            // ocmDelSal
             // 
-            this.c1Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button3.Location = new System.Drawing.Point(201, 359);
-            this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(89, 35);
-            this.c1Button3.TabIndex = 25;
-            this.c1Button3.Text = "ลบ";
-            this.c1Button3.UseVisualStyleBackColor = true;
-            this.c1Button3.UseVisualStyleForeColor = true;
+            this.ocmDelSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmDelSal.Location = new System.Drawing.Point(201, 359);
+            this.ocmDelSal.Name = "ocmDelSal";
+            this.ocmDelSal.Size = new System.Drawing.Size(89, 35);
+            this.ocmDelSal.TabIndex = 25;
+            this.ocmDelSal.Text = "ลบ";
+            this.ocmDelSal.UseVisualStyleBackColor = true;
+            this.ocmDelSal.UseVisualStyleForeColor = true;
             // 
-            // c1Button4
+            // comClrSal
             // 
-            this.c1Button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button4.Location = new System.Drawing.Point(296, 359);
-            this.c1Button4.Name = "c1Button4";
-            this.c1Button4.Size = new System.Drawing.Size(89, 35);
-            this.c1Button4.TabIndex = 26;
-            this.c1Button4.Text = "ล้างข้อมูล";
-            this.c1Button4.UseVisualStyleBackColor = true;
-            this.c1Button4.UseVisualStyleForeColor = true;
-            this.c1Button4.Click += new System.EventHandler(this.c1Button4_Click);
+            this.comClrSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.comClrSal.Location = new System.Drawing.Point(296, 359);
+            this.comClrSal.Name = "comClrSal";
+            this.comClrSal.Size = new System.Drawing.Size(89, 35);
+            this.comClrSal.TabIndex = 26;
+            this.comClrSal.Text = "ล้างข้อมูล";
+            this.comClrSal.UseVisualStyleBackColor = true;
+            this.comClrSal.UseVisualStyleForeColor = true;
+            this.comClrSal.Click += new System.EventHandler(this.c1Button4_Click);
             // 
             // panel1
             // 
@@ -347,11 +347,11 @@
             this.panel3.Controls.Add(this.otbSalPdtCod);
             this.panel3.Controls.Add(this.otbSalQty);
             this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.c1Button2);
+            this.panel3.Controls.Add(this.ocmEdtSal);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.c1Button3);
+            this.panel3.Controls.Add(this.ocmDelSal);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.c1Button4);
+            this.panel3.Controls.Add(this.comClrSal);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.otbSalPri);
             this.panel3.Controls.Add(this.label6);
@@ -360,7 +360,7 @@
             this.panel3.Controls.Add(this.otbSalCstCod);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.otbSalDate);
-            this.panel3.Controls.Add(this.c1Button1);
+            this.panel3.Controls.Add(this.comAddSal);
             this.panel3.Location = new System.Drawing.Point(18, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(395, 406);
@@ -386,29 +386,6 @@
             this.panel4.Size = new System.Drawing.Size(934, 240);
             this.panel4.TabIndex = 30;
             // 
-            // c1Button5
-            // 
-            this.c1Button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button5.Location = new System.Drawing.Point(971, 439);
-            this.c1Button5.Name = "c1Button5";
-            this.c1Button5.Size = new System.Drawing.Size(118, 89);
-            this.c1Button5.TabIndex = 31;
-            this.c1Button5.Text = "รายละเอียดการขาย";
-            this.c1Button5.UseVisualStyleBackColor = true;
-            this.c1Button5.UseVisualStyleForeColor = true;
-            // 
-            // c1Button6
-            // 
-            this.c1Button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Button6.Location = new System.Drawing.Point(971, 545);
-            this.c1Button6.Name = "c1Button6";
-            this.c1Button6.Size = new System.Drawing.Size(118, 89);
-            this.c1Button6.TabIndex = 32;
-            this.c1Button6.Text = "ออกรายงาน";
-            this.c1Button6.UseVisualStyleBackColor = true;
-            this.c1Button6.UseVisualStyleForeColor = true;
-            this.c1Button6.Click += new System.EventHandler(this.c1Button6_Click);
-            // 
             // odgSal
             // 
             this.odgSal.ColumnInfo = "10,1,0,0,0,-1,Columns:";
@@ -417,13 +394,37 @@
             this.odgSal.Size = new System.Drawing.Size(903, 189);
             this.odgSal.TabIndex = 3;
             // 
+            // ocmSalDet
+            // 
+            this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmSalDet.Location = new System.Drawing.Point(971, 439);
+            this.ocmSalDet.Name = "ocmSalDet";
+            this.ocmSalDet.Size = new System.Drawing.Size(118, 89);
+            this.ocmSalDet.TabIndex = 31;
+            this.ocmSalDet.Text = "รายละเอียดการขาย";
+            this.ocmSalDet.UseVisualStyleBackColor = true;
+            this.ocmSalDet.UseVisualStyleForeColor = true;
+            this.ocmSalDet.Click += new System.EventHandler(this.c1Button5_Click);
+            // 
+            // ocmReprt
+            // 
+            this.ocmReprt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmReprt.Location = new System.Drawing.Point(971, 545);
+            this.ocmReprt.Name = "ocmReprt";
+            this.ocmReprt.Size = new System.Drawing.Size(118, 89);
+            this.ocmReprt.TabIndex = 32;
+            this.ocmReprt.Text = "ออกรายงาน";
+            this.ocmReprt.UseVisualStyleBackColor = true;
+            this.ocmReprt.UseVisualStyleForeColor = true;
+            this.ocmReprt.Click += new System.EventHandler(this.c1Button6_Click);
+            // 
             // wWSmain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 679);
-            this.Controls.Add(this.c1Button6);
-            this.Controls.Add(this.c1Button5);
+            this.Controls.Add(this.ocmReprt);
+            this.Controls.Add(this.ocmSalDet);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -440,10 +441,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.otbSalAmt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCstCod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comAddSal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmEdtSal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmDelSal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comClrSal)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -452,9 +453,9 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.odgSal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmSalDet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmReprt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,7 +474,7 @@
         private C1.Win.C1Input.C1TextBox otbSalAmt;
         private C1.Win.C1Input.C1TextBox otbSalCstCod;
         private C1.Win.C1Input.C1DateEdit otbSalDate;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button comAddSal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -481,16 +482,16 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private C1.Win.C1Input.C1Button c1Button2;
-        private C1.Win.C1Input.C1Button c1Button3;
-        private C1.Win.C1Input.C1Button c1Button4;
+        private C1.Win.C1Input.C1Button ocmEdtSal;
+        private C1.Win.C1Input.C1Button ocmDelSal;
+        private C1.Win.C1Input.C1Button comClrSal;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel4;
-        private C1.Win.C1Input.C1Button c1Button5;
-        private C1.Win.C1Input.C1Button c1Button6;
+        private C1.Win.C1Input.C1Button ocmSalDet;
+        private C1.Win.C1Input.C1Button ocmReprt;
         private C1.Win.C1FlexGrid.C1FlexGrid odgSal;
     }
 }

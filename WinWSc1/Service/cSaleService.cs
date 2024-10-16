@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Service
             tUrlApi = ConfigurationManager.AppSettings["tUrlApi"];
         }
 
-        public List<cmlSale> C_GETSale(string tSearchPdtCode = "")
+        public List<cmlSale> C_GETxSale(string tSearchPdtCode = "")
         {
             try
             {
