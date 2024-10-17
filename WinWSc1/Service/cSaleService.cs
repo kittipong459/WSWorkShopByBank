@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Models.WebService.Response.Base;
 using RestSharp;
+using ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using wModels;
+using wModels.Class;
 
 namespace WindowsFormsApp1.Service
 {
@@ -135,6 +137,34 @@ namespace WindowsFormsApp1.Service
                 aoUpsal = null;
             }
             return bReqUpSal;
+        }
+
+        public bool C_POSTbDelSale(string SalId)
+        {
+            try
+            {
+                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
+                RestClient oClient = new RestClient(oPtions);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{SalId}", Method.Delete);
+                oRrequest.AddHeader("X-Api-Key", tC_Access);
+                RestResponse oResponse = oClient.Execute(oRrequest);
+                Console.WriteLine(oResponse.Content);
+                var oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResBase>(oResponse.Content);
+                if (oRes.rtCode == "001")
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog("cSaleService", "C_POSTbDelSale:"+oEx.Message);
+                return false;
+            }
+            finally
+            {
+
+            }
         }
 
     }

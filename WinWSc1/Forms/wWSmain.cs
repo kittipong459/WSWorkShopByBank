@@ -1,4 +1,5 @@
 ﻿using C1.Win.C1FlexGrid;
+using ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Service;
-using wModels;
 using static C1.Util.Win.Win32;
 using static WindowsFormsApp1.Service.cPstService;
 
@@ -19,20 +19,72 @@ namespace WindowsFormsApp1
 {
     public partial class wWSmain : Form
     {
+        int nW_Number = 0;  // global parameter 
+        int[] aW_Number = { 1, 6 };  // array
+
+        List<cmlReqSale> aoW_Res = new List<cmlReqSale>();  // array object global
+
         public wWSmain()
         {
-            InitializeComponent();
-            W_GetxPdtData();
-            W_GetxSalData();
-            W_GetxCstData();
+            try
+            {
+                InitializeComponent();
+                W_SETxDesign();
+                W_SETxText();
+                W_GetxPdtData();
+                W_GetxSalData();
+                W_GetxCstData();
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+
+            string tName = "";  // 
         }
 
+        private void W_SETxDesign()
+        {
+        }
+
+        private void W_SETxText()
+        {
+            try
+            {
+                olaId.Text = string.Empty;
+                olaCod.Text = "รหัสขาย";
+                olaPdtCod.Text = "รหัสสินค้า";
+                olaQty.Text = "จำนวน";
+                olaPri.Text = "ราคา";
+                olaPriAmt.Text = "ราคารวม";
+                olaCstCod.Text = "รหัสลูกค้า";
+                olaSalDate.Text = "วันที่ขาย";
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+        }
 
         private cmlReqSale W_oCheckSalData()
         {
             cmlReqSale mSale = new cmlReqSale();
             try
             {
+                if (!string.IsNullOrEmpty(olaId.Text))
+                    mSale.pnSalID = int.Parse(olaId.Text);
+                else
+                {
+                    // ไม่ทำอะไร
+                }
                 if (string.IsNullOrEmpty(otbSalCod.Text))
                     MessageBox.Show("ระบุรหัสการขาย");
                 else
@@ -71,7 +123,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-                mSale = null;
+
             }
             return mSale;
         }
@@ -110,7 +162,7 @@ namespace WindowsFormsApp1
 
                 //odgSal.Rows.Count = odgSal.Rows.Fixed;
 
-                odgSal.Cols.Count = 10;
+                odgSal.Cols.Count = 11;
                 odgSal.Cols[1].Name = "rnSalID";
                 odgSal.Cols[2].Name = "rtSalCod";
                 odgSal.Cols[3].Name = "rtSalPdtCod";
@@ -120,11 +172,12 @@ namespace WindowsFormsApp1
                 odgSal.Cols[7].Name = "rtSalCstCod";
                 odgSal.Cols[8].Name = "rdSalDate";
                 odgSal.Cols[9].Name = "rdSalSMPT";
+                odgSal.Cols[10].Name = "rdSalDel";
                 int nIndex = 1;
                 foreach (cmlResSale oSal in oaSale)
                 {
                     odgSal.Rows.Add();
-                   
+
                     CellStyle oCellStyle;
                     oCellStyle = odgSal.Styles.Add("Receive");
                     oCellStyle.DataType = typeof(Boolean);
@@ -137,11 +190,14 @@ namespace WindowsFormsApp1
                     odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
                     odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
                     odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
+                    odgSal.SetData(nIndex, "rdSalDel", "ลบ");
+
+                    // pic
                     nIndex++;
                 }
 
 
-                string[] W_ColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ" };
+                string[] W_ColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ", "ลบข้อมูล" };
                 odgSal.Cols[1].Caption = W_ColsName[0];
                 odgSal.Cols[2].Caption = W_ColsName[1];
                 odgSal.Cols[3].Caption = W_ColsName[2];
@@ -151,15 +207,22 @@ namespace WindowsFormsApp1
                 odgSal.Cols[7].Caption = W_ColsName[6];
                 odgSal.Cols[8].Caption = W_ColsName[7];
                 odgSal.Cols[9].Caption = W_ColsName[8];
+                odgSal.Cols[10].Caption = W_ColsName[9];
 
                 odgSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
                 odgSal.Cols[2].AllowMerging = true;
                 odgSal.Cols[3].AllowMerging = true;
                 odgSal.Cols[7].AllowMerging = true;
+
+                odgSal.Refresh();
             }
             catch (Exception oEx)
             {
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
             }
 
         }
@@ -188,7 +251,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void c1Button1_Click(object sender, EventArgs e)
+        private void ocmAddSal_Click(object sender, EventArgs e)
         {
             try
             {
@@ -210,21 +273,36 @@ namespace WindowsFormsApp1
 
         }
 
-
-
-
-
-
         private void otbSalPri_TextChanged(object sender, EventArgs e)
         {
-            W_SetxAmt();
+            try
+            {
+                W_SetxAmt();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+            }
+            finally
+            {
 
+            }
         }
 
         private void otbSalQty_TextChanged(object sender, EventArgs e)
         {
-            W_SetxAmt();
+            try
+            {
+                W_SetxAmt();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+            }
+            finally
+            {
 
+            }
         }
 
 
@@ -234,9 +312,9 @@ namespace WindowsFormsApp1
             {
                 if (!string.IsNullOrEmpty(otbSalPri.Text) && !string.IsNullOrEmpty(otbSalQty.Text))
                 {
-                    decimal W_cPri = decimal.Parse(otbSalPri.Text);
-                    decimal W_nQty = decimal.Parse(otbSalQty.Text);
-                    otbSalAmt.Text = (W_cPri * W_nQty).ToString();
+                    decimal cPri = decimal.Parse(otbSalPri.Text);
+                    int nQty = int.Parse(otbSalQty.Text);
+                    otbSalAmt.Text = (cPri * nQty).ToString();
                 }
 
             }
@@ -251,7 +329,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void c1Button2_Click(object sender, EventArgs e)
+        private void ocmEdtSal_Click(object sender, EventArgs e)
         {
             try
             {
@@ -271,31 +349,95 @@ namespace WindowsFormsApp1
         }
 
 
-    
+
 
         private void odgSal_Click(object sender, EventArgs e)
         {
-            int Col = odgSal.Col;
-            int Row = odgSal.Row;
-            int nIdx = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));
-           
+            /*int nCol = odgSal.Col;
+            int nRow = odgSal.Row;
+            int Index = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));*/
 
-            otbSalCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCod"].Index).ToString();
-            otbSalPdtCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalPdtCod"].Index).ToString();
-            otbSalQty.Text = odgSal.GetData(nIdx, odgSal.Cols["rnSalQty"].Index).ToString();
-            otbSalPri.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalPri"].Index).ToString();
-            otbSalAmt.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalAmt"].Index).ToString();
-            otbSalCstCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCstCod"].Index).ToString();
-            otbSalDate.Text = odgSal.GetData(nIdx, odgSal.Cols["rdSalDate"].Index).ToString();
-            /// otbSalDate.Value.ToString()
+            try
+            {
+                if (odgSal.Col == 10)
+                {
+                    int pnSalID = int.Parse(odgSal.GetData(odgSal.Row, odgSal.Cols["rnSalID"].Index).ToString());
+                    var res = new cSaleService().C_POSTbDelSale(pnSalID.ToString());
+                }
+                else
+                {
+                    int nIdx = odgSal.Row;
+                    olaId.Text = odgSal.GetData(nIdx, odgSal.Cols["rnSalID"].Index).ToString();
+                    otbSalCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCod"].Index).ToString();
+                    otbSalPdtCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalPdtCod"].Index).ToString();
+                    otbSalQty.Text = odgSal.GetData(nIdx, odgSal.Cols["rnSalQty"].Index).ToString();
+                    otbSalPri.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalPri"].Index).ToString();
+                    otbSalAmt.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalAmt"].Index).ToString();
+                    otbSalCstCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCstCod"].Index).ToString();
+                    otbSalDate.Text = odgSal.GetData(nIdx, odgSal.Cols["rdSalDate"].Index).ToString();
+                }
 
-           
+            }
+            catch (Exception oEx)
+            {
+                C_CLNxTxt();
+            }
+
         }
 
         private void ocmSalDet_Click(object sender, EventArgs e)
         {
-            wSalDetail wSalDetail = new wSalDetail();
-            wSalDetail.Show();
+            try
+            {
+                wSalDetail wSalDetail = new wSalDetail();
+                wSalDetail.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void C_CLNxTxt()
+        {
+            try
+            {
+                otbSalCod.Text = "";
+                otbSalPdtCod.Text = "";
+                otbSalQty.Text = "";
+                otbSalPri.Text = "";
+                otbSalAmt.Text = "";
+                otbSalCstCod.Text = "";
+                otbSalDate.Value = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void comClrSal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                C_CLNxTxt();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
         }
     }
 }

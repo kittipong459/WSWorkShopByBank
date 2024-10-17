@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wModels
+namespace ServiceModels
 {
-    public class cmlReqSale
+    public class cmlReqSalHis
     {
-        public Nullable<int> pnSalID { get; set; }
         public string ptSalCod { get; set; }
         public string ptSalPdtCod { get; set; }
         public Nullable<int> pnSalQty { get; set; }

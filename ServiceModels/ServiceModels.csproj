@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>wModels</RootNamespace>
-    <AssemblyName>wModels</AssemblyName>
+    <AssemblyName>ServiceModels</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\cLog.cs" />
     <Compile Include="Request\cmlReqCst.cs" />
     <Compile Include="Request\cmlReqPdt.cs" />
     <Compile Include="Request\cmlReqSale.cs" />

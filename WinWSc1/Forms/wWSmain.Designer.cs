@@ -42,20 +42,20 @@ namespace WindowsFormsApp1
             this.otbSalAmt = new C1.Win.C1Input.C1TextBox();
             this.otbSalCstCod = new C1.Win.C1Input.C1TextBox();
             this.otbSalDate = new C1.Win.C1Input.C1DateEdit();
-            this.comAddSal = new C1.Win.C1Input.C1Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.ocmAddSal = new C1.Win.C1Input.C1Button();
+            this.olaCod = new System.Windows.Forms.Label();
+            this.olaPdtCod = new System.Windows.Forms.Label();
+            this.olaQty = new System.Windows.Forms.Label();
+            this.olaPri = new System.Windows.Forms.Label();
+            this.olaPriAmt = new System.Windows.Forms.Label();
+            this.olaCstCod = new System.Windows.Forms.Label();
+            this.olaSalDate = new System.Windows.Forms.Label();
             this.ocmEdtSal = new C1.Win.C1Input.C1Button();
-            this.ocmDelSal = new C1.Win.C1Input.C1Button();
             this.comClrSal = new C1.Win.C1Input.C1Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.olaId = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.odgSal = new C1.Win.C1FlexGrid.C1FlexGrid();
@@ -70,9 +70,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.otbSalAmt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCstCod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comAddSal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmAddSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmEdtSal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmDelSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comClrSal)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -200,110 +199,99 @@ namespace WindowsFormsApp1
             this.otbSalDate.TabIndex = 14;
             this.otbSalDate.Tag = null;
             // 
-            // comAddSal
+            // ocmAddSal
             // 
-            this.comAddSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.comAddSal.Location = new System.Drawing.Point(11, 359);
-            this.comAddSal.Name = "comAddSal";
-            this.comAddSal.Size = new System.Drawing.Size(89, 35);
-            this.comAddSal.TabIndex = 16;
-            this.comAddSal.Text = "เพิ่ม";
-            this.comAddSal.UseVisualStyleBackColor = true;
-            this.comAddSal.UseVisualStyleForeColor = true;
-            this.comAddSal.Click += new System.EventHandler(this.c1Button1_Click);
+            this.ocmAddSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmAddSal.Location = new System.Drawing.Point(106, 359);
+            this.ocmAddSal.Name = "ocmAddSal";
+            this.ocmAddSal.Size = new System.Drawing.Size(89, 35);
+            this.ocmAddSal.TabIndex = 16;
+            this.ocmAddSal.Text = "เพิ่ม";
+            this.ocmAddSal.UseVisualStyleBackColor = true;
+            this.ocmAddSal.UseVisualStyleForeColor = true;
+            this.ocmAddSal.Click += new System.EventHandler(this.ocmAddSal_Click);
             // 
-            // label4
+            // olaCod
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(17, 44);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 24);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "รหัสขาย";
+            this.olaCod.AutoSize = true;
+            this.olaCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaCod.Location = new System.Drawing.Point(23, 42);
+            this.olaCod.Name = "olaCod";
+            this.olaCod.Size = new System.Drawing.Size(67, 24);
+            this.olaCod.TabIndex = 17;
+            this.olaCod.Text = "รหัสขาย";
             // 
-            // label5
+            // olaPdtCod
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(20, 89);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 24);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "รหัสสินค้า";
+            this.olaPdtCod.AutoSize = true;
+            this.olaPdtCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaPdtCod.Location = new System.Drawing.Point(20, 89);
+            this.olaPdtCod.Name = "olaPdtCod";
+            this.olaPdtCod.Size = new System.Drawing.Size(80, 24);
+            this.olaPdtCod.TabIndex = 18;
+            this.olaPdtCod.Text = "รหัสสินค้า";
             // 
-            // label6
+            // olaQty
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(23, 134);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 24);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "จำนวน";
+            this.olaQty.AutoSize = true;
+            this.olaQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaQty.Location = new System.Drawing.Point(23, 134);
+            this.olaQty.Name = "olaQty";
+            this.olaQty.Size = new System.Drawing.Size(61, 24);
+            this.olaQty.TabIndex = 19;
+            this.olaQty.Text = "จำนวน";
             // 
-            // label7
+            // olaPri
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label7.Location = new System.Drawing.Point(23, 180);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 24);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "ราคา";
+            this.olaPri.AutoSize = true;
+            this.olaPri.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaPri.Location = new System.Drawing.Point(23, 180);
+            this.olaPri.Name = "olaPri";
+            this.olaPri.Size = new System.Drawing.Size(45, 24);
+            this.olaPri.TabIndex = 20;
+            this.olaPri.Text = "ราคา";
             // 
-            // label8
+            // olaPriAmt
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label8.Location = new System.Drawing.Point(23, 227);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 24);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "ราคารวม";
+            this.olaPriAmt.AutoSize = true;
+            this.olaPriAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaPriAmt.Location = new System.Drawing.Point(23, 227);
+            this.olaPriAmt.Name = "olaPriAmt";
+            this.olaPriAmt.Size = new System.Drawing.Size(72, 24);
+            this.olaPriAmt.TabIndex = 21;
+            this.olaPriAmt.Text = "ราคารวม";
             // 
-            // label9
+            // olaCstCod
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label9.Location = new System.Drawing.Point(23, 271);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 24);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "รหัสลูกค้า";
+            this.olaCstCod.AutoSize = true;
+            this.olaCstCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaCstCod.Location = new System.Drawing.Point(23, 271);
+            this.olaCstCod.Name = "olaCstCod";
+            this.olaCstCod.Size = new System.Drawing.Size(77, 24);
+            this.olaCstCod.TabIndex = 22;
+            this.olaCstCod.Text = "รหัสลูกค้า";
             // 
-            // label10
+            // olaSalDate
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label10.Location = new System.Drawing.Point(23, 314);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 24);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "วันที่ขาย";
+            this.olaSalDate.AutoSize = true;
+            this.olaSalDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaSalDate.Location = new System.Drawing.Point(23, 314);
+            this.olaSalDate.Name = "olaSalDate";
+            this.olaSalDate.Size = new System.Drawing.Size(71, 24);
+            this.olaSalDate.TabIndex = 23;
+            this.olaSalDate.Text = "วันที่ขาย";
             // 
             // ocmEdtSal
             // 
             this.ocmEdtSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmEdtSal.Location = new System.Drawing.Point(106, 359);
+            this.ocmEdtSal.Location = new System.Drawing.Point(201, 359);
             this.ocmEdtSal.Name = "ocmEdtSal";
             this.ocmEdtSal.Size = new System.Drawing.Size(89, 35);
             this.ocmEdtSal.TabIndex = 24;
             this.ocmEdtSal.Text = "แก้ไข";
             this.ocmEdtSal.UseVisualStyleBackColor = true;
             this.ocmEdtSal.UseVisualStyleForeColor = true;
-            this.ocmEdtSal.Click += new System.EventHandler(this.c1Button2_Click);
-            // 
-            // ocmDelSal
-            // 
-            this.ocmDelSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmDelSal.Location = new System.Drawing.Point(201, 359);
-            this.ocmDelSal.Name = "ocmDelSal";
-            this.ocmDelSal.Size = new System.Drawing.Size(89, 35);
-            this.ocmDelSal.TabIndex = 25;
-            this.ocmDelSal.Text = "ลบ";
-            this.ocmDelSal.UseVisualStyleBackColor = true;
-            this.ocmDelSal.UseVisualStyleForeColor = true;
+            this.ocmEdtSal.Click += new System.EventHandler(this.ocmEdtSal_Click);
             // 
             // comClrSal
             // 
@@ -315,6 +303,7 @@ namespace WindowsFormsApp1
             this.comClrSal.Text = "ล้างข้อมูล";
             this.comClrSal.UseVisualStyleBackColor = true;
             this.comClrSal.UseVisualStyleForeColor = true;
+            this.comClrSal.Click += new System.EventHandler(this.comClrSal_Click);
             // 
             // panel1
             // 
@@ -339,29 +328,41 @@ namespace WindowsFormsApp1
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Cornsilk;
+            this.panel3.Controls.Add(this.olaId);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.otbSalCod);
             this.panel3.Controls.Add(this.otbSalPdtCod);
             this.panel3.Controls.Add(this.otbSalQty);
-            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.olaSalDate);
             this.panel3.Controls.Add(this.ocmEdtSal);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.ocmDelSal);
-            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.olaCstCod);
+            this.panel3.Controls.Add(this.olaPriAmt);
             this.panel3.Controls.Add(this.comClrSal);
-            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.olaPri);
             this.panel3.Controls.Add(this.otbSalPri);
-            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.olaQty);
             this.panel3.Controls.Add(this.otbSalAmt);
-            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.olaPdtCod);
             this.panel3.Controls.Add(this.otbSalCstCod);
-            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.olaCod);
             this.panel3.Controls.Add(this.otbSalDate);
-            this.panel3.Controls.Add(this.comAddSal);
+            this.panel3.Controls.Add(this.ocmAddSal);
             this.panel3.Location = new System.Drawing.Point(18, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(395, 406);
             this.panel3.TabIndex = 29;
+            // 
+            // olaId
+            // 
+            this.olaId.AutoSize = true;
+            this.olaId.BackColor = System.Drawing.Color.Cornsilk;
+            this.olaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.olaId.ForeColor = System.Drawing.Color.Cornsilk;
+            this.olaId.Location = new System.Drawing.Point(264, 8);
+            this.olaId.Name = "olaId";
+            this.olaId.Size = new System.Drawing.Size(49, 24);
+            this.olaId.TabIndex = 28;
+            this.olaId.Text = "ลำดับ";
             // 
             // label11
             // 
@@ -437,9 +438,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.otbSalAmt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCstCod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comAddSal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmAddSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmEdtSal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmDelSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comClrSal)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -470,16 +470,14 @@ namespace WindowsFormsApp1
         private C1.Win.C1Input.C1TextBox otbSalAmt;
         private C1.Win.C1Input.C1TextBox otbSalCstCod;
         private C1.Win.C1Input.C1DateEdit otbSalDate;
-        private C1.Win.C1Input.C1Button comAddSal;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private C1.Win.C1Input.C1Button ocmAddSal;
+        private System.Windows.Forms.Label olaPdtCod;
+        private System.Windows.Forms.Label olaQty;
+        private System.Windows.Forms.Label olaPri;
+        private System.Windows.Forms.Label olaPriAmt;
+        private System.Windows.Forms.Label olaCstCod;
+        private System.Windows.Forms.Label olaSalDate;
         private C1.Win.C1Input.C1Button ocmEdtSal;
-        private C1.Win.C1Input.C1Button ocmDelSal;
         private C1.Win.C1Input.C1Button comClrSal;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -489,6 +487,8 @@ namespace WindowsFormsApp1
         private C1.Win.C1Input.C1Button ocmSalDet;
         private C1.Win.C1Input.C1Button ocmReprt;
         private C1.Win.C1FlexGrid.C1FlexGrid odgSal;
+        private System.Windows.Forms.Label olaId;
+        private System.Windows.Forms.Label olaCod;
     }
 }
 

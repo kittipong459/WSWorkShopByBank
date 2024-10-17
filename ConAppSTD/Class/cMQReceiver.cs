@@ -1,5 +1,6 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using wModels;
 
 namespace ConAppSTD.Class
 {
@@ -363,6 +363,34 @@ namespace ConAppSTD.Class
                                         else
                                         {
                                             poChannel.BasicAck(oEevntArgs.DeliveryTag, false);
+                                        }
+                                    }
+                                    catch (Exception oEx)
+                                    {
+
+                                    }
+                                    Console.WriteLine("Receive Queue Nmae: " + ptQueue + " end.");
+                                    Thread.Sleep(500);
+                                    break;
+                                case "DelSale":
+                                    try
+                                    {
+                                        Console.WriteLine("Receive Queue Nmae: " + ptQueue + " start.");
+                                        //Process 
+                                        int tPdtCode = int.Parse(tMessage);
+
+                                        cExample oExample = new cExample();
+                                        string tMsgErr = "";
+                                        bPrc = cExample.C_PRCxDelPdtTransaction(tPdtCode);
+
+                                        if (bPrc)
+                                        {
+                                            //delete this message queue
+                                            poChannel.BasicAck(oEevntArgs.DeliveryTag, false);
+                                        }
+                                        else
+                                        {
+
                                         }
                                     }
                                     catch (Exception oEx)

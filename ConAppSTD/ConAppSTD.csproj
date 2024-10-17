@@ -16,4 +16,10 @@
 	  <ProjectReference Include="..\wModels\wModels.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="ServiceModels">
+	    <HintPath>..\ServiceModels\bin\Debug\ServiceModels.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>
