@@ -210,30 +210,10 @@ namespace WindowsFormsApp1
 
         }
 
-        private void c1TextBox2_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void wWSmain_Load(object sender, EventArgs e)
-        {
 
-        }
 
-        private void c1Button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void c1TextBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void otbSalAmt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void otbSalPri_TextChanged(object sender, EventArgs e)
         {
@@ -271,7 +251,6 @@ namespace WindowsFormsApp1
         }
 
 
-
         private void c1Button2_Click(object sender, EventArgs e)
         {
             try
@@ -291,21 +270,8 @@ namespace WindowsFormsApp1
             W_GetxSalData();
         }
 
-        private void otbSalDate_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void c1Button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void c1Button5_Click(object sender, EventArgs e)
-        {
-            wSalDetail wSalDetail = new wSalDetail();
-            wSalDetail.Show();
-        }
+    
 
         private void odgSal_Click(object sender, EventArgs e)
         {
@@ -314,8 +280,10 @@ namespace WindowsFormsApp1
             int noRegisId = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));
         }
 
-      
-
-
+        private void ocmSalDet_Click(object sender, EventArgs e)
+        {
+            wSalDetail wSalDetail = new wSalDetail();
+            wSalDetail.Show();
+        }
     }
 }

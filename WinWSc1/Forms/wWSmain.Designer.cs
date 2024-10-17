@@ -146,7 +146,6 @@ namespace WindowsFormsApp1
             this.otbSalPdtCod.Size = new System.Drawing.Size(252, 29);
             this.otbSalPdtCod.TabIndex = 9;
             this.otbSalPdtCod.Tag = null;
-            this.otbSalPdtCod.TextChanged += new System.EventHandler(this.c1TextBox2_TextChanged);
             // 
             // otbSalQty
             // 
@@ -176,7 +175,6 @@ namespace WindowsFormsApp1
             this.otbSalAmt.Size = new System.Drawing.Size(252, 29);
             this.otbSalAmt.TabIndex = 12;
             this.otbSalAmt.Tag = null;
-            this.otbSalAmt.TextChanged += new System.EventHandler(this.otbSalAmt_TextChanged);
             // 
             // otbSalCstCod
             // 
@@ -186,7 +184,6 @@ namespace WindowsFormsApp1
             this.otbSalCstCod.Size = new System.Drawing.Size(252, 29);
             this.otbSalCstCod.TabIndex = 13;
             this.otbSalCstCod.Tag = null;
-            this.otbSalCstCod.TextChanged += new System.EventHandler(this.c1TextBox6_TextChanged);
             // 
             // otbSalDate
             // 
@@ -202,7 +199,6 @@ namespace WindowsFormsApp1
             this.otbSalDate.Size = new System.Drawing.Size(252, 27);
             this.otbSalDate.TabIndex = 14;
             this.otbSalDate.Tag = null;
-            this.otbSalDate.ValueChanged += new System.EventHandler(this.otbSalDate_ValueChanged);
             // 
             // comAddSal
             // 
@@ -319,7 +315,6 @@ namespace WindowsFormsApp1
             this.comClrSal.Text = "ล้างข้อมูล";
             this.comClrSal.UseVisualStyleBackColor = true;
             this.comClrSal.UseVisualStyleForeColor = true;
-            this.comClrSal.Click += new System.EventHandler(this.c1Button4_Click);
             // 
             // panel1
             // 
@@ -407,7 +402,7 @@ namespace WindowsFormsApp1
             this.ocmSalDet.Text = "รายละเอียดการขาย";
             this.ocmSalDet.UseVisualStyleBackColor = true;
             this.ocmSalDet.UseVisualStyleForeColor = true;
-            this.ocmSalDet.Click += new System.EventHandler(this.c1Button5_Click);
+            this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
             // 
             // ocmReprt
             // 
@@ -419,7 +414,6 @@ namespace WindowsFormsApp1
             this.ocmReprt.Text = "ออกรายงาน";
             this.ocmReprt.UseVisualStyleBackColor = true;
             this.ocmReprt.UseVisualStyleForeColor = true;
-            this.ocmReprt.Click += new System.EventHandler(this.c1Button6_Click);
             // 
             // wWSmain
             // 
@@ -434,7 +428,6 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.panel1);
             this.Name = "wWSmain";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.wWSmain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.odgPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.odgCst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).EndInit();
