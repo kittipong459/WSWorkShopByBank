@@ -275,9 +275,21 @@ namespace WindowsFormsApp1
 
         private void odgSal_Click(object sender, EventArgs e)
         {
-            int dsd = odgSal.Col;
-            string ds = odgSal.Cols["rtSalCod"].Index.ToString();
-            int noRegisId = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));
+            int Col = odgSal.Col;
+            int Row = odgSal.Row;
+            int nIdx = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));
+           
+
+            otbSalCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCod"].Index).ToString();
+            otbSalPdtCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalPdtCod"].Index).ToString();
+            otbSalQty.Text = odgSal.GetData(nIdx, odgSal.Cols["rnSalQty"].Index).ToString();
+            otbSalPri.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalPri"].Index).ToString();
+            otbSalAmt.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalAmt"].Index).ToString();
+            otbSalCstCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCstCod"].Index).ToString();
+            otbSalDate.Text = odgSal.GetData(nIdx, odgSal.Cols["rdSalDate"].Index).ToString();
+            /// otbSalDate.Value.ToString()
+
+           
         }
 
         private void ocmSalDet_Click(object sender, EventArgs e)
