@@ -141,6 +141,22 @@ namespace WindowsFormsApp1
                 //cPdtService.C_GETaoProduct();
 
                 odgPdt.DataSource = oaPdt;
+
+                
+
+                string[] W_ColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "ราคา", "จำนวน", "รหัสลูกค้า", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
+                odgPdt.Cols[1].Caption = W_ColsName[0];
+                odgPdt.Cols[2].Caption = W_ColsName[1];
+                odgPdt.Cols[3].Caption = W_ColsName[2];
+                odgPdt.Cols[4].Caption = W_ColsName[3];
+                odgPdt.Cols[5].Caption = W_ColsName[4];
+                odgPdt.Cols[6].Caption = W_ColsName[5];
+                odgPdt.Cols[7].Caption = W_ColsName[6];
+                odgPdt.Cols[8].Caption = W_ColsName[7];
+                odgPdt.Cols[9].Caption = W_ColsName[8];
+                odgPdt.Cols[10].Caption = W_ColsName[9];
+
+
                 odgPdt.Refresh();
             }
             catch (Exception oEx)
