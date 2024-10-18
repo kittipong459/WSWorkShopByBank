@@ -140,6 +140,7 @@ namespace WindowsFormsApp1
                 //cPdtService.C_GETaoProduct();
 
                 odgPdt.DataSource = oaPdt;
+                odgPdt.Refresh();
             }
             catch (Exception oEx)
             {
