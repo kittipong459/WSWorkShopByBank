@@ -33,10 +33,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.otdSchSal = new C1.Win.C1Input.C1TextBox();
             this.ocmSsh = new C1.Win.C1Input.C1Button();
+            this.c1PictureBox1 = new C1.Win.C1Input.C1PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // odgSalDet
@@ -88,11 +90,20 @@
             this.ocmSsh.UseVisualStyleBackColor = true;
             this.ocmSsh.UseVisualStyleForeColor = true;
             // 
+            // c1PictureBox1
+            // 
+            this.c1PictureBox1.Location = new System.Drawing.Point(122, 445);
+            this.c1PictureBox1.Name = "c1PictureBox1";
+            this.c1PictureBox1.Size = new System.Drawing.Size(132, 74);
+            this.c1PictureBox1.TabIndex = 3;
+            this.c1PictureBox1.TabStop = false;
+            // 
             // wSalDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 554);
+            this.Controls.Add(this.c1PictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "wSalDetail";
             this.Text = "wSalDetail";
@@ -101,6 +112,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Panel panel1;
         private C1.Win.C1Input.C1TextBox otdSchSal;
         private C1.Win.C1Input.C1Button ocmSsh;
+        private C1.Win.C1Input.C1PictureBox c1PictureBox1;
     }
 }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Service;
+using wModels.Class;
 using static C1.Util.Win.Win32;
 using static WindowsFormsApp1.Service.cPstService;
 
@@ -174,6 +175,9 @@ namespace WindowsFormsApp1
                 odgSal.Cols[8].Name = "rdSalDate";
                 odgSal.Cols[9].Name = "rdSalSMPT";
                 odgSal.Cols[10].Name = "rdSalDel";
+                odgSal.Cols["rdSalDel"].DataType = typeof(Image);
+                odgSal.Cols["rdSalDel"].ImageAlign = ImageAlignEnum.CenterCenter;
+                //odgSal.Cols["rdSalDel"].Width = 200;
                 int nIndex = 1;
                 foreach (cmlResSale oSal in oaSale)
                 {
@@ -181,17 +185,35 @@ namespace WindowsFormsApp1
 
                     CellStyle oCellStyle;
                     oCellStyle = odgSal.Styles.Add("Receive");
-                    oCellStyle.DataType = typeof(Boolean);
+                    oCellStyle.BackColor = Color.Yellow;
+                    oCellStyle.ForeColor = Color.Blue;
+
+                    odgSal.BackColor = Color.PaleGreen;
+                    // odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
+                    //odgSal.SetCellStyle(nIndex, odgSal.Cols["rnSalID"].Index, oCellStyle);
+                    //odgSal.SetCellStyle(nIndex, odgSal.Cols[1].Index, oCellStyle);
+                    //odgSal.SetCellStyle(nIndex, odgSal.Cols[3].Index, oCellStyle);
+                    //odgSal.SetCellStyle(nIndex, odgSal.Cols[5].Index, oCellStyle);
+                    if(nIndex % 2 == 0)
+                    {
+                     odgSal.SetCellStyle(nIndex, 1, oCellStyle);
+                    }
+               
                     odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
                     odgSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
                     odgSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
                     odgSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
                     odgSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
                     odgSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
+                   
                     odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
                     odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
                     odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
-                    odgSal.SetData(nIndex, "rdSalDel", "ลบ");
+                    //odgSal.SetData(nIndex, "rdSalDel", "ลบ");
+                    Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                    Bitmap resizedImage = new Bitmap(img, new Size(15, 15));
+                    odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);
+
 
                     // pic
                     nIndex++;
@@ -381,6 +403,8 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
+
+                cLog.C_WRTxLog("wWSmain", "odgSal_Click:" + oEx.Message);
                 C_CLNxTxt();
             }
 

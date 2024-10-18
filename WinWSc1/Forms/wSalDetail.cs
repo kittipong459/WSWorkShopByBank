@@ -15,6 +15,10 @@ namespace WindowsFormsApp1
         public wSalDetail()
         {
             InitializeComponent();
+            Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+            Bitmap resizedImage = new Bitmap(img, new Size(50, 50));
+
+            c1PictureBox1.Image = resizedImage;
         }
     }
 }
