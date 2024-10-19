@@ -144,7 +144,7 @@ namespace WindowsFormsApp1
 
                 
 
-                string[] W_ColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "ราคา", "จำนวน", "รหัสลูกค้า", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
+                string[] W_ColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "ราคา", "จำนวน", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
                 odgPdt.Cols[1].Caption = W_ColsName[0];
                 odgPdt.Cols[2].Caption = W_ColsName[1];
                 odgPdt.Cols[3].Caption = W_ColsName[2];
@@ -154,7 +154,6 @@ namespace WindowsFormsApp1
                 odgPdt.Cols[7].Caption = W_ColsName[6];
                 odgPdt.Cols[8].Caption = W_ColsName[7];
                 odgPdt.Cols[9].Caption = W_ColsName[8];
-                odgPdt.Cols[10].Caption = W_ColsName[9];
 
 
                 odgPdt.Refresh();
@@ -225,10 +224,10 @@ namespace WindowsFormsApp1
                     odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
                     odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
                     odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
-                    //odgSal.SetData(nIndex, "rdSalDel", "ลบ");
-                    Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                    odgSal.SetData(nIndex, "rdSalDel", "ลบ");
+                   /* Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
                     Bitmap resizedImage = new Bitmap(img, new Size(15, 15));
-                    odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);
+                    odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);*/
 
 
                     // pic
