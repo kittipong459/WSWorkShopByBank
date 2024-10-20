@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class wSalDetail
+    partial class Wform2
     {
         /// <summary>
         /// Required designer variable.
@@ -34,11 +34,13 @@
             this.otdSchSal = new C1.Win.C1Input.C1TextBox();
             this.ocmSsh = new C1.Win.C1Input.C1Button();
             this.c1PictureBox1 = new C1.Win.C1Input.C1PictureBox();
+            this.ocmSetImg = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmSetImg)).BeginInit();
             this.SuspendLayout();
             // 
             // odgSalDet
@@ -92,27 +94,40 @@
             // 
             // c1PictureBox1
             // 
-            this.c1PictureBox1.Location = new System.Drawing.Point(122, 445);
+            this.c1PictureBox1.Location = new System.Drawing.Point(313, 444);
             this.c1PictureBox1.Name = "c1PictureBox1";
-            this.c1PictureBox1.Size = new System.Drawing.Size(132, 74);
+            this.c1PictureBox1.Size = new System.Drawing.Size(193, 106);
             this.c1PictureBox1.TabIndex = 3;
             this.c1PictureBox1.TabStop = false;
             // 
-            // wSalDetail
+            // ocmSetImg
+            // 
+            this.ocmSetImg.Location = new System.Drawing.Point(126, 472);
+            this.ocmSetImg.Name = "ocmSetImg";
+            this.ocmSetImg.Size = new System.Drawing.Size(100, 43);
+            this.ocmSetImg.TabIndex = 4;
+            this.ocmSetImg.Text = "เลือกรูป";
+            this.ocmSetImg.UseVisualStyleBackColor = true;
+            this.ocmSetImg.UseVisualStyleForeColor = true;
+            this.ocmSetImg.Click += new System.EventHandler(this.ocmSetImg_Click_1);
+            // 
+            // Wform2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 554);
+            this.Controls.Add(this.ocmSetImg);
             this.Controls.Add(this.c1PictureBox1);
             this.Controls.Add(this.panel1);
-            this.Name = "wSalDetail";
-            this.Text = "wSalDetail";
+            this.Name = "Wform2";
+            this.Text = "รายละเอียดการขาย";
             ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmSetImg)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,5 +140,6 @@
         private C1.Win.C1Input.C1TextBox otdSchSal;
         private C1.Win.C1Input.C1Button ocmSsh;
         private C1.Win.C1Input.C1PictureBox c1PictureBox1;
+        private C1.Win.C1Input.C1Button ocmSetImg;
     }
 }

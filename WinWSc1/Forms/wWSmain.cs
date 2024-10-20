@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
 {
     public partial class wWSmain : Form
     {
+        string tW_ClasName = "wWSmain";
         int nW_Number = 0;  // global parameter 
         int[] aW_Number = { 1, 6 };  // array
 
@@ -38,15 +39,15 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, "{methodName} constucter:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
 
             }
-
-            string tName = "";  // 
         }
+
 
         private void W_SETxDesign()
         {
@@ -67,6 +68,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
@@ -120,6 +122,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
@@ -142,24 +145,18 @@ namespace WindowsFormsApp1
 
                 odgPdt.DataSource = oaPdt;
 
-                
-
-                string[] W_ColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "ราคา", "จำนวน", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
-                odgPdt.Cols[1].Caption = W_ColsName[0];
-                odgPdt.Cols[2].Caption = W_ColsName[1];
-                odgPdt.Cols[3].Caption = W_ColsName[2];
-                odgPdt.Cols[4].Caption = W_ColsName[3];
-                odgPdt.Cols[5].Caption = W_ColsName[4];
-                odgPdt.Cols[6].Caption = W_ColsName[5];
-                odgPdt.Cols[7].Caption = W_ColsName[6];
-                odgPdt.Cols[8].Caption = W_ColsName[7];
-                odgPdt.Cols[9].Caption = W_ColsName[8];
+                string[] tColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "จำนวน", "ราคา",  "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
+                for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                {
+                    odgPdt.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                }
 
 
                 odgPdt.Refresh();
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
@@ -209,25 +206,25 @@ namespace WindowsFormsApp1
                     //odgSal.SetCellStyle(nIndex, odgSal.Cols[1].Index, oCellStyle);
                     //odgSal.SetCellStyle(nIndex, odgSal.Cols[3].Index, oCellStyle);
                     //odgSal.SetCellStyle(nIndex, odgSal.Cols[5].Index, oCellStyle);
-                    if(nIndex % 2 == 0)
+                    if (nIndex % 2 == 0)
                     {
-                     odgSal.SetCellStyle(nIndex, 1, oCellStyle);
+                        odgSal.SetCellStyle(nIndex, 1, oCellStyle);
                     }
-               
+
                     odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
                     odgSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
                     odgSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
                     odgSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
                     odgSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
                     odgSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
-                   
+
                     odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
                     odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
                     odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
                     odgSal.SetData(nIndex, "rdSalDel", "ลบ");
-                   /* Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
-                    Bitmap resizedImage = new Bitmap(img, new Size(15, 15));
-                    odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);*/
+                    /* Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                     Bitmap resizedImage = new Bitmap(img, new Size(15, 15));
+                     odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);*/
 
 
                     // pic
@@ -235,27 +232,25 @@ namespace WindowsFormsApp1
                 }
 
 
-                string[] W_ColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ", "ลบข้อมูล" };
-                odgSal.Cols[1].Caption = W_ColsName[0];
-                odgSal.Cols[2].Caption = W_ColsName[1];
-                odgSal.Cols[3].Caption = W_ColsName[2];
-                odgSal.Cols[4].Caption = W_ColsName[3];
-                odgSal.Cols[5].Caption = W_ColsName[4];
-                odgSal.Cols[6].Caption = W_ColsName[5];
-                odgSal.Cols[7].Caption = W_ColsName[6];
-                odgSal.Cols[8].Caption = W_ColsName[7];
-                odgSal.Cols[9].Caption = W_ColsName[8];
-                odgSal.Cols[10].Caption = W_ColsName[9];
+                string[] tColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ", "ลบข้อมูล" };
+                for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                {
+                    odgSal.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                }
+
 
                 odgSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
-                odgSal.Cols[2].AllowMerging = true;
-                odgSal.Cols[3].AllowMerging = true;
-                odgSal.Cols[7].AllowMerging = true;
+                for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                {
+                    odgSal.Cols[nRow].AllowMerging = true;
+                }
+
 
                 odgSal.Refresh();
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
@@ -277,9 +272,15 @@ namespace WindowsFormsApp1
                 //cPdtService.C_GETaoProduct();
 
                 odgCst.DataSource = W_oaCst;
+                string[] tColsName = { "ลำดับ", "รหัสลูกค้า", "ชื่อลูกค้า", "Email", "เบอร์โทร", "ที่อยู่", "วันที่สร้างรายการ" };
+                for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                {
+                    odgCst.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                }
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
@@ -300,9 +301,10 @@ namespace WindowsFormsApp1
                 W_GetxPdtData();
                 W_GetxSalData();
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
@@ -317,9 +319,10 @@ namespace WindowsFormsApp1
             {
                 W_SetxAmt();
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
@@ -333,9 +336,10 @@ namespace WindowsFormsApp1
             {
                 W_SetxAmt();
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
@@ -356,9 +360,10 @@ namespace WindowsFormsApp1
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
@@ -371,19 +376,21 @@ namespace WindowsFormsApp1
         {
             try
             {
-
+                cmlReqSale mSale = new cmlReqSale();
+                mSale = W_oCheckSalData();
+                bool W_res = new cSaleService().C_POSTbUpdateSale(mSale);
+                W_GetxPdtData();
+                W_GetxSalData();
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally { }
-            cmlReqSale mSale = new cmlReqSale();
-            mSale = W_oCheckSalData();
 
-            bool W_res = new cSaleService().C_POSTbUpdateSale(mSale);
-            W_GetxPdtData();
-            W_GetxSalData();
+
+
         }
 
 
@@ -419,7 +426,7 @@ namespace WindowsFormsApp1
             catch (Exception oEx)
             {
 
-                cLog.C_WRTxLog("wWSmain", "odgSal_Click:" + oEx.Message);
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 C_CLNxTxt();
             }
 
@@ -429,12 +436,13 @@ namespace WindowsFormsApp1
         {
             try
             {
-                wSalDetail wSalDetail = new wSalDetail();
+                Wform2 wSalDetail = new Wform2();
                 wSalDetail.Show();
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
@@ -454,9 +462,10 @@ namespace WindowsFormsApp1
                 otbSalCstCod.Text = "";
                 otbSalDate.Value = DateTime.Now;
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
@@ -470,13 +479,49 @@ namespace WindowsFormsApp1
             {
                 C_CLNxTxt();
             }
-            catch (Exception ex)
+            catch (Exception oEx)
             {
-                MessageBox.Show(ex.Message + " " + ex.StackTrace.ToString());
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {
 
+            }
+        }
+
+        private void odgPdt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int nIdx = odgPdt.Row;
+                otbSalPdtCod.Text = odgPdt.GetData(nIdx, odgPdt.Cols["rtPdtCod"].Index).ToString();
+                otbSalQty.Text = odgPdt.GetData(nIdx, odgPdt.Cols["rnPdtQty"].Index).ToString();
+                otbSalPri.Text = odgPdt.GetData(nIdx, odgPdt.Cols["rcPdtPri"].Index).ToString();
+
+            }
+            catch (Exception oEx)
+            {
+
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                C_CLNxTxt();
+            }
+
+        }
+
+        private void odgCst_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int nIdx = odgCst.Row;
+                otbSalCstCod.Text = odgCst.GetData(nIdx, odgCst.Cols["rtCstCod"].Index).ToString();
+
+            }
+            catch (Exception oEx)
+            {
+
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                C_CLNxTxt();
             }
         }
     }

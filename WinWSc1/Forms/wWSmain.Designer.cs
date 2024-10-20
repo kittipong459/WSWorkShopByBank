@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(wWSmain));
             this.odgPdt = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,11 +85,16 @@ namespace WindowsFormsApp1
             // 
             // odgPdt
             // 
-            this.odgPdt.ColumnInfo = "10,1,0,0,0,-1,Columns:";
-            this.odgPdt.Location = new System.Drawing.Point(17, 39);
+            this.odgPdt.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.odgPdt.ColumnInfo = "10,1,0,0,0,-1,Columns:1{Style:\"BackColor:Window;\";}\t3{Style:\"BackColor:Window;\";}" +
+    "\t";
+            this.odgPdt.Location = new System.Drawing.Point(16, 40);
             this.odgPdt.Name = "odgPdt";
             this.odgPdt.Size = new System.Drawing.Size(643, 148);
+            this.odgPdt.StyleInfo = resources.GetString("odgPdt.StyleInfo");
             this.odgPdt.TabIndex = 0;
+            this.odgPdt.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2007Blue;
+            this.odgPdt.Click += new System.EventHandler(this.odgPdt_Click);
             // 
             // label1
             // 
@@ -122,11 +128,15 @@ namespace WindowsFormsApp1
             // 
             // odgCst
             // 
+            this.odgCst.BackColor = System.Drawing.Color.MistyRose;
             this.odgCst.ColumnInfo = "10,1,0,0,0,-1,Columns:";
             this.odgCst.Location = new System.Drawing.Point(16, 34);
             this.odgCst.Name = "odgCst";
             this.odgCst.Size = new System.Drawing.Size(644, 151);
+            this.odgCst.StyleInfo = resources.GetString("odgCst.StyleInfo");
             this.odgCst.TabIndex = 7;
+            this.odgCst.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2007Blue;
+            this.odgCst.Click += new System.EventHandler(this.odgCst_Click);
             // 
             // otbSalCod
             // 
@@ -201,13 +211,14 @@ namespace WindowsFormsApp1
             // 
             // ocmAddSal
             // 
+            this.ocmAddSal.BackColor = System.Drawing.Color.Lime;
             this.ocmAddSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.ocmAddSal.Location = new System.Drawing.Point(106, 359);
             this.ocmAddSal.Name = "ocmAddSal";
             this.ocmAddSal.Size = new System.Drawing.Size(89, 35);
             this.ocmAddSal.TabIndex = 16;
             this.ocmAddSal.Text = "เพิ่ม";
-            this.ocmAddSal.UseVisualStyleBackColor = true;
+            this.ocmAddSal.UseVisualStyleBackColor = false;
             this.ocmAddSal.UseVisualStyleForeColor = true;
             this.ocmAddSal.Click += new System.EventHandler(this.ocmAddSal_Click);
             // 
@@ -283,31 +294,33 @@ namespace WindowsFormsApp1
             // 
             // ocmEdtSal
             // 
+            this.ocmEdtSal.BackColor = System.Drawing.Color.Orange;
             this.ocmEdtSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.ocmEdtSal.Location = new System.Drawing.Point(201, 359);
             this.ocmEdtSal.Name = "ocmEdtSal";
             this.ocmEdtSal.Size = new System.Drawing.Size(89, 35);
             this.ocmEdtSal.TabIndex = 24;
             this.ocmEdtSal.Text = "แก้ไข";
-            this.ocmEdtSal.UseVisualStyleBackColor = true;
+            this.ocmEdtSal.UseVisualStyleBackColor = false;
             this.ocmEdtSal.UseVisualStyleForeColor = true;
             this.ocmEdtSal.Click += new System.EventHandler(this.ocmEdtSal_Click);
             // 
             // comClrSal
             // 
+            this.comClrSal.BackColor = System.Drawing.Color.Gray;
             this.comClrSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.comClrSal.Location = new System.Drawing.Point(296, 359);
             this.comClrSal.Name = "comClrSal";
             this.comClrSal.Size = new System.Drawing.Size(89, 35);
             this.comClrSal.TabIndex = 26;
             this.comClrSal.Text = "ล้างข้อมูล";
-            this.comClrSal.UseVisualStyleBackColor = true;
+            this.comClrSal.UseVisualStyleBackColor = false;
             this.comClrSal.UseVisualStyleForeColor = true;
             this.comClrSal.Click += new System.EventHandler(this.comClrSal_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel1.Controls.Add(this.odgPdt);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(419, 12);
@@ -317,7 +330,7 @@ namespace WindowsFormsApp1
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.panel2.Controls.Add(this.odgCst);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(419, 221);
@@ -376,7 +389,7 @@ namespace WindowsFormsApp1
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel4.Controls.Add(this.odgSal);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Location = new System.Drawing.Point(18, 427);
@@ -390,30 +403,34 @@ namespace WindowsFormsApp1
             this.odgSal.Location = new System.Drawing.Point(13, 38);
             this.odgSal.Name = "odgSal";
             this.odgSal.Size = new System.Drawing.Size(903, 189);
+            this.odgSal.StyleInfo = resources.GetString("odgSal.StyleInfo");
             this.odgSal.TabIndex = 3;
+            this.odgSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Blue;
             this.odgSal.Click += new System.EventHandler(this.odgSal_Click);
             // 
             // ocmSalDet
             // 
+            this.ocmSalDet.BackColor = System.Drawing.Color.Lime;
             this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.ocmSalDet.Location = new System.Drawing.Point(971, 439);
             this.ocmSalDet.Name = "ocmSalDet";
             this.ocmSalDet.Size = new System.Drawing.Size(118, 89);
             this.ocmSalDet.TabIndex = 31;
             this.ocmSalDet.Text = "รายละเอียดการขาย";
-            this.ocmSalDet.UseVisualStyleBackColor = true;
+            this.ocmSalDet.UseVisualStyleBackColor = false;
             this.ocmSalDet.UseVisualStyleForeColor = true;
             this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
             // 
             // ocmReprt
             // 
+            this.ocmReprt.BackColor = System.Drawing.Color.Yellow;
             this.ocmReprt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.ocmReprt.Location = new System.Drawing.Point(971, 545);
             this.ocmReprt.Name = "ocmReprt";
             this.ocmReprt.Size = new System.Drawing.Size(118, 89);
             this.ocmReprt.TabIndex = 32;
             this.ocmReprt.Text = "ออกรายงาน";
-            this.ocmReprt.UseVisualStyleBackColor = true;
+            this.ocmReprt.UseVisualStyleBackColor = false;
             this.ocmReprt.UseVisualStyleForeColor = true;
             // 
             // wWSmain
@@ -428,7 +445,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "wWSmain";
-            this.Text = "Form1";
+            this.Text = "ระบบขายสินค้า";
             ((System.ComponentModel.ISupportInitialize)(this.odgPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.odgCst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).EndInit();

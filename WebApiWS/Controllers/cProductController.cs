@@ -39,8 +39,8 @@ namespace WebApiWS.Controllers
                 oSql = new StringBuilder();
                 string tSql = "";
                 tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
-FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT 
-FROM TWsMPdt With(nolock)";
+FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT ,'Y' as rtPdtStat
+FROM TWsMPdt With(nolock) -- where rtPdtStat = 'Y'";
                 oSql.AppendLine(tSql);
                 List<cmlResPdt> oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
                 aoResult.raItems = oResultPdt;

@@ -12,10 +12,11 @@ namespace ServiceModels
         public string rtPdtCod { get; set; }
         public string rtPdtName { get; set; }
         public string rtPdtDes { get; set; }
-        public Nullable<decimal> rcPdtPri { get; set; }
         public Nullable<int> rnPdtQty { get; set; }
+        public Nullable<decimal> rcPdtPri { get; set; }
         public Nullable<int> rnPdtTyp { get; set; }
         public Nullable<DateTime> rdPdtSMPT { get; set; }
+        public string rtPdtStat { get; set; }
 
     }
 
