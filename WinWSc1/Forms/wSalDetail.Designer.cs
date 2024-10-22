@@ -91,6 +91,7 @@
             this.ocmSsh.Text = "ค้นหา";
             this.ocmSsh.UseVisualStyleBackColor = true;
             this.ocmSsh.UseVisualStyleForeColor = true;
+            this.ocmSsh.Click += new System.EventHandler(this.ocmSsh_Click);
             // 
             // c1PictureBox1
             // 

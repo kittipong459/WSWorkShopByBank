@@ -48,11 +48,13 @@
     <Compile Include="Request\cmlReqSalHis.cs" />
     <Compile Include="Request\cmlReqSet.cs" />
     <Compile Include="Response\cmlResCst.cs" />
+    <Compile Include="Response\cmlResSalDet.cs" />
     <Compile Include="Response\cmlResPdt.cs" />
     <Compile Include="Response\cmlResSale.cs" />
     <Compile Include="Response\cmlResSalHis.cs" />
     <Compile Include="Response\cmlResSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\cmlSalSary.cs" />
     <Compile Include="WebService\Response\Base\cmlResBase.cs" />
     <Compile Include="WebService\Response\Base\cmlResList.cs" />
     <Compile Include="WebService\Response\Base\cmlResObject.cs" />

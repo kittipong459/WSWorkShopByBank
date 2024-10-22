@@ -34,8 +34,11 @@ namespace WindowsFormsApp1
                 W_SETxDesign();
                 W_SETxText();
                 W_GetxPdtData();
+                //W_GETxGetPdtData();
                 W_GetxSalData();
+               // W_GETxGetSalData();
                 W_GetxCstData();
+                //W_GETxGetCstData();
             }
             catch (Exception oEx)
             {
@@ -51,13 +54,25 @@ namespace WindowsFormsApp1
 
         private void W_SETxDesign()
         {
+            try
+            {
+
+            }catch(Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
         }
 
         private void W_SETxText()
         {
             try
             {
-                olaId.Text = string.Empty;
+                olaId.Text = "";
                 olaCod.Text = "รหัสขาย";
                 olaPdtCod.Text = "รหัสสินค้า";
                 olaQty.Text = "จำนวน";
@@ -77,21 +92,30 @@ namespace WindowsFormsApp1
             }
         }
 
+        //private cmlReqSale W_CHKoCheckSalData()
         private cmlReqSale W_oCheckSalData()
         {
+            //cmlReqSale oSale = new cmlReqSale();
             cmlReqSale mSale = new cmlReqSale();
             try
             {
                 if (!string.IsNullOrEmpty(olaId.Text))
+                {
                     mSale.pnSalID = int.Parse(olaId.Text);
+                }
                 else
                 {
                     // ไม่ทำอะไร
                 }
                 if (string.IsNullOrEmpty(otbSalCod.Text))
+                {
                     MessageBox.Show("ระบุรหัสการขาย");
+                }
                 else
+                {
                     mSale.ptSalCod = otbSalCod.Text;
+                }
+                    
                 if (string.IsNullOrEmpty(otbSalPdtCod.Text))
                     MessageBox.Show("ระบุรหัสิสนค้า");
                 else
@@ -138,7 +162,7 @@ namespace WindowsFormsApp1
             {
                 odgPdt.Row.ToString();
 
-                List<cmlResPdt> oaPdt = new cPstService().C_GETaoProduct();
+                List<cmlResPdt> oaPdt = new cPstService().C_GETaoProduct(); // return object
 
                 //cPstService cPdtService = new cPstService();
                 //cPdtService.C_GETaoProduct();
@@ -221,10 +245,11 @@ namespace WindowsFormsApp1
                     odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
                     odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
                     odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
-                    odgSal.SetData(nIndex, "rdSalDel", "ลบ");
-                    /* Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
-                     Bitmap resizedImage = new Bitmap(img, new Size(15, 15));
-                     odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);*/
+                    //odgSal.SetData(nIndex, "rdSalDel", "ลบ");
+                     Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                    // Image = object = o
+                    Bitmap resizedImage = new Bitmap(oImg, new Size(15, 15));
+                     odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);
 
 
                     // pic
@@ -267,7 +292,9 @@ namespace WindowsFormsApp1
                 odgSal.Row.ToString();
 
                 List<cmlResCst> W_oaCst = new cCstService().C_GETaoCustomer();
-
+               // List<cmlResCst> oaCst = new cCstService().C_GETaoCustomer();
+               // tW_name  == global from
+               // tC_name == gloabal class
                 //cPstService cPdtService = new cPstService();
                 //cPdtService.C_GETaoProduct();
 
@@ -296,8 +323,11 @@ namespace WindowsFormsApp1
             {
                 cmlReqSale mSale = new cmlReqSale();
                 mSale = W_oCheckSalData();
-
-                bool res = new cSaleService().C_POSTbSaveSale(mSale);
+                if(mSale != null)
+                {
+                    bool res = new cSaleService().C_POSTbSaveSale(mSale);
+                }
+                
                 W_GetxPdtData();
                 W_GetxSalData();
             }
@@ -317,6 +347,7 @@ namespace WindowsFormsApp1
         {
             try
             {
+               // W_SETxSetAmt();
                 W_SetxAmt();
             }
             catch (Exception oEx)
@@ -358,6 +389,10 @@ namespace WindowsFormsApp1
                     int nQty = int.Parse(otbSalQty.Text);
                     otbSalAmt.Text = (cPri * nQty).ToString();
                 }
+                else
+                {
+                    otbSalAmt.Text = "0";
+                }
 
             }
             catch (Exception oEx)
@@ -374,11 +409,14 @@ namespace WindowsFormsApp1
 
         private void ocmEdtSal_Click(object sender, EventArgs e)
         {
+            cmlReqSale mSale;
             try
             {
-                cmlReqSale mSale = new cmlReqSale();
+                mSale = new cmlReqSale();
+
                 mSale = W_oCheckSalData();
                 bool W_res = new cSaleService().C_POSTbUpdateSale(mSale);
+                //bRes
                 W_GetxPdtData();
                 W_GetxSalData();
             }
@@ -387,7 +425,9 @@ namespace WindowsFormsApp1
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
-            finally { }
+            finally {
+                mSale = null;
+            }
 
 
 
@@ -404,7 +444,8 @@ namespace WindowsFormsApp1
 
             try
             {
-                if (odgSal.Col == 10)
+                if(odgSal.ColSel == odgSal.Cols["rdSalDel"].Index)
+                if (odgSal.Col == 10)  // ห้ามใช้ระบุตำแหน่ง
                 {
                     int pnSalID = int.Parse(odgSal.GetData(odgSal.Row, odgSal.Cols["rnSalID"].Index).ToString());
                     var res = new cSaleService().C_POSTbDelSale(pnSalID.ToString());
@@ -429,14 +470,19 @@ namespace WindowsFormsApp1
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 C_CLNxTxt();
             }
+            finally
+            {
+
+            }
 
         }
 
         private void ocmSalDet_Click(object sender, EventArgs e)
         {
+            Wform2 wSalDetail;
             try
             {
-                Wform2 wSalDetail = new Wform2();
+                wSalDetail = new Wform2();
                 wSalDetail.Show();
             }
             catch (Exception oEx)
@@ -446,7 +492,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                wSalDetail = null;
             }
         }
 
@@ -506,6 +552,10 @@ namespace WindowsFormsApp1
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 C_CLNxTxt();
             }
+            finally
+            {
+
+            }
 
         }
 
@@ -522,6 +572,10 @@ namespace WindowsFormsApp1
 
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 C_CLNxTxt();
+            }
+            finally
+            {
+
             }
         }
     }

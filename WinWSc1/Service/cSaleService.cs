@@ -63,13 +63,14 @@ namespace WindowsFormsApp1.Service
         }
 
 
-        public bool C_POSTbSaveSale(cmlReqSale SalData)
+        // public bool C_POSbSaveSale(cmlReqSale oSalData)
+        public bool C_POSTbSaveSale(cmlReqSale oSalData)
         {
             bool bReqAddsal = false;
             cmlResList<cmlReqSale> aoAddSal = new cmlResList<cmlReqSale>();
             try
             {
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(SalData);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(oSalData);
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/AddSale", Method.Post);
@@ -77,15 +78,18 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("Content-Type", "application/json");
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
-                 aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqSale>>(oResponse.Content);
-                if (aoAddSal.rtCode == "001")
+                //Console.WriteLine(oResponse.Content);
+                aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqSale>>(oResponse.Content);
+                if (aoAddSal != null)
                 {
-                    bReqAddsal =  true;
-                }
-                else
-                {
-                    bReqAddsal = false;
+                    if (aoAddSal.rtCode == "001")
+                    {
+                        bReqAddsal = true;
+                    }
+                    else
+                    {
+                        bReqAddsal = false;
+                    }
                 }
                 return bReqAddsal;
             }
@@ -101,13 +105,13 @@ namespace WindowsFormsApp1.Service
             return bReqAddsal;
         }
 
-        public bool C_POSTbUpdateSale(cmlReqSale SalData)
+        public bool C_POSTbUpdateSale(cmlReqSale oSalData)
         {
             bool bReqUpSal = false;
             cmlResList<cmlReqSale> aoUpsal = new cmlResList<cmlReqSale>();
             try
             {
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(SalData);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(oSalData);
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/UpdateSale", Method.Post);
@@ -116,7 +120,7 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                 aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqSale>>(oResponse.Content);
+                aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqSale>>(oResponse.Content);
                 if (aoUpsal.rtCode == "001")
                 {
                     bReqUpSal = true;
@@ -139,13 +143,13 @@ namespace WindowsFormsApp1.Service
             return bReqUpSal;
         }
 
-        public bool C_POSTbDelSale(string SalId)
+        public bool C_POSTbDelSale(string tSalId)
         {
             try
             {
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{SalId}", Method.Delete);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{tSalId}", Method.Delete);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
@@ -158,7 +162,7 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("cSaleService", "C_POSTbDelSale:"+oEx.Message);
+                cLog.C_WRTxLog("cSaleService", "C_POSTbDelSale:" + oEx.Message);
                 return false;
             }
             finally

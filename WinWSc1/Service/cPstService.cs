@@ -31,7 +31,7 @@ namespace WindowsFormsApp1.Service
             finally { }
         }
 
-        public List<cmlResPdt> C_GETaoProduct(string tSearchPdtCode = "")
+        public List<cmlResPdt> C_GETaoProduct()
         {
             List<cmlResPdt> aoResPdt = new List<cmlResPdt>();
             try
@@ -44,6 +44,7 @@ namespace WindowsFormsApp1.Service
                 Console.WriteLine(oResponse.Content);
                 cmlResList<cmlResPdt> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);
                 aoResPdt = aoResList.raItems;
+                // check null model
                 return aoResPdt;
             }
             catch (Exception oEx)
@@ -52,7 +53,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-                aoResPdt = null;
+                //aoResPdt = null;
             }
             return aoResPdt;
         }

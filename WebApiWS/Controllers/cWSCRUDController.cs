@@ -6,12 +6,13 @@ using System.Text;
 using System;
 using WebApiSTD.Class;
 using ServiceModels;
+using wModels.Response;
 
 namespace WebApiWS.Controllers
 {
     [Route("api/WSCRUD")]
     [ApiController]
-    public class cProductController : ControllerBase
+    public class cWSCRUDController : ControllerBase
     {
 
         [HttpGet]
@@ -39,8 +40,8 @@ namespace WebApiWS.Controllers
                 oSql = new StringBuilder();
                 string tSql = "";
                 tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
-FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT ,'Y' as rtPdtStat
-FROM TWsMPdt With(nolock) -- where rtPdtStat = 'Y'";
+FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT ,FTPdtStat as rtPdtStat
+FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 oSql.AppendLine(tSql);
                 List<cmlResPdt> oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
                 aoResult.raItems = oResultPdt;
@@ -530,7 +531,57 @@ FROM TWsMPdt With(nolock) -- where rtPdtStat = 'Y'";
             }
         }
 
+        [HttpGet]
+        [Route("GetSaleDetail/{tSechSalCode}")]
+        public cmlResList<cmlResSalDet> GET_GETaoGetSaleDetail(string tSechSalCode)
+        {
+            cmlResList<cmlResSalDet> aoResult = new cmlResList<cmlResSalDet>();
+            string tErrAPI;
+            try
+            {
 
+
+                //Check API Key
+                if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
+                {
+                    aoResult.rtCode = cMS.tMS_RespCode904;
+                    aoResult.rtDesc = cMS.tMS_RespDesc904;
+                    return aoResult;
+                }
+                else
+                {
+                    //TODO::
+                }
+                //process..
+                cDatabase oDatabase = new cDatabase();
+                StringBuilder oSql;
+                oSql = new StringBuilder();
+                string toSql = "";
+                toSql = $@" select FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
+                        FTPdtName as rtPdtName, FTPdtDes as rtPdtDes, FTPdtTyp as rtPdtTyp,
+                        FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
+                        FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
+                        FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
+                        from VIE_WsSal where FTSalCod = N'{tSechSalCode}'";
+                oSql.AppendLine(toSql);
+                List<cmlResSalDet> oResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
+                aoResult.raItems = oResultPdt;
+                aoResult.rtCode = cMS.tMS_RespCode001;
+                aoResult.rtDesc = cMS.tMS_RespDesc001;
+                return aoResult;
+            }
+            catch (Exception oEx)
+            {
+                aoResult = new cmlResList<cmlResSalDet>();
+                aoResult.rtCode = cMS.tMS_RespCode900;
+                aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
+            }
+            finally
+            {
+                aoResult = null;
+            }
+            return aoResult;
+        }
 
 
 
