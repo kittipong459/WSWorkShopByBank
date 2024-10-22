@@ -74,14 +74,14 @@ namespace WindowsFormsApp1.Service
         }
 
 
-        public bool C_POSbPosSaveSale(cmlReqSale oSalData)
+        public bool C_POSbPosSaveSale(cmlReqSale poSalData)
         {
             bool bReqAddsal = false;
             cmlResList<cmlResSale> aoAddSal;
             try
             {
                 aoAddSal = new cmlResList<cmlResSale>();
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(oSalData);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/AddSale", Method.Post);
@@ -115,14 +115,14 @@ namespace WindowsFormsApp1.Service
             return bReqAddsal;
         }
 
-        public bool C_POSbPosUpdateSale(cmlReqSale oSalData)
+        public bool C_POSbPosUpdateSale(cmlReqSale poSalData)
         {
             bool bReqUpSal = false;
             cmlResList<cmlResSale> aoUpsal;
             try
             {
                 aoUpsal = new cmlResList<cmlResSale>();
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(oSalData);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/UpdateSale", Method.Post);
@@ -158,7 +158,7 @@ namespace WindowsFormsApp1.Service
             return bReqUpSal;
         }
 
-        public bool C_POSbPosDelSale(string tSalId)
+        public bool C_POSbPosDelSale(string ptSalId)
         {
             cmlResBase oRes;
             try
@@ -166,7 +166,7 @@ namespace WindowsFormsApp1.Service
                 oRes = new cmlResBase();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{tSalId}", Method.Delete);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{ptSalId}", Method.Delete);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);

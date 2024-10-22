@@ -470,7 +470,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpDelete]
         [Route("DelSale/{SalId}")]
-        public cmlResBase C_GEToGetDelProduct(string tSalId) // PRC == process
+        public cmlResBase C_GEToGetDelProduct(string ptSalId) // PRC == process
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
@@ -482,7 +482,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (string.IsNullOrEmpty(tSalId))
+                if (string.IsNullOrEmpty(ptSalId))
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -508,7 +508,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 //To do..
                 
                 //Convert to string json
-                string tMsgJson = tSalId;
+                string tMsgJson = ptSalId;
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "DelSale", true))
                 {
@@ -532,14 +532,14 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
             }
             finally
             {
-                tSalId = null;
+                ptSalId = null;
                 oRabbitMQ = null;
             }
         }
 
         [HttpGet]
         [Route("GetSaleDetail/{tSechSalCode}")]
-        public cmlResList<cmlResSalDet> C_GETaGetSaleDetail(string tSechSalCode)
+        public cmlResList<cmlResSalDet> C_GETaGetSaleDetail(string ptSechSalCode)
         {
             cmlResList<cmlResSalDet> aoResult;
             string tErrAPI;
@@ -568,7 +568,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                         FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
                         FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
                         FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
-                        from VIE_WsSal where FTSalCod = N'{tSechSalCode}'";
+                        from VIE_WsSal where FTSalCod = N'{ptSechSalCode}'";
                 oSql.AppendLine(toSql);
                 List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
                 aoResult.raItems = aoResultPdt;
@@ -585,6 +585,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
             finally
             {
                 aoResult = null;
+                ptSechSalCode = null;
             }
             return aoResult;
         }

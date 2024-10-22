@@ -31,13 +31,13 @@ namespace WindowsFormsApp1
             try
             {
                 InitializeComponent();
-                W_SETxDesign();
-                W_SETxText();
-                W_GetxPdtData();
+                W_SETxSetDesign();
+                W_SETxSetText();
+                W_GETxGetPdtData();
                 //W_GETxGetPdtData();
-                W_GetxSalData();
+                W_GETxGetSalData();
                 // W_GETxGetSalData();
-                W_GetxCstData();
+                W_GETxGetCstData();
                 //W_GETxGetCstData();
             }
             catch (Exception oEx)
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void W_SETxDesign()
+        private void W_SETxSetDesign()
         {
             try
             {
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void W_SETxText()
+        private void W_SETxSetText()
         {
             try
             {
@@ -97,12 +97,12 @@ namespace WindowsFormsApp1
         private cmlReqSale W_oCheckSalData()
         {
             //cmlReqSale oSale = new cmlReqSale();
-            cmlReqSale mSale = new cmlReqSale();
+            cmlReqSale oSale = new cmlReqSale();
             try
             {
                 if (!string.IsNullOrEmpty(olaId.Text))
                 {
-                    mSale.pnSalID = int.Parse(olaId.Text);
+                    oSale.pnSalID = int.Parse(olaId.Text);
                 }
                 else
                 {
@@ -114,35 +114,70 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    mSale.ptSalCod = otbSalCod.Text;
+                    oSale.ptSalCod = otbSalCod.Text;
                 }
 
                 if (string.IsNullOrEmpty(otbSalPdtCod.Text))
+                {
                     MessageBox.Show("ระบุรหัสิสนค้า");
+                }
+                    
                 else
-                    mSale.ptSalPdtCod = otbSalPdtCod.Text;
+                {
+                    oSale.ptSalPdtCod = otbSalPdtCod.Text;
+                }
+                    
                 if (string.IsNullOrEmpty(otbSalCstCod.Text))
+                {
                     MessageBox.Show("ระบุรหัสลูกค้า");
+                }
+                   
                 else
-                    mSale.ptSalCstCod = otbSalCstCod.Text;
+                {
+                    oSale.ptSalCstCod = otbSalCstCod.Text;
+                }
+                   
                 if (string.IsNullOrEmpty(otbSalPri.Text))
+                {
                     MessageBox.Show("ระบุราคา");
+                }
+                
                 else
-                    mSale.pcSalPri = decimal.Parse(otbSalPri.Text);
+                {
+                    oSale.pcSalPri = decimal.Parse(otbSalPri.Text);
+                }
+                
                 if (string.IsNullOrEmpty(otbSalQty.Text))
+                {
                     MessageBox.Show("ระบุจำนวน");
+                }
+                
                 else
-                    mSale.pnSalQty = int.Parse(otbSalQty.Text);
+                {
+                    oSale.pnSalQty = int.Parse(otbSalQty.Text);
+                }
+               
                 if (string.IsNullOrEmpty(otbSalAmt.Text))
+                {
                     MessageBox.Show("ราคารวม");
+                }
+               
                 else
-                    mSale.pcSalAmt = decimal.Parse(otbSalAmt.Text);
+                {
+                    oSale.pcSalAmt = decimal.Parse(otbSalAmt.Text);
+                }
+               
                 if (string.IsNullOrEmpty(otbSalDate.Value.ToString()))
+                {
                     MessageBox.Show("ระบุวันที่ขาย");
+                }
+               
                 else
-                    mSale.pdSalDate = DateTime.Parse(otbSalDate.Value.ToString());
-
-                mSale.pdSalSMPT = DateTime.Now;
+                {
+                    oSale.pdSalDate = DateTime.Parse(otbSalDate.Value.ToString());
+                }
+               
+                oSale.pdSalSMPT = DateTime.Now;
 
             }
             catch (Exception oEx)
@@ -154,10 +189,10 @@ namespace WindowsFormsApp1
             {
 
             }
-            return mSale;
+            return oSale;
         }
 
-        private void W_GetxPdtData()
+        private void W_GETxGetPdtData()
         {
             try
             {
@@ -192,7 +227,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void W_GetxSalData()
+        private void W_GETxGetSalData()
         {
             try
             {
@@ -249,8 +284,8 @@ namespace WindowsFormsApp1
                     //odgSal.SetData(nIndex, "rdSalDel", "ลบ");
                     Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
                     // Image = object = o
-                    Bitmap resizedImage = new Bitmap(oImg, new Size(15, 15));
-                    ogdSal.SetCellImage(nIndex, "rdSalDel", resizedImage);
+                    Bitmap oImgresized = new Bitmap(oImg, new Size(15, 15));
+                    ogdSal.SetCellImage(nIndex, "rdSalDel", oImgresized);
 
 
                     // pic
@@ -286,7 +321,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void W_GetxCstData()
+        private void W_GETxGetCstData()
         {
             try
             {
@@ -326,8 +361,8 @@ namespace WindowsFormsApp1
                     bool res = new cSaleService().C_POSbPosSaveSale(mSale);
                 }
 
-                W_GetxPdtData();
-                W_GetxSalData();
+                W_GETxGetPdtData();
+                W_GETxGetSalData();
             }
             catch (Exception oEx)
             {
@@ -415,8 +450,8 @@ namespace WindowsFormsApp1
                 mSale = W_oCheckSalData();
                 bool W_res = new cSaleService().C_POSbPosUpdateSale(mSale);
                 //bRes
-                W_GetxPdtData();
-                W_GetxSalData();
+                W_GETxGetPdtData();
+                W_GETxGetSalData();
             }
             catch (Exception oEx)
             {

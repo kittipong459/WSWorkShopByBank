@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Service
     {
         string tC_Access;
         string tC_UrlApi;
-        public List<cmlResSalDet> C_GETaGetSaleDet(string tSechSalCode)
+        public List<cmlResSalDet> C_GETaGetSaleDet(string ptSechSalCode)
         {
             List<cmlResSalDet> aoResSalDets;
             try
@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Service
                 aoResSalDets = new List<cmlResSalDet>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/{tSechSalCode}", Method.Delete);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/{ptSechSalCode}", Method.Delete);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);

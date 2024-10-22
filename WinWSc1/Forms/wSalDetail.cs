@@ -21,19 +21,19 @@ namespace WindowsFormsApp1
         public Wform2()
         {
             InitializeComponent();
-            W_GETxSalDetail();
+            W_GETxGetSalDetail();
             /* Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
              Bitmap resizedImage = new Bitmap(img, new Size(50, 50));
              c1PictureBox1.Image = resizedImage;*/
         }
 
-        private void W_GETxSalDetail()
+        private void W_GETxGetSalDetail()
         {
             try
             {
                 List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
                 aoResSalDets = new cSaldetService().C_GETaGetSaleDet(otdSchSal.Text);
-                ogdSalDet.DataSource = "";
+                ogdSalDet.DataSource = aoResSalDets;
             }
             catch (Exception oEx)
             {
@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
                 ofd.Title = "Select an Image";
-                Image uploadedImage;
+                Image oImg;
                 // Show the dialog and check if the user selected a file
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -63,11 +63,11 @@ namespace WindowsFormsApp1
                     // Check if file exists
                     if (File.Exists(filePath))
                     {
-                        uploadedImage = Image.FromFile(ofd.FileName);
+                        oImg = Image.FromFile(ofd.FileName);
                         // uploadedImage.Save("E:\\ada\\expros\\testImgs\\"+DateTime.Now.ToString("yyyymmddmm")+"tre489464534" +".png");
 
                         //uploadedImage = Image.FromFile("E:\\ada\\testpros\\testImgs\\2024241724tre489464534.png");
-                        c1PictureBox1.Image = uploadedImage;
+                        c1PictureBox1.Image = oImg;
                         c1PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
                         //pictureBox1.Image = new Bitmap(filePath);
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
 
         private void ocmSsh_Click(object sender, EventArgs e)
         {
-            W_GETxSalDetail();
+            W_GETxGetSalDetail();
         }
     }
 }
