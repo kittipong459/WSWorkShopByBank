@@ -121,7 +121,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\cCstService.cs" />
-    <Compile Include="Service\cPstService.cs" />
+    <Compile Include="Service\cPdtService.cs" />
     <Compile Include="Service\cSaldetService.cs" />
     <Compile Include="Service\cSaleService.cs" />
     <Compile Include="Forms\wSalDetail.cs">

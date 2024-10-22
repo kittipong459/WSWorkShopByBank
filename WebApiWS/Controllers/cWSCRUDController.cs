@@ -17,12 +17,13 @@ namespace WebApiWS.Controllers
 
         [HttpGet]
         [Route("GetProduct")]
-        public cmlResList<cmlResPdt> GET_GETaoGetPdt()
+        public cmlResList<cmlResPdt> C_GETaGetPdt()
         {
-            cmlResList<cmlResPdt> aoResult = new cmlResList<cmlResPdt>();
+            cmlResList<cmlResPdt> aoResult;
             string tErrAPI;
             try
             {
+                aoResult = new cmlResList<cmlResPdt>();
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
                 {
@@ -43,8 +44,8 @@ namespace WebApiWS.Controllers
 FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT ,FTPdtStat as rtPdtStat
 FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 oSql.AppendLine(tSql);
-                List<cmlResPdt> oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
-                aoResult.raItems = oResultPdt;
+                List<cmlResPdt> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
+                aoResult.raItems = aoResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;
@@ -66,15 +67,16 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpPost]
         [Route("AddProduct")]
-        public cmlResBase POST_SEToAddPdt([FromBody] cmlReqPdt poDataProduct)
+        public cmlResBase C_POSoPosAddPdt([FromBody] cmlReqPdt poDataProduct)
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
                 //Check Model
                 if (poDataProduct == null)
                 {
@@ -136,15 +138,16 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
         [HttpPost]
         [Route("UpdateProduct")]
         //public cmlResBase C_POST_oUpPdt([FromBody] cmlReqPdt poDataProduct)
-        public cmlResBase POST_SEToUpPdt([FromBody] cmlReqPdt poDataProduct)
+        public cmlResBase C_POSoPosUpPdt([FromBody] cmlReqPdt poDataProduct)
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
                 //Check Model
                 if (poDataProduct == null)
                 {
@@ -205,13 +208,13 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpGet]
         [Route("GetSale")]
-        public cmlResList<cmlResSale> GET_GETaoGetSale()
+        public cmlResList<cmlResSale> C_GETaGetSale()
         {
-            cmlResList<cmlResSale> aoResult = new cmlResList<cmlResSale>();
+            cmlResList<cmlResSale> aoResult;
             string tErrAPI;
             try
             {
-
+                aoResult = new cmlResList<cmlResSale>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -240,8 +243,8 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
       ,FDSalSMPT as rdSalSMPT
   FROM TWsTSal With(nolock)";
                 oSql.AppendLine(toSql);
-                List<cmlResSale> oResultPdt = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
-                aoResult.raItems = oResultPdt;
+                List<cmlResSale> aoResultSal = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
+                aoResult.raItems = aoResultSal;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;
@@ -261,13 +264,13 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpGet]
         [Route("GetCustomer")]
-        public cmlResList<cmlResCst> GET_GETaoGetCst()
+        public cmlResList<cmlResCst> C_GET_oGetCst()
         {
-            cmlResList<cmlResCst> aoResult = new cmlResList<cmlResCst>();
+            cmlResList<cmlResCst> aoResult;
             string tErrAPI;
             try
             {
-                
+                aoResult = new cmlResList<cmlResCst>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -294,8 +297,8 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
       ,FDCstSMPT as rdCstSMPT
   FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
                 oSql.AppendLine(toSql);
-                List<cmlResCst> oResultPdt = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
-                aoResult.raItems = oResultPdt;
+                List<cmlResCst> aoResultCst = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
+                aoResult.raItems = aoResultCst;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;
@@ -321,18 +324,19 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpPost]
         [Route("AddSale")]
-        public cmlResBase POST_SEToAddSale([FromBody] cmlReqSale paoSale)
+        public cmlResBase C_POSoPosAddSale([FromBody] cmlReqSale poSale)
         {
-            cmlResBase oResult = new cmlResList<cmlResSale>();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-
+                oResult = new cmlResList<cmlResSale>();
+                oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (paoSale == null)
+                if (poSale == null)
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -359,7 +363,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoSale);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "AddSale", true))
                 {
@@ -383,7 +387,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
             }
             finally
             {
-                paoSale = null;
+                poSale = null;
                 oRabbitMQ = null;
                 oResult = null;
             }
@@ -393,18 +397,19 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpPost]
         [Route("UpdateSale")]
-        public cmlResBase POST_SEToUpdateSale([FromBody] cmlReqSale paoSale)
+        public cmlResBase C_POSoPosUpdateSale([FromBody] cmlReqSale poSale)
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-               
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (paoSale == null)
+                if (poSale == null)
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -431,7 +436,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoSale);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "UpdateSale", true))
                 {
@@ -455,7 +460,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
             }
             finally
             {
-                paoSale = null;
+                poSale = null;
                 oRabbitMQ = null;
                 oResult = null;
             }
@@ -465,18 +470,19 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpDelete]
         [Route("DelSale/{SalId}")]
-        public cmlResBase POST_PRCoDELProduct(string SalId) // PRC == process
+        public cmlResBase C_GEToGetDelProduct(string tSalId) // PRC == process
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-                
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (string.IsNullOrEmpty(SalId))
+                if (string.IsNullOrEmpty(tSalId))
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -502,7 +508,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 //To do..
                 
                 //Convert to string json
-                string tMsgJson = SalId;
+                string tMsgJson = tSalId;
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "DelSale", true))
                 {
@@ -526,20 +532,20 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
             }
             finally
             {
-                SalId = null;
+                tSalId = null;
                 oRabbitMQ = null;
             }
         }
 
         [HttpGet]
         [Route("GetSaleDetail/{tSechSalCode}")]
-        public cmlResList<cmlResSalDet> GET_GETaoGetSaleDetail(string tSechSalCode)
+        public cmlResList<cmlResSalDet> C_GETaGetSaleDetail(string tSechSalCode)
         {
-            cmlResList<cmlResSalDet> aoResult = new cmlResList<cmlResSalDet>();
+            cmlResList<cmlResSalDet> aoResult;
             string tErrAPI;
             try
             {
-
+                aoResult = new cmlResList<cmlResSalDet>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -564,8 +570,8 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                         FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
                         from VIE_WsSal where FTSalCod = N'{tSechSalCode}'";
                 oSql.AppendLine(toSql);
-                List<cmlResSalDet> oResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
-                aoResult.raItems = oResultPdt;
+                List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
+                aoResult.raItems = aoResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;

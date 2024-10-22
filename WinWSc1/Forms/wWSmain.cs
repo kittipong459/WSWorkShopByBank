@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Service;
 using wModels.Class;
 using static C1.Util.Win.Win32;
-using static WindowsFormsApp1.Service.cPstService;
+using static WindowsFormsApp1.Service.cPdtService;
 
 namespace WindowsFormsApp1
 {
@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
                 W_GetxPdtData();
                 //W_GETxGetPdtData();
                 W_GetxSalData();
-               // W_GETxGetSalData();
+                // W_GETxGetSalData();
                 W_GetxCstData();
                 //W_GETxGetCstData();
             }
@@ -57,7 +57,8 @@ namespace WindowsFormsApp1
             try
             {
 
-            }catch(Exception oEx)
+            }
+            catch (Exception oEx)
             {
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
@@ -115,7 +116,7 @@ namespace WindowsFormsApp1
                 {
                     mSale.ptSalCod = otbSalCod.Text;
                 }
-                    
+
                 if (string.IsNullOrEmpty(otbSalPdtCod.Text))
                     MessageBox.Show("ระบุรหัสิสนค้า");
                 else
@@ -160,23 +161,23 @@ namespace WindowsFormsApp1
         {
             try
             {
-                odgPdt.Row.ToString();
+                ogdPdt.Row.ToString();
 
-                List<cmlResPdt> oaPdt = new cPstService().C_GETaoProduct(); // return object
+                List<cmlResPdt> aoPdt = new cPdtService().C_GETaGetProduct(); // return object
 
                 //cPstService cPdtService = new cPstService();
                 //cPdtService.C_GETaoProduct();
 
-                odgPdt.DataSource = oaPdt;
+                ogdPdt.DataSource = aoPdt;
 
-                string[] tColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "จำนวน", "ราคา",  "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
+                string[] tColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "จำนวน", "ราคา", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
                 for (int nRow = 0; nRow < tColsName.Length; nRow++)
                 {
-                    odgPdt.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                    ogdPdt.Cols[(nRow + 1)].Caption = tColsName[nRow];
                 }
 
 
-                odgPdt.Refresh();
+                ogdPdt.Refresh();
             }
             catch (Exception oEx)
             {
@@ -195,36 +196,36 @@ namespace WindowsFormsApp1
         {
             try
             {
-                List<cmlResSale> oaSale = new cSaleService().C_GETaoSale();
+                List<cmlResSale> oaSale = new cSaleService().C_GETaGetSale();
                 //odgSal.DataSource = oaSale;
 
                 //odgSal.Rows.Count = odgSal.Rows.Fixed;
 
-                odgSal.Cols.Count = 11;
-                odgSal.Cols[1].Name = "rnSalID";
-                odgSal.Cols[2].Name = "rtSalCod";
-                odgSal.Cols[3].Name = "rtSalPdtCod";
-                odgSal.Cols[4].Name = "rnSalQty";
-                odgSal.Cols[5].Name = "rcSalPri";
-                odgSal.Cols[6].Name = "rcSalAmt";
-                odgSal.Cols[7].Name = "rtSalCstCod";
-                odgSal.Cols[8].Name = "rdSalDate";
-                odgSal.Cols[9].Name = "rdSalSMPT";
-                odgSal.Cols[10].Name = "rdSalDel";
-                odgSal.Cols["rdSalDel"].DataType = typeof(Image);
-                odgSal.Cols["rdSalDel"].ImageAlign = ImageAlignEnum.CenterCenter;
+                ogdSal.Cols.Count = 11;
+                ogdSal.Cols[1].Name = "rnSalID";
+                ogdSal.Cols[2].Name = "rtSalCod";
+                ogdSal.Cols[3].Name = "rtSalPdtCod";
+                ogdSal.Cols[4].Name = "rnSalQty";
+                ogdSal.Cols[5].Name = "rcSalPri";
+                ogdSal.Cols[6].Name = "rcSalAmt";
+                ogdSal.Cols[7].Name = "rtSalCstCod";
+                ogdSal.Cols[8].Name = "rdSalDate";
+                ogdSal.Cols[9].Name = "rdSalSMPT";
+                ogdSal.Cols[10].Name = "rdSalDel";
+                ogdSal.Cols["rdSalDel"].DataType = typeof(Image);
+                ogdSal.Cols["rdSalDel"].ImageAlign = ImageAlignEnum.CenterCenter;
                 //odgSal.Cols["rdSalDel"].Width = 200;
                 int nIndex = 1;
                 foreach (cmlResSale oSal in oaSale)
                 {
-                    odgSal.Rows.Add();
+                    ogdSal.Rows.Add();
 
                     CellStyle oCellStyle;
-                    oCellStyle = odgSal.Styles.Add("Receive");
+                    oCellStyle = ogdSal.Styles.Add("Receive");
                     oCellStyle.BackColor = Color.Yellow;
                     oCellStyle.ForeColor = Color.Blue;
 
-                    odgSal.BackColor = Color.PaleGreen;
+                    ogdSal.BackColor = Color.PaleGreen;
                     // odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
                     //odgSal.SetCellStyle(nIndex, odgSal.Cols["rnSalID"].Index, oCellStyle);
                     //odgSal.SetCellStyle(nIndex, odgSal.Cols[1].Index, oCellStyle);
@@ -232,24 +233,24 @@ namespace WindowsFormsApp1
                     //odgSal.SetCellStyle(nIndex, odgSal.Cols[5].Index, oCellStyle);
                     if (nIndex % 2 == 0)
                     {
-                        odgSal.SetCellStyle(nIndex, 1, oCellStyle);
+                        ogdSal.SetCellStyle(nIndex, 1, oCellStyle);
                     }
 
-                    odgSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
-                    odgSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
-                    odgSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
-                    odgSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
-                    odgSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
-                    odgSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
+                    ogdSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
+                    ogdSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
+                    ogdSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
+                    ogdSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
+                    ogdSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
+                    ogdSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
 
-                    odgSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
-                    odgSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
-                    odgSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
+                    ogdSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
+                    ogdSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
+                    ogdSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
                     //odgSal.SetData(nIndex, "rdSalDel", "ลบ");
-                     Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                    Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
                     // Image = object = o
                     Bitmap resizedImage = new Bitmap(oImg, new Size(15, 15));
-                     odgSal.SetCellImage(nIndex, "rdSalDel", resizedImage);
+                    ogdSal.SetCellImage(nIndex, "rdSalDel", resizedImage);
 
 
                     // pic
@@ -260,18 +261,18 @@ namespace WindowsFormsApp1
                 string[] tColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ", "ลบข้อมูล" };
                 for (int nRow = 0; nRow < tColsName.Length; nRow++)
                 {
-                    odgSal.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                    ogdSal.Cols[(nRow + 1)].Caption = tColsName[nRow];
                 }
 
 
-                odgSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
+                ogdSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
                 for (int nRow = 0; nRow < tColsName.Length; nRow++)
                 {
-                    odgSal.Cols[nRow].AllowMerging = true;
+                    ogdSal.Cols[nRow].AllowMerging = true;
                 }
 
 
-                odgSal.Refresh();
+                ogdSal.Refresh();
             }
             catch (Exception oEx)
             {
@@ -289,20 +290,17 @@ namespace WindowsFormsApp1
         {
             try
             {
-                odgSal.Row.ToString();
+                ogdSal.Row.ToString();
 
-                List<cmlResCst> W_oaCst = new cCstService().C_GETaoCustomer();
-               // List<cmlResCst> oaCst = new cCstService().C_GETaoCustomer();
-               // tW_name  == global from
-               // tC_name == gloabal class
-                //cPstService cPdtService = new cPstService();
-                //cPdtService.C_GETaoProduct();
+                List<cmlResCst> oaCst = new cCstService().C_GETaGetCustomer();
+                // tW_name  == global from
+                // tC_name == gloabal class
 
-                odgCst.DataSource = W_oaCst;
+                ogdCst.DataSource = oaCst;
                 string[] tColsName = { "ลำดับ", "รหัสลูกค้า", "ชื่อลูกค้า", "Email", "เบอร์โทร", "ที่อยู่", "วันที่สร้างรายการ" };
                 for (int nRow = 0; nRow < tColsName.Length; nRow++)
                 {
-                    odgCst.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                    ogdCst.Cols[(nRow + 1)].Caption = tColsName[nRow];
                 }
             }
             catch (Exception oEx)
@@ -323,11 +321,11 @@ namespace WindowsFormsApp1
             {
                 cmlReqSale mSale = new cmlReqSale();
                 mSale = W_oCheckSalData();
-                if(mSale != null)
+                if (mSale != null)
                 {
-                    bool res = new cSaleService().C_POSTbSaveSale(mSale);
+                    bool res = new cSaleService().C_POSbPosSaveSale(mSale);
                 }
-                
+
                 W_GetxPdtData();
                 W_GetxSalData();
             }
@@ -347,7 +345,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-               // W_SETxSetAmt();
+                // W_SETxSetAmt();
                 W_SetxAmt();
             }
             catch (Exception oEx)
@@ -415,7 +413,7 @@ namespace WindowsFormsApp1
                 mSale = new cmlReqSale();
 
                 mSale = W_oCheckSalData();
-                bool W_res = new cSaleService().C_POSTbUpdateSale(mSale);
+                bool W_res = new cSaleService().C_POSbPosUpdateSale(mSale);
                 //bRes
                 W_GetxPdtData();
                 W_GetxSalData();
@@ -425,7 +423,8 @@ namespace WindowsFormsApp1
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
-            finally {
+            finally
+            {
                 mSale = null;
             }
 
@@ -444,24 +443,24 @@ namespace WindowsFormsApp1
 
             try
             {
-                if(odgSal.ColSel == odgSal.Cols["rdSalDel"].Index)
-                if (odgSal.Col == 10)  // ห้ามใช้ระบุตำแหน่ง
-                {
-                    int pnSalID = int.Parse(odgSal.GetData(odgSal.Row, odgSal.Cols["rnSalID"].Index).ToString());
-                    var res = new cSaleService().C_POSTbDelSale(pnSalID.ToString());
-                }
-                else
-                {
-                    int nIdx = odgSal.Row;
-                    olaId.Text = odgSal.GetData(nIdx, odgSal.Cols["rnSalID"].Index).ToString();
-                    otbSalCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCod"].Index).ToString();
-                    otbSalPdtCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalPdtCod"].Index).ToString();
-                    otbSalQty.Text = odgSal.GetData(nIdx, odgSal.Cols["rnSalQty"].Index).ToString();
-                    otbSalPri.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalPri"].Index).ToString();
-                    otbSalAmt.Text = odgSal.GetData(nIdx, odgSal.Cols["rcSalAmt"].Index).ToString();
-                    otbSalCstCod.Text = odgSal.GetData(nIdx, odgSal.Cols["rtSalCstCod"].Index).ToString();
-                    otbSalDate.Text = odgSal.GetData(nIdx, odgSal.Cols["rdSalDate"].Index).ToString();
-                }
+                if (ogdSal.ColSel == ogdSal.Cols["rdSalDel"].Index)
+                    if (ogdSal.Col == 10)  // ห้ามใช้ระบุตำแหน่ง
+                    {
+                        int pnSalID = int.Parse(ogdSal.GetData(ogdSal.Row, ogdSal.Cols["rnSalID"].Index).ToString());
+                        var res = new cSaleService().C_POSbPosDelSale(pnSalID.ToString());
+                    }
+                    else
+                    {
+                        int nIdx = ogdSal.Row;
+                        olaId.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rnSalID"].Index).ToString();
+                        otbSalCod.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rtSalCod"].Index).ToString();
+                        otbSalPdtCod.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rtSalPdtCod"].Index).ToString();
+                        otbSalQty.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rnSalQty"].Index).ToString();
+                        otbSalPri.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rcSalPri"].Index).ToString();
+                        otbSalAmt.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rcSalAmt"].Index).ToString();
+                        otbSalCstCod.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rtSalCstCod"].Index).ToString();
+                        otbSalDate.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rdSalDate"].Index).ToString();
+                    }
 
             }
             catch (Exception oEx)
@@ -540,10 +539,10 @@ namespace WindowsFormsApp1
         {
             try
             {
-                int nIdx = odgPdt.Row;
-                otbSalPdtCod.Text = odgPdt.GetData(nIdx, odgPdt.Cols["rtPdtCod"].Index).ToString();
-                otbSalQty.Text = odgPdt.GetData(nIdx, odgPdt.Cols["rnPdtQty"].Index).ToString();
-                otbSalPri.Text = odgPdt.GetData(nIdx, odgPdt.Cols["rcPdtPri"].Index).ToString();
+                int nIdx = ogdPdt.Row;
+                otbSalPdtCod.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["rtPdtCod"].Index).ToString();
+                otbSalQty.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["rnPdtQty"].Index).ToString();
+                otbSalPri.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["rcPdtPri"].Index).ToString();
 
             }
             catch (Exception oEx)
@@ -563,8 +562,8 @@ namespace WindowsFormsApp1
         {
             try
             {
-                int nIdx = odgCst.Row;
-                otbSalCstCod.Text = odgCst.GetData(nIdx, odgCst.Cols["rtCstCod"].Index).ToString();
+                int nIdx = ogdCst.Row;
+                otbSalCstCod.Text = ogdCst.GetData(nIdx, ogdCst.Cols["rtCstCod"].Index).ToString();
 
             }
             catch (Exception oEx)
@@ -577,6 +576,11 @@ namespace WindowsFormsApp1
             {
 
             }
+        }
+
+        private void ocmReprt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,20 +35,31 @@ namespace WindowsFormsApp1.Service
             finally { }
         }
 
-        public List<cmlResSale> C_GETaoSale()
+        public List<cmlResSale> C_GETaGetSale()
         {
-            List<cmlResSale> aoResSal = new List<cmlResSale>();
+            List<cmlResSale> aoResSal;
 
             try
             {
+                aoResSal = new List<cmlResSale>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSale", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
                 cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
-                aoResSal = aoResList.raItems;
+               if(aoResList != null)
+                {
+                    if (aoResList.raItems.Count > 0)
+                    {
+                        aoResSal = aoResList.raItems;
+                    }
+                }
+                else
+                {
+
+                }
+                
                 return aoResSal;
             }
             catch (Exception oEx)
@@ -63,13 +74,13 @@ namespace WindowsFormsApp1.Service
         }
 
 
-        // public bool C_POSbSaveSale(cmlReqSale oSalData)
-        public bool C_POSTbSaveSale(cmlReqSale oSalData)
+        public bool C_POSbPosSaveSale(cmlReqSale oSalData)
         {
             bool bReqAddsal = false;
-            cmlResList<cmlReqSale> aoAddSal = new cmlResList<cmlReqSale>();
+            cmlResList<cmlResSale> aoAddSal;
             try
             {
+                aoAddSal = new cmlResList<cmlResSale>();
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(oSalData);
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
@@ -78,11 +89,10 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("Content-Type", "application/json");
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                //Console.WriteLine(oResponse.Content);
-                aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqSale>>(oResponse.Content);
+                aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
                 if (aoAddSal != null)
                 {
-                    if (aoAddSal.rtCode == "001")
+                    if (aoAddSal.rtCode == "001" && aoAddSal.raItems.Count>0)
                     {
                         bReqAddsal = true;
                     }
@@ -105,12 +115,13 @@ namespace WindowsFormsApp1.Service
             return bReqAddsal;
         }
 
-        public bool C_POSTbUpdateSale(cmlReqSale oSalData)
+        public bool C_POSbPosUpdateSale(cmlReqSale oSalData)
         {
             bool bReqUpSal = false;
-            cmlResList<cmlReqSale> aoUpsal = new cmlResList<cmlReqSale>();
+            cmlResList<cmlResSale> aoUpsal;
             try
             {
+                aoUpsal = new cmlResList<cmlResSale>();
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(oSalData);
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
@@ -119,16 +130,20 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("Content-Type", "application/json");
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
-                aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlReqSale>>(oResponse.Content);
-                if (aoUpsal.rtCode == "001")
+                aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
+                
+                if(aoUpsal != null)
                 {
-                    bReqUpSal = true;
+                    if (aoUpsal.rtCode == "001" && aoUpsal.raItems.Count>0)
+                    {
+                        bReqUpSal = true;
+                    }
+                    else
+                    {
+                        bReqUpSal = false;
+                    }
                 }
-                else
-                {
-                    bReqUpSal = false;
-                }
+              
                 return bReqUpSal;
             }
             catch (Exception oEx)
@@ -143,21 +158,31 @@ namespace WindowsFormsApp1.Service
             return bReqUpSal;
         }
 
-        public bool C_POSTbDelSale(string tSalId)
+        public bool C_POSbPosDelSale(string tSalId)
         {
+            cmlResBase oRes;
             try
             {
+                oRes = new cmlResBase();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{tSalId}", Method.Delete);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                var oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResBase>(oResponse.Content);
-                if (oRes.rtCode == "001")
+                oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResBase>(oResponse.Content);
+                if(oRes != null)
                 {
-                    return true;
+                    if (oRes.rtCode == "001")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
+               
                 return false;
             }
             catch (Exception oEx)

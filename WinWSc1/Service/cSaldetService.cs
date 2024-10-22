@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Service
     {
         string tC_Access;
         string tC_UrlApi;
-        public List<cmlResSalDet> C_GEToGETSaleDet(string tSechSalCode)
+        public List<cmlResSalDet> C_GETaGetSaleDet(string tSechSalCode)
         {
             List<cmlResSalDet> aoResSalDets;
             try
@@ -28,7 +28,23 @@ namespace WindowsFormsApp1.Service
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
                 cmlResList<cmlResSalDet> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDet>>(oResponse.Content);
-                aoResSalDets = aoResList.raItems;
+
+                if (aoResList != null)
+                {
+                    if (aoResList.raItems.Count > 0)
+                    {
+                        aoResSalDets = aoResList.raItems;
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+
                 return aoResSalDets;
             }
             catch (Exception oEx)

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.odgSalDet = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.ogdSalDet = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.otdSchSal = new C1.Win.C1Input.C1TextBox();
             this.ocmSsh = new C1.Win.C1Input.C1Button();
             this.c1PictureBox1 = new C1.Win.C1Input.C1PictureBox();
             this.ocmSetImg = new C1.Win.C1Input.C1Button();
-            ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ogdSalDet)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).BeginInit();
@@ -43,13 +43,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ocmSetImg)).BeginInit();
             this.SuspendLayout();
             // 
-            // odgSalDet
+            // ogdSalDet
             // 
-            this.odgSalDet.ColumnInfo = "10,1,0,0,0,-1,Columns:";
-            this.odgSalDet.Location = new System.Drawing.Point(23, 95);
-            this.odgSalDet.Name = "odgSalDet";
-            this.odgSalDet.Size = new System.Drawing.Size(729, 306);
-            this.odgSalDet.TabIndex = 0;
+            this.ogdSalDet.ColumnInfo = "10,1,0,0,0,-1,Columns:";
+            this.ogdSalDet.Location = new System.Drawing.Point(23, 95);
+            this.ogdSalDet.Name = "ogdSalDet";
+            this.ogdSalDet.Size = new System.Drawing.Size(729, 306);
+            this.ogdSalDet.TabIndex = 0;
             // 
             // label1
             // 
@@ -66,7 +66,7 @@
             this.panel1.Controls.Add(this.otdSchSal);
             this.panel1.Controls.Add(this.ocmSsh);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.odgSalDet);
+            this.panel1.Controls.Add(this.ogdSalDet);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 426);
@@ -122,7 +122,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Wform2";
             this.Text = "รายละเอียดการขาย";
-            ((System.ComponentModel.ISupportInitialize)(this.odgSalDet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ogdSalDet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).EndInit();
@@ -135,7 +135,7 @@
 
         #endregion
 
-        private C1.Win.C1FlexGrid.C1FlexGrid odgSalDet;
+        private C1.Win.C1FlexGrid.C1FlexGrid ogdSalDet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private C1.Win.C1Input.C1TextBox otdSchSal;

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Service
 {
-    public class cPstService
+    public class cPdtService
     {
         string tC_Access;
         string tC_UrlApi;
-        public cPstService()
+        public cPdtService()
         {
             try
             {
@@ -31,19 +31,35 @@ namespace WindowsFormsApp1.Service
             finally { }
         }
 
-        public List<cmlResPdt> C_GETaoProduct()
+        public List<cmlResPdt> C_GETaGetProduct()
         {
-            List<cmlResPdt> aoResPdt = new List<cmlResPdt>();
+            List<cmlResPdt> aoResPdt;
             try
             {
+                aoResPdt = new List<cmlResPdt>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetProduct", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
+
                 cmlResList<cmlResPdt> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);
-                aoResPdt = aoResList.raItems;
+                if (aoResList != null)
+                {
+                    if (aoResList.raItems.Count > 0)
+                    {
+                        aoResPdt = aoResList.raItems;
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
                 // check null model
                 return aoResPdt;
             }
@@ -59,7 +75,7 @@ namespace WindowsFormsApp1.Service
         }
 
 
-     
+
 
     }
 }

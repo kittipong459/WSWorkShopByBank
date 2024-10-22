@@ -32,8 +32,8 @@ namespace WindowsFormsApp1
             try
             {
                 List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
-                aoResSalDets = new cSaldetService().C_GEToGETSaleDet(otdSchSal.Text);
-                odgSalDet.DataSource = "";
+                aoResSalDets = new cSaldetService().C_GETaGetSaleDet(otdSchSal.Text);
+                ogdSalDet.DataSource = "";
             }
             catch (Exception oEx)
             {

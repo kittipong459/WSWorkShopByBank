@@ -33,20 +33,37 @@ namespace WindowsFormsApp1.Service
 
         }
 
-        public List<cmlResCst> C_GETaoCustomer()
+        public List<cmlResCst> C_GETaGetCustomer()
         {
-            List<cmlResCst> aoResCst = new List<cmlResCst>();
+            List<cmlResCst> aoResCst;
             try
             {
+                aoResCst = new List<cmlResCst>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetCustomer", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
+
                 cmlResList<cmlResCst> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oResponse.Content);
                 //return aoResList.raItems;
-                aoResCst = aoResList.raItems;
+                if(aoResList != null)
+                {
+                    if(aoResList.raItems.Count > 0)
+                    {
+                        aoResCst = aoResList.raItems;
+                    }
+                    else
+                    {
+
+                    }
+                 
+                }
+                else
+                {
+
+                }
+               
                 return aoResCst;
             }
             catch (Exception oEx)
@@ -55,7 +72,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-                aoResCst = null;
+                //aoResCst = null;
             }
             return aoResCst;
         }
