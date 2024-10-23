@@ -282,10 +282,11 @@ namespace WindowsFormsApp1
                     ogdSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
                     ogdSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
                     //odgSal.SetData(nIndex, "rdSalDel", "ลบ");
-                    Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                    /*Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
                     // Image = object = o
                     Bitmap oImgresized = new Bitmap(oImg, new Size(15, 15));
-                    ogdSal.SetCellImage(nIndex, "rdSalDel", oImgresized);
+                    ogdSal.SetCellImage(nIndex, "rdSalDel", oImgresized);*/
+                    ogdPdt.SetCellImage(nIndex, "rdSalDel", Properties.Resources.bin);
 
 
                     // pic
