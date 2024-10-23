@@ -397,7 +397,7 @@ namespace WindowsFormsApp1
             // 
             // ogdSal
             // 
-            this.ogdSal.ColumnInfo = "10,1,0,0,0,-1,Columns:";
+            this.ogdSal.ColumnInfo = resources.GetString("ogdSal.ColumnInfo");
             this.ogdSal.Location = new System.Drawing.Point(13, 38);
             this.ogdSal.Name = "ogdSal";
             this.ogdSal.Size = new System.Drawing.Size(903, 189);
