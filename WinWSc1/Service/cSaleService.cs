@@ -48,12 +48,9 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
-                if (aoResList != null)
+                if (aoResList != null && aoResList.raItems.Count > 0)
                 {
-                    if (aoResList.raItems.Count > 0)
-                    {
-                        aoResSal = aoResList.raItems;
-                    }
+                    aoResSal = aoResList.raItems;
                 }
                 else
                 {
@@ -90,17 +87,15 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
-                if (aoAddSal != null)
+                if (aoAddSal != null && aoAddSal.raItems.Count > 0 && aoAddSal.rtCode == "001")
                 {
-                    if (aoAddSal.rtCode == "001" && aoAddSal.raItems.Count > 0)
-                    {
-                        bReqAddsal = true;
-                    }
-                    else
-                    {
-                        bReqAddsal = false;
-                    }
+                    bReqAddsal = true;
                 }
+                else
+                {
+                    bReqAddsal = false;
+                }
+
                 return bReqAddsal;
             }
             catch (Exception oEx)
@@ -132,17 +127,15 @@ namespace WindowsFormsApp1.Service
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
 
-                if (aoUpsal != null)
+                if (aoUpsal != null && aoUpsal.raItems.Count > 0 && aoUpsal.rtCode == "001" )
                 {
-                    if (aoUpsal.rtCode == "001" && aoUpsal.raItems.Count > 0)
-                    {
-                        bReqUpSal = true;
-                    }
-                    else
-                    {
-                        bReqUpSal = false;
-                    }
+                    bReqUpSal = true;
                 }
+                else
+                {
+                    bReqUpSal = false;
+                }
+
 
                 return bReqUpSal;
             }

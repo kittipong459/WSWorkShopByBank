@@ -138,7 +138,6 @@ namespace WebApiWS.Controllers
 
         [HttpPost]
         [Route("UpdateProduct")]
-        //public cmlResBase C_POST_oUpPdt([FromBody] cmlReqPdt poDataProduct)
         public cmlResBase C_POSoPosUpPdt([FromBody] cmlReqPdt poDataProduct)
         {
             cmlResBase oResult;
@@ -569,7 +568,16 @@ namespace WebApiWS.Controllers
                         FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
                         FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
                         FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
-                        FORM VIE_WsSal where FTSalCod = N'{ptSechSalCode}'";
+                        FROM VIE_WsSal where 1 =1 ";
+                if (!string.IsNullOrEmpty(ptSechSalCode))
+                {
+                    toSql += "FTSalCod = N'{ptSechSalCode}'";
+                }
+                else
+                {
+
+                }
+               
                 oSql.AppendLine(toSql);
                 List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
                 aoResult.raItems = aoResultPdt;

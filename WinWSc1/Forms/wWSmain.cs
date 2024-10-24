@@ -23,13 +23,13 @@ namespace WindowsFormsApp1
             try
             {
                 InitializeComponent();
-                W_SETxSetDesign();
-                W_SETxSetText();
-                W_GETxGetPdtData();
+                W_SETxDesign();
+                W_SETxText();
+                W_GETxPdtData();
                 //W_GETxGetPdtData();
-                W_GETxGetSalData();
+                W_GETxSalData();
                 // W_GETxGetSalData();
-                W_GETxGetCstData();
+                W_GETxCstData();
                 //W_GETxGetCstData();
             }
             catch (Exception oEx)
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             try
             {
 
-                W_SETxSetColSal(ogdSal);
+                W_SETxColSal(ogdSal);
 
             }
             catch (Exception oEx)
@@ -286,7 +286,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                List<cmlResSale> aoSale = new cSaleService().C_GETaGetSale();
+                List<cmlResSale> aoSale = new cSaleService().C_GETaSale();
 
                 ogdSal.Rows.Count = ogdSal.Rows.Fixed;
                 if (aoSale != null && aoSale.Count > 0)
@@ -431,7 +431,7 @@ namespace WindowsFormsApp1
                 oSale = W_CHKoCheckSalData();
                 if (oSale != null)
                 {
-                    bool res = new cSaleService().C_POSbPosSaveSale(oSale);
+                    bool res = new cSaleService().C_POSbSaveSale(oSale);
                 }
 
                 W_GETxPdtData();
@@ -521,7 +521,7 @@ namespace WindowsFormsApp1
                 mSale = new cmlReqSale();
 
                 mSale = W_CHKoCheckSalData();
-                bool W_res = new cSaleService().C_POSbPosUpdateSale(mSale);
+                bool W_res = new cSaleService().C_POSbUpdateSale(mSale);
                 //bRes
                 W_GETxPdtData();
                 W_GETxSalData();
@@ -550,7 +550,7 @@ namespace WindowsFormsApp1
                 if (ogdSal.ColSel == ogdSal.Cols["rdSalDel"].Index)
                 {
                     int nSalID = int.Parse(ogdSal.GetData(ogdSal.Row, ogdSal.Cols["rnSalID"].Index).ToString());
-                    bool bRes = new cSaleService().C_POSbPosDelSale(nSalID.ToString());
+                    bool bRes = new cSaleService().C_POSbDelSale(nSalID.ToString());
                 }
                 else
                 {

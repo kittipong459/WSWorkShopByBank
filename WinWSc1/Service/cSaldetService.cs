@@ -3,6 +3,7 @@ using RestSharp;
 using ServiceModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,14 @@ namespace WindowsFormsApp1.Service
             List<cmlResSalDet> aoResSalDets;
             try
             {
+
+                tC_Access = ConfigurationManager.AppSettings["tAccess"];
+                tC_UrlApi = ConfigurationManager.AppSettings["tUrlApi"];
+
                 aoResSalDets = new List<cmlResSalDet>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/{ptSechSalCode}", Method.Delete);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/{ptSechSalCode}", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
