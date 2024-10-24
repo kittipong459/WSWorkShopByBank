@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog(tW_ClasName, "{methodName} constucter:" + oEx.Message);
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void W_SETxSetDesign()
+        private void W_SETxDesign()  // W_SETxSetDesign
         {
             try
             {
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void W_SETxSetText()
+        private void W_SETxText()  // W_SETxSetText
         {
             try
             {
@@ -87,10 +87,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        //private cmlReqSale W_CHKoCheckSalData()
-        private cmlReqSale W_oCheckSalData()
+
+        private cmlReqSale W_CHKoCheckSalData()
         {
-            //cmlReqSale oSale = new cmlReqSale();
             cmlReqSale oSale = new cmlReqSale();
             try
             {
@@ -186,7 +185,7 @@ namespace WindowsFormsApp1
             return oSale;
         }
 
-        private void W_SETxSetColSal(C1FlexGrid poGD)
+        private void W_SETxColSal(C1FlexGrid poGD)  // W_SETxSetColSal
         {
             int nWidth = 0;
             string tNameGrid = poGD.Name;
@@ -234,7 +233,7 @@ namespace WindowsFormsApp1
                         poGD.Cols["rdSalDel"].TextAlignFixed = TextAlignEnum.CenterCenter;
 
                         //กำหนดตำแหน่งข้อความในส่วนของข้อมูล
-                        poGD.Cols["rnSalID"].TextAlign = TextAlignEnum.CenterCenter;
+                        poGD.Cols["rnSalID"].TextAlign = TextAlignEnum.LeftCenter;
                         poGD.Cols["rtSalCod"].TextAlign = TextAlignEnum.LeftCenter;
                         poGD.Cols["rtSalPdtCod"].TextAlign = TextAlignEnum.LeftCenter;
                         poGD.Cols["rnSalQty"].TextAlign = TextAlignEnum.RightCenter;
@@ -253,6 +252,13 @@ namespace WindowsFormsApp1
                         //กำหนด Column แสดงจำนวนเต็มแบบมีทศนิยม
                         poGD.Cols["rcSalPri"].Format = "###,###,##0." + new string('0', 2);
                         poGD.Cols["rcSalAmt"].Format = "###,###,##0." + new string('0', 2);
+
+                        // merge
+                        poGD.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
+                        for (int nRow = 0; nRow < poGD.Cols.Count-1; nRow++)
+                        {
+                            ogdSal.Cols[nRow].AllowMerging = true;
+                        }
 
                         #endregion ebd Set Col ogdSal
 
@@ -276,68 +282,68 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void W_GETxGetSalData()
+        private void W_GETxSalData()  // W_GETxGetSalData
         {
             try
             {
-                List<cmlResSale> oaSale = new cSaleService().C_GETaGetSale();
+                List<cmlResSale> aoSale = new cSaleService().C_GETaGetSale();
 
                 ogdSal.Rows.Count = ogdSal.Rows.Fixed;
-                foreach (cmlResSale oSal in oaSale)
+                if (aoSale != null && aoSale.Count > 0)
                 {
-                    ogdSal.Rows.Add();
-                    int nIndex = ogdSal.Rows.Count - ogdSal.Rows.Fixed;
-                    CellStyle oCellStyle;
-                    oCellStyle = ogdSal.Styles.Add("Receive");
-                    oCellStyle.BackColor = Color.Yellow;
-                    oCellStyle.ForeColor = Color.Blue;
-
-                    ogdSal.BackColor = Color.PaleGreen;
-                    if (nIndex % 2 == 0)
+                    foreach (cmlResSale oSal in aoSale)
                     {
-                        ogdSal.SetCellStyle(nIndex, 1, oCellStyle);
+                        ogdSal.Rows.Add();
+                        int nIndex = ogdSal.Rows.Count - ogdSal.Rows.Fixed;
+                        CellStyle oCellStyle;
+                        oCellStyle = ogdSal.Styles.Add("Receive");
+                        oCellStyle.BackColor = Color.Yellow;
+                        oCellStyle.ForeColor = Color.Blue;
+
+                        ogdSal.BackColor = Color.PaleGreen;
+                        if (nIndex % 2 == 0)
+                        {
+                            ogdSal.SetCellStyle(nIndex, 1, oCellStyle);
+                        }
+
+                        ogdSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
+                        ogdSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
+                        ogdSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
+                        ogdSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
+                        ogdSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
+                        ogdSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
+                        ogdSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
+                        ogdSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
+                        ogdSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
+                        //ogdSal.SetData(nIndex, "rdSalDel", "ลบ");
+                        /*Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
+                        // Image = object = o
+                        Bitmap oImgresized = new Bitmap(oImg, new Size(15, 15));
+                        ogdSal.SetCellImage(nIndex, "rdSalDel", oImgresized);*/
+
+
+                        //ogdSal.SetCellImage(ogdSal.Rows.Count - ogdSal.Rows.Fixed, "rdSalDel", global::WindowsFormsApp1.Properties.Resources.bin);
+                        Image oImg = new Bitmap(global::WindowsFormsApp1.Properties.Resources.bin);
+                        Bitmap oImgResized = new Bitmap(oImg, new Size(15, 15));
+                        ogdSal.SetCellImage(nIndex, "rdSalDel", oImgResized);
+
                     }
 
-                    ogdSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
-                    ogdSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
-                    ogdSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
-                    ogdSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
-                    ogdSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
-                    ogdSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
-                    ogdSal.SetData(nIndex, "rtSalCstCod", oSal.rtSalCstCod);
-                    ogdSal.SetData(nIndex, "rdSalDate", oSal.rdSalDate);
-                    ogdSal.SetData(nIndex, "rdSalSMPT", oSal.rdSalSMPT);
-                    //ogdSal.SetData(nIndex, "rdSalDel", "ลบ");
-                    /*Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
-                    // Image = object = o
-                    Bitmap oImgresized = new Bitmap(oImg, new Size(15, 15));
-                    ogdSal.SetCellImage(nIndex, "rdSalDel", oImgresized);*/
+
+                    //string[] tColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ", "ลบข้อมูล" };
+                    //for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                    //{
+                    //    ogdSal.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                    //}
 
 
-                    //ogdSal.SetCellImage(ogdSal.Rows.Count - ogdSal.Rows.Fixed, "rdSalDel", global::WindowsFormsApp1.Properties.Resources.bin);
-                    Image oImg = new Bitmap(global::WindowsFormsApp1.Properties.Resources.bin);
-                    Bitmap oImgResized = new Bitmap(oImg, new Size(15, 15));
-                    ogdSal.SetCellImage(nIndex, "rdSalDel", oImgResized);
+                    //ogdSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
+                    //for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                    //{
+                    //    ogdSal.Cols[nRow].AllowMerging = true;
+                    //}
 
-
-                    // pic
-                    nIndex++;
                 }
-
-
-                string[] tColsName = { "ลำดับ", "รหัสการขาย", "รหัสสินค้า", "จำนวน", "ราคา", "ราคารวม", "รหัสลูกค้า", "วันที่ขาย", "วันที่สร้างรายการ", "ลบข้อมูล" };
-                for (int nRow = 0; nRow < tColsName.Length; nRow++)
-                {
-                    ogdSal.Cols[(nRow + 1)].Caption = tColsName[nRow];
-                }
-
-
-                ogdSal.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
-                for (int nRow = 0; nRow < tColsName.Length; nRow++)
-                {
-                    ogdSal.Cols[nRow].AllowMerging = true;
-                }
-
 
                 ogdSal.Refresh();
             }
@@ -354,7 +360,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void W_GETxGetPdtData()
+        private void W_GETxPdtData() // W_GETxGetPdtData
         {
             try
             {
@@ -388,7 +394,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void W_GETxGetCstData()
+        private void W_GETxCstData() // W_GETxGetCstData
         {
             try
             {
@@ -421,15 +427,15 @@ namespace WindowsFormsApp1
         {
             try
             {
-                cmlReqSale mSale = new cmlReqSale();
-                mSale = W_oCheckSalData();
-                if (mSale != null)
+                cmlReqSale oSale = new cmlReqSale();
+                oSale = W_CHKoCheckSalData();
+                if (oSale != null)
                 {
-                    bool res = new cSaleService().C_POSbPosSaveSale(mSale);
+                    bool res = new cSaleService().C_POSbPosSaveSale(oSale);
                 }
 
-                W_GETxGetPdtData();
-                W_GETxGetSalData();
+                W_GETxPdtData();
+                W_GETxSalData();
             }
             catch (Exception oEx)
             {
@@ -448,7 +454,7 @@ namespace WindowsFormsApp1
             try
             {
                 // W_SETxSetAmt();
-                W_SetxAmt();
+                W_SETxAmt();
             }
             catch (Exception oEx)
             {
@@ -465,7 +471,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                W_SetxAmt();
+                W_SETxAmt();
             }
             catch (Exception oEx)
             {
@@ -479,7 +485,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void W_SetxAmt()
+        private void W_SETxAmt()
         {
             try
             {
@@ -514,11 +520,11 @@ namespace WindowsFormsApp1
             {
                 mSale = new cmlReqSale();
 
-                mSale = W_oCheckSalData();
+                mSale = W_CHKoCheckSalData();
                 bool W_res = new cSaleService().C_POSbPosUpdateSale(mSale);
                 //bRes
-                W_GETxGetPdtData();
-                W_GETxGetSalData();
+                W_GETxPdtData();
+                W_GETxSalData();
             }
             catch (Exception oEx)
             {
@@ -539,16 +545,12 @@ namespace WindowsFormsApp1
 
         private void odgSal_Click(object sender, EventArgs e)
         {
-            /*int nCol = odgSal.Col;
-            int nRow = odgSal.Row;
-            int Index = Convert.ToInt32(odgSal.GetData(odgSal.RowSel, odgSal.Cols["rnSalID"].Index));*/
-
             try
             {
                 if (ogdSal.ColSel == ogdSal.Cols["rdSalDel"].Index)
                 {
-                    int pnSalID = int.Parse(ogdSal.GetData(ogdSal.Row, ogdSal.Cols["rnSalID"].Index).ToString());
-                    var res = new cSaleService().C_POSbPosDelSale(pnSalID.ToString());
+                    int nSalID = int.Parse(ogdSal.GetData(ogdSal.Row, ogdSal.Cols["rnSalID"].Index).ToString());
+                    bool bRes = new cSaleService().C_POSbPosDelSale(nSalID.ToString());
                 }
                 else
                 {
@@ -579,11 +581,11 @@ namespace WindowsFormsApp1
 
         private void ocmSalDet_Click(object sender, EventArgs e)
         {
-            Wform2 wSalDetail;
+            Wform2 oSalDetail;
             try
             {
-                wSalDetail = new Wform2();
-                wSalDetail.Show();
+                oSalDetail = new Wform2();
+                oSalDetail.Show();
             }
             catch (Exception oEx)
             {
@@ -592,7 +594,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-                wSalDetail = null;
+                oSalDetail = null;
             }
         }
 

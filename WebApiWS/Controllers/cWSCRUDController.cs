@@ -40,9 +40,10 @@ namespace WebApiWS.Controllers
                 StringBuilder oSql;
                 oSql = new StringBuilder();
                 string tSql = "";
-                tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
-FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT ,FTPdtStat as rtPdtStat
-FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
+                tSql = @"  SELECT   FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
+                                    FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,
+                                    FDPdtSMPT as rdPdtSMPT ,FTPdtStat as rtPdtStat
+                                    FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 oSql.AppendLine(tSql);
                 List<cmlResPdt> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
                 aoResult.raItems = aoResultPdt;
@@ -67,7 +68,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpPost]
         [Route("AddProduct")]
-        public cmlResBase C_POSoPosAddPdt([FromBody] cmlReqPdt poDataProduct)
+        public cmlResBase C_POSoPosAddPdt([FromBody] cmlReqPdt poDataProduct) // POST == POS เอา 3 ตัวแรก
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
@@ -232,16 +233,16 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 StringBuilder oSql;
                 oSql = new StringBuilder();
                 string toSql = "";
-                toSql = @" SELECT FNSalID as rnSalID
-      ,FTSalCod as rtSalCod
-      ,FTSalPdtCod as rtSalPdtCod
-      ,FNSalQty as rnSalQty
-      ,FCSalPri as rcSalPri
-      ,FCSalAmt as rcSalAmt
-      ,FTSalCstCod as rtSalCstCod
-      ,FDSalDate as rdSalDate
-      ,FDSalSMPT as rdSalSMPT
-  FROM TWsTSal With(nolock)";
+                toSql = @"  SELECT FNSalID as rnSalID
+                            ,FTSalCod as rtSalCod
+                            ,FTSalPdtCod as rtSalPdtCod
+                            ,FNSalQty as rnSalQty
+                            ,FCSalPri as rcSalPri
+                            ,FCSalAmt as rcSalAmt
+                            ,FTSalCstCod as rtSalCstCod
+                            ,FDSalDate as rdSalDate
+                            ,FDSalSMPT as rdSalSMPT
+                            FROM TWsTSal With(nolock)";
                 oSql.AppendLine(toSql);
                 List<cmlResSale> aoResultSal = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
                 aoResult.raItems = aoResultSal;
@@ -288,14 +289,14 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 StringBuilder oSql;
                 oSql = new StringBuilder();
                 string toSql = "";
-                toSql = @" SELECT FTCstID as rtCstID
-      ,FTCstCod as rtCstCod
-      ,FTCstName as rtCstName
-      ,FTCstEml as rtCstEml
-      ,FTCstPho as rtCstPho
-      ,FTCstAdr as rtCstAdr
-      ,FDCstSMPT as rdCstSMPT
-  FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
+                toSql = @"   SELECT FTCstID as rtCstID
+                            ,FTCstCod as rtCstCod
+                            ,FTCstName as rtCstName
+                            ,FTCstEml as rtCstEml
+                            ,FTCstPho as rtCstPho
+                            ,FTCstAdr as rtCstAdr
+                            ,FDCstSMPT as rdCstSMPT
+                            FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
                 oSql.AppendLine(toSql);
                 List<cmlResCst> aoResultCst = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
                 aoResult.raItems = aoResultCst;
@@ -470,7 +471,7 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
 
         [HttpDelete]
         [Route("DelSale/{SalId}")]
-        public cmlResBase C_GEToGetDelProduct(string ptSalId) // PRC == process
+        public cmlResBase C_DELoDelProduct(string ptSalId) // PRC == process
         {
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
@@ -563,12 +564,12 @@ FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
                 StringBuilder oSql;
                 oSql = new StringBuilder();
                 string toSql = "";
-                toSql = $@" select FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
+                toSql = $@" SELECT FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
                         FTPdtName as rtPdtName, FTPdtDes as rtPdtDes, FTPdtTyp as rtPdtTyp,
                         FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
                         FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
                         FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
-                        from VIE_WsSal where FTSalCod = N'{ptSechSalCode}'";
+                        FORM VIE_WsSal where FTSalCod = N'{ptSechSalCode}'";
                 oSql.AppendLine(toSql);
                 List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
                 aoResult.raItems = aoResultPdt;

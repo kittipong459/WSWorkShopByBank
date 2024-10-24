@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Service
             finally { }
         }
 
-        public List<cmlResSale> C_GETaGetSale()
+        public List<cmlResSale> C_GETaSale()  // C_GETaGetSale
         {
             List<cmlResSale> aoResSal;
 
@@ -48,7 +48,7 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
-               if(aoResList != null)
+                if (aoResList != null)
                 {
                     if (aoResList.raItems.Count > 0)
                     {
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.Service
                 {
 
                 }
-                
+
                 return aoResSal;
             }
             catch (Exception oEx)
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1.Service
         }
 
 
-        public bool C_POSbPosSaveSale(cmlReqSale poSalData)
+        public bool C_POSbSaveSale(cmlReqSale poSalData) // C_POSbPosSaveSale
         {
             bool bReqAddsal = false;
             cmlResList<cmlResSale> aoAddSal;
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1.Service
                 aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
                 if (aoAddSal != null)
                 {
-                    if (aoAddSal.rtCode == "001" && aoAddSal.raItems.Count>0)
+                    if (aoAddSal.rtCode == "001" && aoAddSal.raItems.Count > 0)
                     {
                         bReqAddsal = true;
                     }
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1.Service
             return bReqAddsal;
         }
 
-        public bool C_POSbPosUpdateSale(cmlReqSale poSalData)
+        public bool C_POSbUpdateSale(cmlReqSale poSalData)  // C_POSbPosUpdateSale
         {
             bool bReqUpSal = false;
             cmlResList<cmlResSale> aoUpsal;
@@ -131,10 +131,10 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
-                
-                if(aoUpsal != null)
+
+                if (aoUpsal != null)
                 {
-                    if (aoUpsal.rtCode == "001" && aoUpsal.raItems.Count>0)
+                    if (aoUpsal.rtCode == "001" && aoUpsal.raItems.Count > 0)
                     {
                         bReqUpSal = true;
                     }
@@ -143,7 +143,7 @@ namespace WindowsFormsApp1.Service
                         bReqUpSal = false;
                     }
                 }
-              
+
                 return bReqUpSal;
             }
             catch (Exception oEx)
@@ -158,7 +158,7 @@ namespace WindowsFormsApp1.Service
             return bReqUpSal;
         }
 
-        public bool C_POSbPosDelSale(string ptSalId)
+        public bool C_POSbDelSale(string ptSalId)  // C_POSbPosDelSale
         {
             cmlResBase oRes;
             try
@@ -171,18 +171,14 @@ namespace WindowsFormsApp1.Service
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
                 oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResBase>(oResponse.Content);
-                if(oRes != null)
+                if (oRes != null && oRes.rtCode == "001")
                 {
-                    if (oRes.rtCode == "001")
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
-               
+                else
+                {
+                    return false;
+                }
                 return false;
             }
             catch (Exception oEx)

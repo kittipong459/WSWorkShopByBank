@@ -167,14 +167,17 @@ namespace ConAppSTD.Class
 
         public static bool C_DELbDelPdtTransaction(int pnPdtCode)
         {
-            cDatabase oDB = new cDatabase();
-            StringBuilder oSql = new StringBuilder();
+            cDatabase oDB;
+            StringBuilder oSql;
             try
             {
+
+                oDB = new cDatabase();
+                oSql = new StringBuilder();
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
-                oSql.AppendLine($"    DELETE FROM TWsTSal");
+                oSql.AppendLine($"    DELETE FROM TWsTSal WITH (ROWLOCK) ");
                 oSql.AppendLine($"    WHERE FNSalID = {pnPdtCode}");
 
                 oSql.AppendLine("    COMMIT TRAN");
