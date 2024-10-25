@@ -65,7 +65,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-                aoResSal = null;
+                //aoResSal = null;
             }
             return aoResSal;
         }
@@ -105,7 +105,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-                aoAddSal = null;
+               // aoAddSal = null;
             }
             return bReqAddsal;
         }
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-                aoUpsal = null;
+               // aoUpsal = null;
             }
             return bReqUpSal;
         }

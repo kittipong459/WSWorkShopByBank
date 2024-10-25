@@ -576,7 +576,16 @@ namespace WebApiWS.Controllers
                         FROM VIE_WsSal where 1 =1 ";
                 if (!string.IsNullOrEmpty(ptSechSalCode))
                 {
-                    toSql += $"FTSalCod = N'{ptSechSalCode}'";
+                    toSql += $@" and (
+						FTSalCod like'%N'{ptSechSalCode}'%'
+						or FTSalPdtCod like '%N'{ptSechSalCode}'%'
+						or FTPdtName like '%N'{ptSechSalCode}'%'
+						or FTPdtDes like '%N'{ptSechSalCode}'%'
+						or FTPdtTyp like '%N'{ptSechSalCode}'%'
+						or FTCstAdr like '%N'{ptSechSalCode}'%'
+						or FTCstPho like '%N'{ptSechSalCode}'%'
+						or FTCstEml like '%N'{ptSechSalCode}'%'
+						) ";
                 }
                 else
                 {
@@ -588,7 +597,16 @@ namespace WebApiWS.Controllers
                 aoResult.raItems = aoResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
-                return aoResult;
+
+                if(aoResult != null  && aoResult.raItems.Count > 0)
+                {
+                    return aoResult;
+                }
+                else
+                {
+
+                }
+               
             }
             catch (Exception oEx)
             {
@@ -598,7 +616,7 @@ namespace WebApiWS.Controllers
             }
             finally
             {
-                aoResult = null;
+               
                 ptSechSalCode = null;
             }
             return aoResult;

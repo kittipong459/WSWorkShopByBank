@@ -287,6 +287,8 @@ namespace WindowsFormsApp1
             try
             {
                 List<cmlResSale> aoSale = new cSaleService().C_GETaSale();
+                //ogdSal.Clear();
+                //ogdSal.DataSource = null;
 
                 ogdSal.Rows.Count = ogdSal.Rows.Fixed;
                 if (aoSale != null && aoSale.Count > 0)
@@ -345,7 +347,7 @@ namespace WindowsFormsApp1
 
                 }
 
-                ogdSal.Refresh();
+                //ogdSal.Refresh();
             }
             catch (Exception oEx)
             {
@@ -364,7 +366,8 @@ namespace WindowsFormsApp1
         {
             try
             {
-                ogdPdt.Row.ToString();
+                ogdPdt.Clear();
+                ogdPdt.DataSource = null;
 
                 List<cmlResPdt> aoPdt = new cPdtService().C_GETaGetProduct(); // return object
 
@@ -398,7 +401,8 @@ namespace WindowsFormsApp1
         {
             try
             {
-                ogdSal.Row.ToString();
+                ogdSal.Clear();
+                ogdSal.DataSource = null;
 
                 List<cmlResCst> oaCst = new cCstService().C_GETaGetCustomer();
                 // tW_name  == global from

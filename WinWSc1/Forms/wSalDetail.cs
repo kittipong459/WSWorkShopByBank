@@ -22,15 +22,14 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             W_GETxGetSalDetail();
-            /* Image img = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
-             Bitmap resizedImage = new Bitmap(img, new Size(50, 50));
-             c1PictureBox1.Image = resizedImage;*/
         }
 
         private void W_GETxGetSalDetail()
         {
             try
             {
+                ogdSalDet.Clear();
+                ogdSalDet.DataSource = null;
                 List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
                 aoResSalDets = new cSaldetService().C_GETaGetSaleDet(otdSchSal.Text);
                 ogdSalDet.DataSource = aoResSalDets;
@@ -58,19 +57,19 @@ namespace WindowsFormsApp1
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     // Get the file path
-                    string filePath = ofd.FileName;
+                    string sFilePath = ofd.FileName;
 
                     // Check if file exists
-                    if (File.Exists(filePath))
+                    if (File.Exists(sFilePath))
                     {
                         oImg = Image.FromFile(ofd.FileName);
                         // uploadedImage.Save("E:\\ada\\expros\\testImgs\\"+DateTime.Now.ToString("yyyymmddmm")+"tre489464534" +".png");
 
                         //uploadedImage = Image.FromFile("E:\\ada\\testpros\\testImgs\\2024241724tre489464534.png");
-                        c1PictureBox1.Image = oImg;
-                        c1PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        //c1PictureBox1.Image = oImg;
+                        //c1PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                        //pictureBox1.Image = new Bitmap(filePath);
+                        //pictureBox1.Image = new Bitmap(sFilePath);
                         //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     }
                     else
@@ -92,7 +91,20 @@ namespace WindowsFormsApp1
 
         private void ocmSsh_Click(object sender, EventArgs e)
         {
-            W_GETxGetSalDetail();
+            try
+            {
+                ogdSalDet.Clear();
+                W_GETxGetSalDetail();
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
         }
     }
 }

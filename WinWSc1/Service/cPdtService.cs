@@ -44,17 +44,9 @@ namespace WindowsFormsApp1.Service
                 RestResponse oResponse = oClient.Execute(oRrequest);
 
                 cmlResList<cmlResPdt> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);
-                if (aoResList != null)
+                if (aoResList != null && aoResList.raItems.Count > 0)
                 {
-                    if (aoResList.raItems.Count > 0)
-                    {
                         aoResPdt = aoResList.raItems;
-                    }
-                    else
-                    {
-
-                    }
-
                 }
                 else
                 {

@@ -16,38 +16,48 @@ namespace WindowsFormsApp1.Service
     {
         string tC_Access;
         string tC_UrlApi;
+
+        public cSaldetService()
+        {
+            try
+            {
+                // Get configuration values
+                /*tAccess = "123456789";
+                tUrlApi = "http://localhost:14589";*/
+                tC_Access = ConfigurationManager.AppSettings["tAccess"];
+                tC_UrlApi = ConfigurationManager.AppSettings["tUrlApi"];
+            }
+            catch (Exception oEx)
+            {
+                throw new Exception(oEx.Message + " " + oEx.StackTrace);
+            }
+            finally { }
+
+        }
+
+
         public List<cmlResSalDet> C_GETaGetSaleDet(string ptSechSalCode)
         {
             List<cmlResSalDet> aoResSalDets;
             try
             {
 
-                tC_Access = ConfigurationManager.AppSettings["tAccess"];
-                tC_UrlApi = ConfigurationManager.AppSettings["tUrlApi"];
-
                 aoResSalDets = new List<cmlResSalDet>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/{ptSechSalCode}", Method.Get);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/N'{ptSechSalCode}'", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
                 cmlResList<cmlResSalDet> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDet>>(oResponse.Content);
 
-                if (aoResList != null)
+                if (aoResList != null && aoResList.raItems.Count > 0)
                 {
-                    if (aoResList.raItems.Count > 0)
-                    {
-                        aoResSalDets = aoResList.raItems;
-                    }
-                    else
-                    {
-
-                    }
+                    aoResSalDets = aoResList.raItems;
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 return aoResSalDets;
@@ -58,7 +68,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-                aoResSalDets = null;
+               // aoResSalDets = null;
             }
             return aoResSalDets;
         }
