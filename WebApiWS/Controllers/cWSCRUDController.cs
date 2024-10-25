@@ -20,9 +20,12 @@ namespace WebApiWS.Controllers
         public cmlResList<cmlResPdt> C_GETaGetPdt()
         {
             cmlResList<cmlResPdt> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
+                oDatabase = new cDatabase();
                 aoResult = new cmlResList<cmlResPdt>();
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -36,8 +39,7 @@ namespace WebApiWS.Controllers
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+               
                 oSql = new StringBuilder();
                 string tSql = "";
                 tSql = @"  SELECT   FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
@@ -211,6 +213,8 @@ namespace WebApiWS.Controllers
         public cmlResList<cmlResSale> C_GETaGetSale()
         {
             cmlResList<cmlResSale> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
@@ -228,8 +232,7 @@ namespace WebApiWS.Controllers
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+                oDatabase = new cDatabase();
                 oSql = new StringBuilder();
                 string toSql = "";
                 toSql = @"  SELECT FNSalID as rnSalID
@@ -267,6 +270,8 @@ namespace WebApiWS.Controllers
         public cmlResList<cmlResCst> C_GET_oGetCst()
         {
             cmlResList<cmlResCst> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
@@ -284,8 +289,7 @@ namespace WebApiWS.Controllers
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+                oDatabase = new cDatabase();
                 oSql = new StringBuilder();
                 string toSql = "";
                 toSql = @"   SELECT FTCstID as rtCstID
@@ -542,6 +546,8 @@ namespace WebApiWS.Controllers
         public cmlResList<cmlResSalDet> C_GETaGetSaleDetail(string ptSechSalCode)
         {
             cmlResList<cmlResSalDet> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
@@ -559,8 +565,7 @@ namespace WebApiWS.Controllers
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+                oDatabase = new cDatabase();
                 oSql = new StringBuilder();
                 string toSql = "";
                 toSql = $@" SELECT FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
@@ -571,7 +576,7 @@ namespace WebApiWS.Controllers
                         FROM VIE_WsSal where 1 =1 ";
                 if (!string.IsNullOrEmpty(ptSechSalCode))
                 {
-                    toSql += "FTSalCod = N'{ptSechSalCode}'";
+                    toSql += $"FTSalCod = N'{ptSechSalCode}'";
                 }
                 else
                 {
