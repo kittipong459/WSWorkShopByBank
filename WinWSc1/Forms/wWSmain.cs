@@ -255,7 +255,7 @@ namespace WindowsFormsApp1
 
                         // merge
                         poGD.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
-                        for (int nRow = 0; nRow < poGD.Cols.Count-1; nRow++)
+                        for (int nRow = 0; nRow < poGD.Cols.Count - 1; nRow++)
                         {
                             ogdSal.Cols[nRow].AllowMerging = true;
                         }
@@ -288,7 +288,7 @@ namespace WindowsFormsApp1
             {
                 List<cmlResSale> aoSale = new cSaleService().C_GETaSale();
                 //ogdSal.Clear();
-                //ogdSal.DataSource = null;
+                ogdSal.DataSource = null;
 
                 ogdSal.Rows.Count = ogdSal.Rows.Fixed;
                 if (aoSale != null && aoSale.Count > 0)
@@ -366,10 +366,9 @@ namespace WindowsFormsApp1
         {
             try
             {
-                ogdPdt.Clear();
-                ogdPdt.DataSource = null;
-
                 List<cmlResPdt> aoPdt = new cPdtService().C_GETaGetProduct(); // return object
+               
+                ogdPdt.DataSource = null;
 
                 //cPstService cPdtService = new cPstService();
                 //cPdtService.C_GETaoProduct();
@@ -401,12 +400,12 @@ namespace WindowsFormsApp1
         {
             try
             {
-                ogdSal.Clear();
-                ogdSal.DataSource = null;
+
 
                 List<cmlResCst> oaCst = new cCstService().C_GETaGetCustomer();
                 // tW_name  == global from
                 // tC_name == gloabal class
+                ogdCst.DataSource = null;
 
                 ogdCst.DataSource = oaCst;
                 string[] tColsName = { "ลำดับ", "รหัสลูกค้า", "ชื่อลูกค้า", "Email", "เบอร์โทร", "ที่อยู่", "วันที่สร้างรายการ" };
@@ -438,8 +437,8 @@ namespace WindowsFormsApp1
                     bool res = new cSaleService().C_POSbSaveSale(oSale);
                 }
 
-                W_GETxPdtData();
-                W_GETxSalData();
+                W_RESxResload();
+                W_CLNxTxt();
             }
             catch (Exception oEx)
             {
@@ -527,8 +526,8 @@ namespace WindowsFormsApp1
                 mSale = W_CHKoCheckSalData();
                 bool W_res = new cSaleService().C_POSbUpdateSale(mSale);
                 //bRes
-                W_GETxPdtData();
-                W_GETxSalData();
+                W_RESxResload();
+                W_CLNxTxt();
             }
             catch (Exception oEx)
             {
@@ -555,6 +554,8 @@ namespace WindowsFormsApp1
                 {
                     int nSalID = int.Parse(ogdSal.GetData(ogdSal.Row, ogdSal.Cols["rnSalID"].Index).ToString());
                     bool bRes = new cSaleService().C_POSbDelSale(nSalID.ToString());
+                    W_RESxResload();
+
                 }
                 else
                 {
@@ -567,6 +568,7 @@ namespace WindowsFormsApp1
                     otbSalAmt.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rcSalAmt"].Index).ToString();
                     otbSalCstCod.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rtSalCstCod"].Index).ToString();
                     otbSalDate.Text = ogdSal.GetData(nIdx, ogdSal.Cols["rdSalDate"].Index).ToString();
+                    W_RESxResload();
                 }
 
             }
@@ -574,7 +576,7 @@ namespace WindowsFormsApp1
             {
 
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                C_CLNxTxt();
+                W_CLNxTxt();
             }
             finally
             {
@@ -602,7 +604,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void C_CLNxTxt()
+        private void W_CLNxTxt()
         {
             try
             {
@@ -629,7 +631,8 @@ namespace WindowsFormsApp1
         {
             try
             {
-                C_CLNxTxt();
+                W_CLNxTxt();
+                W_RESxResload();
             }
             catch (Exception oEx)
             {
@@ -656,7 +659,7 @@ namespace WindowsFormsApp1
             {
 
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                C_CLNxTxt();
+                W_CLNxTxt();
             }
             finally
             {
@@ -675,9 +678,9 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
-
+                W_CLNxTxt();
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                C_CLNxTxt();
+
             }
             finally
             {
@@ -685,9 +688,27 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void ocmReprt_Click(object sender, EventArgs e)
+        private void W_RESxResload()
         {
+            try
+            {
+                W_GETxPdtData();
+                W_GETxSalData();
+                W_GETxCstData();
+            }
+            catch (Exception oEx)
+            {
+
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+
+            }
+            finally
+            {
+
+            }
 
         }
+
+
     }
 }

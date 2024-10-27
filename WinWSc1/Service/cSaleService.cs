@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using wModels;
 using wModels.Class;
@@ -18,6 +20,7 @@ namespace WindowsFormsApp1.Service
 
         string tC_Access;
         string tC_UrlApi;
+        string tC_ClasName = "cSaleService";
         public cSaleService()
         {
             try
@@ -30,18 +33,18 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " " + oEx.StackTrace);
+                // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
             finally { }
         }
 
         public List<cmlResSale> C_GETaSale()  // C_GETaGetSale
         {
-            List<cmlResSale> aoResSal;
+            List<cmlResSale> aoResSal = new List<cmlResSale>();
 
             try
             {
-                aoResSal = new List<cmlResSale>();
+                //aoResSal = new List<cmlResSale>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSale", Method.Get);
@@ -61,7 +64,9 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
             }
             finally
             {
@@ -87,7 +92,7 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
-                if (aoAddSal != null && aoAddSal.raItems.Count > 0 && aoAddSal.rtCode == "001")
+                if (aoAddSal != null && aoAddSal.rtCode == "001")
                 {
                     bReqAddsal = true;
                 }
@@ -101,7 +106,9 @@ namespace WindowsFormsApp1.Service
             catch (Exception oEx)
             {
                 bReqAddsal = false;
-                throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
             }
             finally
             {
@@ -127,7 +134,7 @@ namespace WindowsFormsApp1.Service
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
 
-                if (aoUpsal != null && aoUpsal.raItems.Count > 0 && aoUpsal.rtCode == "001" )
+                if (aoUpsal != null && aoUpsal.rtCode == "001" )
                 {
                     bReqUpSal = true;
                 }
@@ -142,7 +149,9 @@ namespace WindowsFormsApp1.Service
             catch (Exception oEx)
             {
                 bReqUpSal = false;
-                throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
             }
             finally
             {
@@ -176,7 +185,8 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("cSaleService", "C_POSTbDelSale:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
                 return false;
             }
             finally

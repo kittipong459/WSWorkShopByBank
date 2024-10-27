@@ -542,7 +542,7 @@ namespace WebApiWS.Controllers
         }
 
         [HttpGet]
-        [Route("GetSaleDetail/{tSechSalCode}")]
+        [Route("GetSaleDetail/{ptSechSalCode}")]
         public cmlResList<cmlResSalDet> C_GETaGetSaleDetail(string ptSechSalCode)
         {
             cmlResList<cmlResSalDet> aoResult;
@@ -568,23 +568,23 @@ namespace WebApiWS.Controllers
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
                 string toSql = "";
-                toSql = $@" SELECT FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
+                toSql = $@" SELECT 1 rnSalID ,FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
                         FTPdtName as rtPdtName, FTPdtDes as rtPdtDes, FTPdtTyp as rtPdtTyp,
                         FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
                         FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
                         FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
                         FROM VIE_WsSal where 1 =1 ";
-                if (!string.IsNullOrEmpty(ptSechSalCode))
+                if (ptSechSalCode!= "N")
                 {
                     toSql += $@" and (
-						FTSalCod like'%N'{ptSechSalCode}'%'
-						or FTSalPdtCod like '%N'{ptSechSalCode}'%'
-						or FTPdtName like '%N'{ptSechSalCode}'%'
-						or FTPdtDes like '%N'{ptSechSalCode}'%'
-						or FTPdtTyp like '%N'{ptSechSalCode}'%'
-						or FTCstAdr like '%N'{ptSechSalCode}'%'
-						or FTCstPho like '%N'{ptSechSalCode}'%'
-						or FTCstEml like '%N'{ptSechSalCode}'%'
+						FTSalCod like'%{ptSechSalCode}%'
+						or FTSalPdtCod like '%{ptSechSalCode}%'
+						or FTPdtName like '%{ptSechSalCode}%'
+						or FTPdtDes like '%{ptSechSalCode}%'
+						or FTPdtTyp like '%{ptSechSalCode}%'
+						or FTCstAdr like '%{ptSechSalCode}%'
+						or FTCstPho like '%{ptSechSalCode}%'
+						or FTCstEml like '%{ptSechSalCode}%'
 						) ";
                 }
                 else

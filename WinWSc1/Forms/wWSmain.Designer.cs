@@ -368,7 +368,7 @@ namespace WindowsFormsApp1
             this.olaId.AutoSize = true;
             this.olaId.BackColor = System.Drawing.Color.Cornsilk;
             this.olaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.olaId.ForeColor = System.Drawing.Color.Cornsilk;
+            this.olaId.ForeColor = System.Drawing.Color.Black;
             this.olaId.Location = new System.Drawing.Point(264, 8);
             this.olaId.Name = "olaId";
             this.olaId.Size = new System.Drawing.Size(49, 24);
@@ -381,9 +381,9 @@ namespace WindowsFormsApp1
             this.olaManeSalTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.olaManeSalTitle.Location = new System.Drawing.Point(7, 8);
             this.olaManeSalTitle.Name = "olaManeSalTitle";
-            this.olaManeSalTitle.Size = new System.Drawing.Size(149, 24);
+            this.olaManeSalTitle.Size = new System.Drawing.Size(255, 24);
             this.olaManeSalTitle.TabIndex = 27;
-            this.olaManeSalTitle.Text = "จัดการข้อมูลการขาย";
+            this.olaManeSalTitle.Text = "จัดการข้อมูลการขาย           ลำดับที่";
             // 
             // opnSal
             // 
@@ -430,6 +430,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.opnCst);
             this.Controls.Add(this.opnPdt);
             this.Name = "wWSmain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ระบบขายสินค้า";
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).EndInit();

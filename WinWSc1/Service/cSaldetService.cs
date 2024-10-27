@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using wModels.Class;
 using wModels.Response;
 
@@ -16,6 +18,7 @@ namespace WindowsFormsApp1.Service
     {
         string tC_Access;
         string tC_UrlApi;
+        string tC_ClasName = "cSaldetService";
 
         public cSaldetService()
         {
@@ -29,7 +32,9 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " " + oEx.StackTrace);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
             finally { }
 
@@ -38,14 +43,14 @@ namespace WindowsFormsApp1.Service
 
         public List<cmlResSalDet> C_GETaGetSaleDet(string ptSechSalCode)
         {
-            List<cmlResSalDet> aoResSalDets;
+            List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
             try
             {
-
-                aoResSalDets = new List<cmlResSalDet>();
+                ptSechSalCode = string.IsNullOrEmpty(ptSechSalCode) ? "N" : ptSechSalCode;
+                //aoResSalDets = new List<cmlResSalDet>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/N'{ptSechSalCode}'", Method.Get);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSaleDetail/{ptSechSalCode}", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
@@ -64,7 +69,9 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
             }
             finally
             {

@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using wModels.Class;
 
 namespace WindowsFormsApp1.Service
 {
@@ -14,6 +17,7 @@ namespace WindowsFormsApp1.Service
     {
         string tC_Access;
         string tC_UrlApi;
+        string tW_ClasName = "cPdtService";
         public cPdtService()
         {
             try
@@ -26,17 +30,19 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " " + oEx.StackTrace);
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
             finally { }
         }
 
         public List<cmlResPdt> C_GETaGetProduct()
         {
-            List<cmlResPdt> aoResPdt;
+            List<cmlResPdt> aoResPdt = new List<cmlResPdt>();
             try
             {
-                aoResPdt = new List<cmlResPdt>();
+                //aoResPdt = new List<cmlResPdt>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetProduct", Method.Get);
@@ -57,7 +63,9 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
             }
             finally
             {

@@ -8,6 +8,7 @@ namespace wModels.Response
 {
     public class cmlResSalDet
     {
+        public Nullable<int> rnSalID { get; set; }
         public string rtSalCod { get; set; }
         public string rtSalPdtCod { get; set; }
         public string rtPdtName { get; set; }
