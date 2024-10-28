@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             try
             {
 
-                W_SETxColSal(ogdSal);
+
 
             }
             catch (Exception oEx)
@@ -75,6 +75,7 @@ namespace WindowsFormsApp1
                 olaPriAmt.Text = "ราคารวม";
                 olaCstCod.Text = "รหัสลูกค้า";
                 olaSalDate.Text = "วันที่ขาย";
+
             }
             catch (Exception oEx)
             {
@@ -243,6 +244,7 @@ namespace WindowsFormsApp1
                         poGD.Cols["rdSalDate"].TextAlign = TextAlignEnum.CenterCenter;
                         poGD.Cols["rdSalSMPT"].TextAlign = TextAlignEnum.CenterCenter;
                         poGD.Cols["rdSalDel"].TextAlign = TextAlignEnum.CenterCenter;
+                        // otbColSalID 
 
                         //กำหนด Type Column ปุ่มเป็น Image
                         poGD.Cols["rdSalDel"].DataType = typeof(Image);  // มีผลต่อการกำหนดตำแหน่ง R C L
@@ -266,7 +268,7 @@ namespace WindowsFormsApp1
 
 
                     default:
-
+                        // ไม่ทำอะไร
                         break;
                 }
 
@@ -284,11 +286,12 @@ namespace WindowsFormsApp1
 
         private void W_GETxSalData()  // W_GETxGetSalData
         {
+            List<cmlResSale> aoSale;
             try
             {
-                List<cmlResSale> aoSale = new cSaleService().C_GETaSale();
+                aoSale = new cSaleService().C_GETaSale();
                 //ogdSal.Clear();
-                ogdSal.DataSource = null;
+                //  ogdSal.DataSource = null;
 
                 ogdSal.Rows.Count = ogdSal.Rows.Fixed;
                 if (aoSale != null && aoSale.Count > 0)
@@ -310,7 +313,7 @@ namespace WindowsFormsApp1
 
                         ogdSal.SetData(nIndex, "rnSalID", oSal.rnSalID);
                         ogdSal.SetData(nIndex, "rtSalCod", oSal.rtSalCod);
-                        ogdSal.SetData(nIndex, "rtSalPdtCod", oSal.rtSalPdtCod);
+                        ogdSal.SetData(nIndex, "rtSalPdtCod", string.IsNullOrEmpty(oSal.rtSalPdtCod) ? "" : oSal.rtSalPdtCod);
                         ogdSal.SetData(nIndex, "rnSalQty", oSal.rnSalQty);
                         ogdSal.SetData(nIndex, "rcSalPri", oSal.rcSalPri);
                         ogdSal.SetData(nIndex, "rcSalAmt", oSal.rcSalAmt);
@@ -326,7 +329,7 @@ namespace WindowsFormsApp1
 
                         //ogdSal.SetCellImage(ogdSal.Rows.Count - ogdSal.Rows.Fixed, "rdSalDel", global::WindowsFormsApp1.Properties.Resources.bin);
                         Image oImg = new Bitmap(global::WindowsFormsApp1.Properties.Resources.bin);
-                        Bitmap oImgResized = new Bitmap(oImg, new Size(15, 15));
+                        Bitmap oImgResized = new Bitmap(oImg, new Size(105, 105));
                         ogdSal.SetCellImage(nIndex, "rdSalDel", oImgResized);
 
                     }
@@ -346,6 +349,10 @@ namespace WindowsFormsApp1
                     //}
 
                 }
+                else
+                {
+                    // ไม่ต้องทำอะไร
+                }
 
                 //ogdSal.Refresh();
             }
@@ -356,7 +363,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                aoSale = null;
             }
 
         }
@@ -367,7 +374,7 @@ namespace WindowsFormsApp1
             try
             {
                 List<cmlResPdt> aoPdt = new cPdtService().C_GETaGetProduct(); // return object
-               
+
                 ogdPdt.DataSource = null;
 
                 //cPstService cPdtService = new cPstService();
@@ -709,6 +716,23 @@ namespace WindowsFormsApp1
 
         }
 
+        private void wWSmain_Shown(object sender, EventArgs e)
+        {
+            try
+            {
 
+                W_SETxColSal(ogdSal);
+            }
+            catch (Exception oEx)
+            {
+
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+
+            }
+            finally
+            {
+
+            }
+        }
     }
 }

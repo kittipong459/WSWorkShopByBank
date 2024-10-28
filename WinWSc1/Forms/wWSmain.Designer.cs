@@ -83,6 +83,9 @@ namespace WindowsFormsApp1
             // 
             // ogdPdt
             // 
+            this.ogdPdt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdPdt.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ogdPdt.ColumnInfo = "10,1,0,0,0,-1,Columns:1{Style:\"BackColor:Window;\";}\t3{Style:\"BackColor:Window;\";}" +
     "\t";
@@ -318,6 +321,8 @@ namespace WindowsFormsApp1
             // 
             // opnPdt
             // 
+            this.opnPdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.opnPdt.BackColor = System.Drawing.Color.CornflowerBlue;
             this.opnPdt.Controls.Add(this.ogdPdt);
             this.opnPdt.Controls.Add(this.olaPdtTitle);
@@ -387,6 +392,9 @@ namespace WindowsFormsApp1
             // 
             // opnSal
             // 
+            this.opnSal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.opnSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.opnSal.Controls.Add(this.ogdSal);
             this.opnSal.Controls.Add(this.olaSalResTitle);
@@ -397,6 +405,9 @@ namespace WindowsFormsApp1
             // 
             // ogdSal
             // 
+            this.ogdSal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdSal.ColumnInfo = resources.GetString("ogdSal.ColumnInfo");
             this.ogdSal.Location = new System.Drawing.Point(13, 38);
             this.ogdSal.Name = "ogdSal";
@@ -432,6 +443,8 @@ namespace WindowsFormsApp1
             this.Name = "wWSmain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ระบบขายสินค้า";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Shown += new System.EventHandler(this.wWSmain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).EndInit();
