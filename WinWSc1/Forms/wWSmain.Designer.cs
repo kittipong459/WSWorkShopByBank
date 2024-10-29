@@ -59,8 +59,8 @@ namespace WindowsFormsApp1
             this.olaId = new System.Windows.Forms.Label();
             this.olaManeSalTitle = new System.Windows.Forms.Label();
             this.opnSal = new System.Windows.Forms.Panel();
-            this.ogdSal = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.ocmSalDet = new C1.Win.C1Input.C1Button();
+            this.ogdSal = new C1.Win.C1FlexGrid.C1FlexGrid();
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).BeginInit();
@@ -77,8 +77,8 @@ namespace WindowsFormsApp1
             this.opnCst.SuspendLayout();
             this.opnManSal.SuspendLayout();
             this.opnSal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ogdSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSalDet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ogdSal)).BeginInit();
             this.SuspendLayout();
             // 
             // ogdPdt
@@ -408,20 +408,6 @@ namespace WindowsFormsApp1
             this.opnSal.Size = new System.Drawing.Size(1079, 240);
             this.opnSal.TabIndex = 30;
             // 
-            // ogdSal
-            // 
-            this.ogdSal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ogdSal.ColumnInfo = resources.GetString("ogdSal.ColumnInfo");
-            this.ogdSal.Location = new System.Drawing.Point(13, 41);
-            this.ogdSal.Name = "ogdSal";
-            this.ogdSal.Size = new System.Drawing.Size(1048, 193);
-            this.ogdSal.StyleInfo = resources.GetString("ogdSal.StyleInfo");
-            this.ogdSal.TabIndex = 3;
-            this.ogdSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Blue;
-            this.ogdSal.Click += new System.EventHandler(this.odgSal_Click);
-            // 
             // ocmSalDet
             // 
             this.ocmSalDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -435,6 +421,22 @@ namespace WindowsFormsApp1
             this.ocmSalDet.UseVisualStyleBackColor = false;
             this.ocmSalDet.UseVisualStyleForeColor = true;
             this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
+            // 
+            // ogdSal
+            // 
+            this.ogdSal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ogdSal.ColumnInfo = resources.GetString("ogdSal.ColumnInfo");
+            this.ogdSal.Location = new System.Drawing.Point(13, 41);
+            this.ogdSal.Name = "ogdSal";
+            this.ogdSal.Rows.MaxSize = 35;
+            this.ogdSal.Rows.MinSize = 35;
+            this.ogdSal.Size = new System.Drawing.Size(1048, 193);
+            this.ogdSal.StyleInfo = resources.GetString("ogdSal.StyleInfo");
+            this.ogdSal.TabIndex = 3;
+            this.ogdSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Blue;
+            this.ogdSal.Click += new System.EventHandler(this.odgSal_Click);
             // 
             // wWSmain
             // 
@@ -469,8 +471,8 @@ namespace WindowsFormsApp1
             this.opnManSal.PerformLayout();
             this.opnSal.ResumeLayout(false);
             this.opnSal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ogdSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSalDet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ogdSal)).EndInit();
             this.ResumeLayout(false);
 
         }
