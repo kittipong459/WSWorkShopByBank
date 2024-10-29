@@ -80,83 +80,83 @@ namespace WindowsFormsApp1
                         poGD.ExtendLastCol = true; //ให้ Column สุดท้ายขยายตามความกว้างที่เหลือจนเต็ม Grid
                         #region Set Col ogdSal
                         //กำหนดความกว้างของ Column (Set เป็น % รองรับขนาดหน้าจอที่แตกต่างกัน)
-                        poGD.Cols["rnSalID"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtSalCod"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtSalPdtCod"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtPdtName"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtPdtDes"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtPdtTyp"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rnSalQty"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rcSalPri"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rcSalAmt"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rdSalDate"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtSalCstCod"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtCstName"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtCstAdr"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtCstPho"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rtCstEml"].Width = nWidth * 6 / 100;
-                        poGD.Cols["rdSalSMPT"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalID"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalCod"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalPdtCod"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColPdtName"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColPdtDes"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColPdtTyp"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalQty"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalPri"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalAmt"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalDate"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalCstCod"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColCstName"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColCstAdr"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColCstPho"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColCstEml"].Width = nWidth * 6 / 100;
+                        poGD.Cols["otbColSalSMPT"].Width = nWidth * 6 / 100;
 
                         //กำหนด Caption Title หัว Column
-                        poGD.Cols["rnSalID"].Caption = "ลำดับ";
-                        poGD.Cols["rtSalCod"].Caption = "รหัสการขาย";
-                        poGD.Cols["rtSalPdtCod"].Caption = "รหัสสินค้า";
-                        poGD.Cols["rtPdtName"].Caption = "ชื่อสินค้า";
-                        poGD.Cols["rtPdtDes"].Caption = "รายละเอียด";
-                        poGD.Cols["rtPdtTyp"].Caption = "ประเภท";
-                        poGD.Cols["rnSalQty"].Caption = "จำนวน";
-                        poGD.Cols["rcSalPri"].Caption = "ราคา";
-                        poGD.Cols["rcSalAmt"].Caption = "ราคารวม";
-                        poGD.Cols["rdSalDate"].Caption = "วันที่ขาย";
-                        poGD.Cols["rtSalCstCod"].Caption = "รหัสลูกค้า";
-                        poGD.Cols["rtCstName"].Caption = "ชื่อลูกค้า";
-                        poGD.Cols["rtCstAdr"].Caption = "ที่อยู่";
-                        poGD.Cols["rtCstPho"].Caption = "เบอร์โทร";
-                        poGD.Cols["rtCstEml"].Caption = "อีเมล";
-                        poGD.Cols["rdSalSMPT"].Caption = "วันที่สร้าง";
+                        poGD.Cols["otbColSalID"].Caption = "ลำดับ";
+                        poGD.Cols["otbColSalCod"].Caption = "รหัสการขาย";
+                        poGD.Cols["otbColSalPdtCod"].Caption = "รหัสสินค้า";
+                        poGD.Cols["otbColPdtName"].Caption = "ชื่อสินค้า";
+                        poGD.Cols["otbColPdtDes"].Caption = "รายละเอียด";
+                        poGD.Cols["otbColPdtTyp"].Caption = "ประเภท";
+                        poGD.Cols["otbColSalQty"].Caption = "จำนวน";
+                        poGD.Cols["otbColSalPri"].Caption = "ราคา";
+                        poGD.Cols["otbColSalAmt"].Caption = "ราคารวม";
+                        poGD.Cols["otbColSalDate"].Caption = "วันที่ขาย";
+                        poGD.Cols["otbColSalCstCod"].Caption = "รหัสลูกค้า";
+                        poGD.Cols["otbColCstName"].Caption = "ชื่อลูกค้า";
+                        poGD.Cols["otbColCstAdr"].Caption = "ที่อยู่";
+                        poGD.Cols["otbColCstPho"].Caption = "เบอร์โทร";
+                        poGD.Cols["otbColCstEml"].Caption = "อีเมล";
+                        poGD.Cols["otbColSalSMPT"].Caption = "วันที่สร้าง";
 
                         //กำหนดตำแหน่งข้อความ Title หัว Column
-                        poGD.Cols["rnSalID"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtSalCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtSalPdtCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtPdtName"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtPdtDes"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtPdtTyp"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rnSalQty"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rcSalPri"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rcSalAmt"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rdSalDate"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtSalCstCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtCstName"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtCstAdr"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtCstPho"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtCstEml"].TextAlignFixed = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rdSalSMPT"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalID"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalPdtCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtName"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtDes"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtTyp"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalQty"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalPri"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalAmt"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalDate"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalCstCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstName"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstAdr"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstPho"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstEml"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalSMPT"].TextAlignFixed = TextAlignEnum.CenterCenter;
 
                         //กำหนดตำแหน่งข้อความในส่วนของข้อมูล
-                        poGD.Cols["rnSalID"].TextAlign = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtSalCod"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtSalPdtCod"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtPdtName"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtPdtDes"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtPdtTyp"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rnSalQty"].TextAlign = TextAlignEnum.RightCenter;
-                        poGD.Cols["rcSalPri"].TextAlign = TextAlignEnum.RightCenter;
-                        poGD.Cols["rcSalAmt"].TextAlign = TextAlignEnum.RightCenter;
-                        poGD.Cols["rdSalDate"].TextAlign = TextAlignEnum.CenterCenter;
-                        poGD.Cols["rtSalCstCod"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtCstName"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtCstAdr"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtCstPho"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rtCstEml"].TextAlign = TextAlignEnum.LeftCenter;
-                        poGD.Cols["rdSalSMPT"].TextAlign = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalID"].TextAlign = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalCod"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColSalPdtCod"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtName"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtDes"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtTyp"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColSalQty"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColSalPri"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColSalAmt"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColSalDate"].TextAlign = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColSalCstCod"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstName"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstAdr"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstPho"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstEml"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColSalSMPT"].TextAlign = TextAlignEnum.CenterCenter;
 
 
                         //กำหนด Column แสดงจำนวนเต็ม
-                        poGD.Cols["rnSalQty"].Format = "###,###,##0";
+                        poGD.Cols["otbColSalQty"].Format = "###,###,##0";
                         //กำหนด Column แสดงจำนวนเต็มแบบมีทศนิยม
-                        poGD.Cols["rcSalPri"].Format = "###,###,##0." + new string('0', 2);
-                        poGD.Cols["rcSalAmt"].Format = "###,###,##0." + new string('0', 2);
+                        poGD.Cols["otbColSalPri"].Format = "###,###,##0." + new string('0', 2);
+                        poGD.Cols["otbColSalAmt"].Format = "###,###,##0." + new string('0', 2);
 
                         // merge
                         poGD.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
 
 
                     default:
-
+                        // ไม่ต้องทำอะไร
                         break;
                 }
 
@@ -203,35 +203,35 @@ namespace WindowsFormsApp1
                     foreach (cmlResSalDet oSalDel in aoResSalDets)
                     {
                         ogdSalDet.Rows.Add();
-                        int nIndex = ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed;
+                        //int nIndex = ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed;
                         CellStyle oCellStyle;
                         oCellStyle = ogdSalDet.Styles.Add("Receive");
                         oCellStyle.BackColor = Color.Yellow;
                         oCellStyle.ForeColor = Color.Blue;
 
                         ogdSalDet.BackColor = Color.PaleGreen;
-                        if (nIndex % 2 == 0)
+                        if (ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed % 2 == 0)
                         {
-                            ogdSalDet.SetCellStyle(nIndex, 1, oCellStyle);
+                            ogdSalDet.SetCellStyle(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, 1, oCellStyle);
                         }
 
 
-                        ogdSalDet.SetData(nIndex, "rnSalID",       oSalDel.rnSalID);
-                        ogdSalDet.SetData(nIndex, "rtSalCod",      oSalDel.rtSalCod);
-                        ogdSalDet.SetData(nIndex, "rtSalPdtCod",   oSalDel.rtSalPdtCod);
-                        ogdSalDet.SetData(nIndex, "rtPdtName",     oSalDel.rtPdtName);
-                        ogdSalDet.SetData(nIndex, "rtPdtDes",      oSalDel.rtPdtDes);
-                        ogdSalDet.SetData(nIndex, "rtPdtTyp",      oSalDel.rtPdtTyp);
-                        ogdSalDet.SetData(nIndex, "rnSalQty",      oSalDel.rnSalQty);
-                        ogdSalDet.SetData(nIndex, "rcSalPri",      oSalDel.rcSalPri);
-                        ogdSalDet.SetData(nIndex, "rcSalAmt",      oSalDel.rcSalAmt);
-                        ogdSalDet.SetData(nIndex, "rdSalDate",     oSalDel.rdSalDate);
-                        ogdSalDet.SetData(nIndex, "rtSalCstCod",   oSalDel.rtSalCstCod);
-                        ogdSalDet.SetData(nIndex, "rtCstName",     oSalDel.rtCstName);
-                        ogdSalDet.SetData(nIndex, "rtCstAdr",      oSalDel.rtCstAdr);
-                        ogdSalDet.SetData(nIndex, "rtCstPho",      oSalDel.rtCstPho);
-                        ogdSalDet.SetData(nIndex, "rtCstEml",      oSalDel.rtCstEml);
-                        ogdSalDet.SetData(nIndex, "rdSalSMPT",    oSalDel.rdSalSMPT);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalID",       oSalDel.rnSalID);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCod",      oSalDel.rtSalCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPdtCod",   oSalDel.rtSalPdtCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtName",     oSalDel.rtPdtName);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtDes",      oSalDel.rtPdtDes);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtTyp",      oSalDel.rtPdtTyp);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalQty",      oSalDel.rnSalQty);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPri",      oSalDel.rcSalPri);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalAmt",      oSalDel.rcSalAmt);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalDate",     oSalDel.rdSalDate);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCstCod",   oSalDel.rtSalCstCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstName",     oSalDel.rtCstName);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstAdr",      oSalDel.rtCstAdr);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstPho",      oSalDel.rtCstPho);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstEml",      oSalDel.rtCstEml);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalSMPT",    oSalDel.rdSalSMPT);
 
                     }
 

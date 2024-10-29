@@ -129,6 +129,8 @@ namespace WindowsFormsApp1
             // 
             // ogdCst
             // 
+            this.ogdCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdCst.BackColor = System.Drawing.Color.MistyRose;
             this.ogdCst.ColumnInfo = "10,1,0,0,0,-1,Columns:";
             this.ogdCst.Location = new System.Drawing.Point(16, 34);
@@ -333,6 +335,8 @@ namespace WindowsFormsApp1
             // 
             // opnCst
             // 
+            this.opnCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.opnCst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.opnCst.Controls.Add(this.ogdCst);
             this.opnCst.Controls.Add(this.olaCstTitle);
@@ -396,11 +400,12 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opnSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.opnSal.Controls.Add(this.ocmSalDet);
             this.opnSal.Controls.Add(this.ogdSal);
             this.opnSal.Controls.Add(this.olaSalResTitle);
             this.opnSal.Location = new System.Drawing.Point(18, 427);
             this.opnSal.Name = "opnSal";
-            this.opnSal.Size = new System.Drawing.Size(934, 240);
+            this.opnSal.Size = new System.Drawing.Size(1079, 240);
             this.opnSal.TabIndex = 30;
             // 
             // ogdSal
@@ -409,9 +414,9 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdSal.ColumnInfo = resources.GetString("ogdSal.ColumnInfo");
-            this.ogdSal.Location = new System.Drawing.Point(13, 38);
+            this.ogdSal.Location = new System.Drawing.Point(13, 41);
             this.ogdSal.Name = "ogdSal";
-            this.ogdSal.Size = new System.Drawing.Size(903, 189);
+            this.ogdSal.Size = new System.Drawing.Size(1048, 193);
             this.ogdSal.StyleInfo = resources.GetString("ogdSal.StyleInfo");
             this.ogdSal.TabIndex = 3;
             this.ogdSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Blue;
@@ -419,11 +424,12 @@ namespace WindowsFormsApp1
             // 
             // ocmSalDet
             // 
+            this.ocmSalDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ocmSalDet.BackColor = System.Drawing.Color.Lime;
             this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmSalDet.Location = new System.Drawing.Point(974, 488);
+            this.ocmSalDet.Location = new System.Drawing.Point(817, 5);
             this.ocmSalDet.Name = "ocmSalDet";
-            this.ocmSalDet.Size = new System.Drawing.Size(118, 89);
+            this.ocmSalDet.Size = new System.Drawing.Size(243, 33);
             this.ocmSalDet.TabIndex = 31;
             this.ocmSalDet.Text = "รายละเอียดการขาย";
             this.ocmSalDet.UseVisualStyleBackColor = false;
@@ -435,7 +441,6 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 679);
-            this.Controls.Add(this.ocmSalDet);
             this.Controls.Add(this.opnSal);
             this.Controls.Add(this.opnManSal);
             this.Controls.Add(this.opnCst);
@@ -443,7 +448,6 @@ namespace WindowsFormsApp1
             this.Name = "wWSmain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ระบบขายสินค้า";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.wWSmain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).EndInit();

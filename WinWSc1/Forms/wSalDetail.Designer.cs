@@ -32,20 +32,20 @@
             this.ogdSalDet = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.olaSalDetTit = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ocmCls = new C1.Win.C1Input.C1Button();
             this.otdSchSal = new C1.Win.C1Input.C1TextBox();
             this.ocmSsh = new C1.Win.C1Input.C1Button();
             this.olaBesSalPdtTit = new C1.Win.C1Input.C1Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ogdSumSal = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.ocmCls = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSalDet)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmCls)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olaBesSalPdtTit)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSumSal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmCls)).BeginInit();
             this.SuspendLayout();
             // 
             // ogdSalDet
@@ -80,6 +80,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 289);
             this.panel1.TabIndex = 2;
+            // 
+            // ocmCls
+            // 
+            this.ocmCls.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ocmCls.Location = new System.Drawing.Point(650, 42);
+            this.ocmCls.Name = "ocmCls";
+            this.ocmCls.Size = new System.Drawing.Size(102, 34);
+            this.ocmCls.TabIndex = 4;
+            this.ocmCls.Text = "ล้างข้อมูล";
+            this.ocmCls.UseVisualStyleBackColor = true;
+            this.ocmCls.UseVisualStyleForeColor = true;
+            this.ocmCls.Click += new System.EventHandler(this.ocmCls_Click);
             // 
             // otdSchSal
             // 
@@ -132,18 +144,6 @@
             this.ogdSumSal.TabIndex = 4;
             this.ogdSumSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Silver;
             // 
-            // ocmCls
-            // 
-            this.ocmCls.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmCls.Location = new System.Drawing.Point(650, 42);
-            this.ocmCls.Name = "ocmCls";
-            this.ocmCls.Size = new System.Drawing.Size(102, 34);
-            this.ocmCls.TabIndex = 4;
-            this.ocmCls.Text = "ล้างข้อมูล";
-            this.ocmCls.UseVisualStyleBackColor = true;
-            this.ocmCls.UseVisualStyleForeColor = true;
-            this.ocmCls.Click += new System.EventHandler(this.ocmCls_Click);
-            // 
             // Wform2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,13 +157,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ogdSalDet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ocmCls)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.olaBesSalPdtTit)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSumSal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmCls)).EndInit();
             this.ResumeLayout(false);
 
         }
