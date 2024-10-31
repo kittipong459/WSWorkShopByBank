@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             W_SETxDesign();
             W_SETxText();
             W_GETxGetSalDetail();
-           
+            W_GETxGetSalDetSummy();
         }
 
 
@@ -169,6 +169,34 @@ namespace WindowsFormsApp1
 
                         break;
 
+                    case "ogdSumSal":
+
+                        nWidth = poGD.Width;
+                        poGD.ExtendLastCol = true; //ให้ Column สุดท้ายขยายตามความกว้างที่เหลือจนเต็ม Grid
+                        #region Set Col ogdSal
+                        //กำหนดความกว้างของ Column (Set เป็น % รองรับขนาดหน้าจอที่แตกต่างกัน)
+                        poGD.Cols["otbColSalCod"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColQtyMax"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColQtyMin"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColQtySum"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColPriMax"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColPriMin"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColPriceSum"].Width = nWidth * 12 / 100;
+                        poGD.Cols["otbColAmtSum"].Width = nWidth * 12 / 100;
+
+
+                        //กำหนด Caption Title หัว Column
+                        poGD.Cols["otbColSalCod"].Caption = "รหัสขาย";
+                        poGD.Cols["otbColQtyMax"].Caption = "จำนวนมากสุด";
+                        poGD.Cols["otbColQtyMin"].Caption = "จำนวนน้อยสุด";
+                        poGD.Cols["otbColQtySum"].Caption = "จำนวนรวม";
+                        poGD.Cols["otbColPriMax"].Caption = "ราคามากสุด";
+                        poGD.Cols["otbColPriMin"].Caption = "";
+                        poGD.Cols["otbColPriceSum"].Caption = "";
+                        poGD.Cols["otbColAmtSum"].Caption = "";
+                        poGD.Cols["otbColPdts"].Caption = "";
+
+                        break;
 
                     default:
                         // ไม่ต้องทำอะไร
@@ -200,7 +228,7 @@ namespace WindowsFormsApp1
                 ogdSalDet.Rows.Count = ogdSalDet.Rows.Fixed;
                 if (ogdSalDet != null && aoResSalDets.Count > 0)
                 {
-                    foreach (cmlResSalDet oSalDel in aoResSalDets)
+                    foreach (cmlResSalDet oSalDet in aoResSalDets)
                     {
                         ogdSalDet.Rows.Add();
                         //int nIndex = ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed;
@@ -214,30 +242,37 @@ namespace WindowsFormsApp1
                         {
                             ogdSalDet.SetCellStyle(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, 1, oCellStyle);
                         }
+                        else
+                        {
+                            // not anything
+                        }
 
 
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalID",       oSalDel.rnSalID);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCod",      oSalDel.rtSalCod);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPdtCod",   oSalDel.rtSalPdtCod);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtName",     oSalDel.rtPdtName);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtDes",      oSalDel.rtPdtDes);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtTyp",      oSalDel.rtPdtTyp);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalQty",      oSalDel.rnSalQty);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPri",      oSalDel.rcSalPri);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalAmt",      oSalDel.rcSalAmt);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalDate",     oSalDel.rdSalDate);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCstCod",   oSalDel.rtSalCstCod);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstName",     oSalDel.rtCstName);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstAdr",      oSalDel.rtCstAdr);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstPho",      oSalDel.rtCstPho);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstEml",      oSalDel.rtCstEml);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalSMPT",    oSalDel.rdSalSMPT);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalID", oSalDet.rnSalID);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCod", oSalDet.rtSalCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPdtCod", oSalDet.rtSalPdtCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtName", oSalDet.rtPdtName);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtDes", oSalDet.rtPdtDes);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtTyp", oSalDet.rtPdtTyp);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalQty", oSalDet.rnSalQty);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPri", oSalDet.rcSalPri);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalAmt", oSalDet.rcSalAmt);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalDate", oSalDet.rdSalDate);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCstCod", oSalDet.rtSalCstCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstName", oSalDet.rtCstName);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstAdr", oSalDet.rtCstAdr);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstPho", oSalDet.rtCstPho);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstEml", oSalDet.rtCstEml);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalSMPT", oSalDet.rdSalSMPT);
 
                     }
 
-
                     //}
 
+                }
+                else
+                {
+                    // not anyting
                 }
 
             }
@@ -254,6 +289,7 @@ namespace WindowsFormsApp1
 
         private void ocmSetImg_Click_1(object sender, EventArgs e)
         {
+            // ไม่ได้ใช้แล้ว
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
@@ -317,9 +353,9 @@ namespace WindowsFormsApp1
         {
             try
             {
-                    int nIdx = ogdSalDet.Row;
+                int nIdx = ogdSalDet.Row;
                 otdSchSal.Text = ogdSalDet.GetData(nIdx, ogdSalDet.ColSel).ToString();
-                
+
 
             }
             catch (Exception oEx)
@@ -338,5 +374,70 @@ namespace WindowsFormsApp1
             otdSchSal.Text = "";
             W_GETxGetSalDetail();
         }
+
+        private void otdSchSal_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    W_GETxGetSalDetail();
+                }
+
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void W_GETxGetSalDetSummy()
+        {
+            try
+            {
+                das
+                ogdSumSal.DataSource = null;
+                List<cmlResSalDet> aoResSalSumys = new List<cmlResSalDet>();
+                aoResSalSumys = new cSaldetService().C_GETaGetSalDetSummy();
+                //ogdSalDet.DataSource = aoResSalDets;
+
+
+                ogdSumSal.Rows.Count = ogdSumSal.Rows.Fixed;
+                if (ogdSumSal != null && aoResSalSumys.Count > 0)
+                {
+                    foreach (cmlResSalDet oSalSumy in aoResSalSumys)
+                    {
+                        ogdSumSal.Rows.Add();
+
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "", oSalSumy.rnSalID);
+
+                    }
+
+
+                }
+                else
+                {
+                    // not anyting
+                }
+
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+        }
+
+
+
     }
 }

@@ -310,6 +310,10 @@ namespace WindowsFormsApp1
                         {
                             ogdSal.SetCellStyle(ogdSal.Rows.Count - ogdSal.Rows.Fixed, 1, oCellStyle);
                         }
+                        else
+                        {
+                            // not anything
+                        }
 
                         ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalID"].Index, oSal.rnSalID);
                         ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalCod"].Index, oSal.rtSalCod);

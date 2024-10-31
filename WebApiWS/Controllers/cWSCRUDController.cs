@@ -605,7 +605,7 @@ namespace WebApiWS.Controllers
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
                
             }
@@ -623,6 +623,76 @@ namespace WebApiWS.Controllers
             return aoResult;
         }
 
+        // cmlResSalDetSummy
+        [HttpGet]
+        [Route("SalDetSummy")]
+        public cmlResList<cmlResSalDetSummy> C_GETaGetSalDetSummy()
+        {
+            cmlResList<cmlResSalDetSummy> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
+            string tErrAPI;
+            try
+            {
+                aoResult = new cmlResList<cmlResSalDetSummy>();
+
+                //Check API Key
+                if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
+                {
+                    aoResult.rtCode = cMS.tMS_RespCode904;
+                    aoResult.rtDesc = cMS.tMS_RespDesc904;
+                    return aoResult;
+                }
+                else
+                {
+                    //TODO::
+                }
+                //process..
+                oDatabase = new cDatabase();
+                oSql = new StringBuilder();
+                string toSql = "";
+                toSql = $@" select FTSalCod as rtSalCod,
+max(FNSalQty) rnQtyMax,
+min(FNSalQty) rnQtyMin ,
+SUM(FNSalQty) rnQtySum,
+max(FCPdtPri) rcPriMax,
+min(FCPdtPri) rcPriMin,
+SUM(FCPdtPri) rcPriceSum,
+SUM(FCSalAmt) rcAmtSum,
+COUNT(FTSalPdtCod) rnPdts
+from VIE_WsSal s
+group by FTSalCod ";
+
+                oSql.AppendLine(toSql);
+                List<cmlResSalDetSummy> aoResultSalDetSummy = oDatabase.C_GETaDataQuery<cmlResSalDetSummy>(oSql.ToString());
+                aoResult.raItems = aoResultSalDetSummy;
+                aoResult.rtCode = cMS.tMS_RespCode001;
+                aoResult.rtDesc = cMS.tMS_RespDesc001;
+
+                if (aoResult != null && aoResult.raItems.Count > 0)
+                {
+                    return aoResult;
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception oEx)
+            {
+                aoResult = new cmlResList<cmlResSalDetSummy>();
+                aoResult.rtCode = cMS.tMS_RespCode900;
+                aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
+            }
+            finally
+            {
+                // ไม่ต้องทำอะไร
+            }
+            return aoResult;
+        }
+
+        
 
 
         ///////////

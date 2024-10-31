@@ -101,6 +101,7 @@
             this.otdSchSal.Size = new System.Drawing.Size(488, 27);
             this.otdSchSal.TabIndex = 3;
             this.otdSchSal.Tag = null;
+            this.otdSchSal.KeyUp += new System.Windows.Forms.KeyEventHandler(this.otdSchSal_KeyUp);
             // 
             // ocmSsh
             // 
@@ -136,7 +137,7 @@
             // 
             // ogdSumSal
             // 
-            this.ogdSumSal.ColumnInfo = "10,1,0,0,0,-1,Columns:";
+            this.ogdSumSal.ColumnInfo = resources.GetString("ogdSumSal.ColumnInfo");
             this.ogdSumSal.Location = new System.Drawing.Point(23, 39);
             this.ogdSumSal.Name = "ogdSumSal";
             this.ogdSumSal.Size = new System.Drawing.Size(729, 182);

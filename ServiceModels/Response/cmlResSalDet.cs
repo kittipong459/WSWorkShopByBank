@@ -25,4 +25,18 @@ namespace wModels.Response
         public string rtCstEml { get; set; }
         public Nullable<DateTime> rdSalSMPT { get; set; }
     }
+
+    public class cmlResSalDetSummy
+    {
+        public string rtSalCod { get; set; }
+        public Nullable<int> rnQtyMax { get; set; }
+        public Nullable<int> rnQtyMin { get; set; }
+        public Nullable<int> rnQtySum { get; set; }
+        public Nullable<decimal> rcPriMax { get; set; }
+        public Nullable<decimal> rcPriMin { get; set; }
+        public Nullable<decimal> rcPriceSum { get; set; }
+        public Nullable<decimal> rcAmtSum { get; set; }
+        public Nullable<int> rnPdts { get; set; }
+    }
+
 }

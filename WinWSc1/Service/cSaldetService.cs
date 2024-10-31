@@ -80,5 +80,45 @@ namespace WindowsFormsApp1.Service
             return aoResSalDets;
         }
 
+        public List<cmlResSalDet> C_GETaGetSalDetSummy()
+        {
+            List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
+            try
+            {
+          
+                //aoResSalDets = new List<cmlResSalDet>();
+                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
+                RestClient oClient = new RestClient(oPtions);
+                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/SalDetSummy", Method.Get);
+                oRrequest.AddHeader("X-Api-Key", tC_Access);
+                RestResponse oResponse = oClient.Execute(oRrequest);
+                Console.WriteLine(oResponse.Content);
+                cmlResList<cmlResSalDet> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDet>>(oResponse.Content);
+
+                if (aoResList != null && aoResList.raItems.Count > 0)
+                {
+                    aoResSalDets = aoResList.raItems;
+                }
+                else
+                {
+                    // ไม่ทำอะไร
+                }
+
+                return aoResSalDets;
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+            }
+            finally
+            {
+                // aoResSalDets = null;
+            }
+            return aoResSalDets;
+        }
+
+        
     }
 }
