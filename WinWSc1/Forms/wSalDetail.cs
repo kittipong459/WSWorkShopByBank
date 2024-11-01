@@ -173,7 +173,7 @@ namespace WindowsFormsApp1
 
                         nWidth = poGD.Width;
                         poGD.ExtendLastCol = true; //ให้ Column สุดท้ายขยายตามความกว้างที่เหลือจนเต็ม Grid
-                        #region Set Col ogdSal
+                        #region Set Col ogdSumSal
                         //กำหนดความกว้างของ Column (Set เป็น % รองรับขนาดหน้าจอที่แตกต่างกัน)
                         poGD.Cols["otbColSalCod"].Width = nWidth * 12 / 100;
                         poGD.Cols["otbColQtyMax"].Width = nWidth * 12 / 100;
@@ -191,11 +191,11 @@ namespace WindowsFormsApp1
                         poGD.Cols["otbColQtyMin"].Caption = "จำนวนน้อยสุด";
                         poGD.Cols["otbColQtySum"].Caption = "จำนวนรวม";
                         poGD.Cols["otbColPriMax"].Caption = "ราคามากสุด";
-                        poGD.Cols["otbColPriMin"].Caption = "";
-                        poGD.Cols["otbColPriceSum"].Caption = "";
-                        poGD.Cols["otbColAmtSum"].Caption = "";
-                        poGD.Cols["otbColPdts"].Caption = "";
-
+                        poGD.Cols["otbColPriMin"].Caption = "ราคาต่ำสุด";
+                        poGD.Cols["otbColPriceSum"].Caption = "ราคารวม";
+                        poGD.Cols["otbColAmtSum"].Caption = "ยอดขายรวม";
+                        poGD.Cols["otbColPdts"].Caption = "จำนวนประเภทสินค้า";
+                        #endregion end Set Col ogdSumSal
                         break;
 
                     default:
@@ -398,11 +398,11 @@ namespace WindowsFormsApp1
 
         private void W_GETxGetSalDetSummy()
         {
+            List<cmlResSalDetSummy> aoResSalSumys;
             try
             {
-                das
                 ogdSumSal.DataSource = null;
-                List<cmlResSalDet> aoResSalSumys = new List<cmlResSalDet>();
+                aoResSalSumys = new List<cmlResSalDetSummy>();
                 aoResSalSumys = new cSaldetService().C_GETaGetSalDetSummy();
                 //ogdSalDet.DataSource = aoResSalDets;
 
@@ -410,12 +410,18 @@ namespace WindowsFormsApp1
                 ogdSumSal.Rows.Count = ogdSumSal.Rows.Fixed;
                 if (ogdSumSal != null && aoResSalSumys.Count > 0)
                 {
-                    foreach (cmlResSalDet oSalSumy in aoResSalSumys)
+                    foreach (cmlResSalDetSummy oSalSumy in aoResSalSumys)
                     {
                         ogdSumSal.Rows.Add();
-
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "", oSalSumy.rnSalID);
-
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColSalCod", oSalSumy.rtSalCod);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColQtyMax", oSalSumy.rnQtyMax);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColQtyMin", oSalSumy.rnQtyMin);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColQtySum", oSalSumy.rnQtySum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColPriMax", oSalSumy.rcPriMax);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMin", oSalSumy.rcPriMin);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriceSum", oSalSumy.rcPriceSum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColAmtSum", oSalSumy.rcAmtSum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPdts", oSalSumy.rnPdts);
                     }
 
 
@@ -439,5 +445,5 @@ namespace WindowsFormsApp1
 
 
 
-    }
+    } 
 }

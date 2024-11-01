@@ -80,9 +80,9 @@ namespace WindowsFormsApp1.Service
             return aoResSalDets;
         }
 
-        public List<cmlResSalDet> C_GETaGetSalDetSummy()
+        public List<cmlResSalDetSummy> C_GETaGetSalDetSummy()
         {
-            List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
+            List<cmlResSalDetSummy> aoResSalDets = new List<cmlResSalDetSummy>();
             try
             {
           
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1.Service
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
                 Console.WriteLine(oResponse.Content);
-                cmlResList<cmlResSalDet> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDet>>(oResponse.Content);
+                cmlResList<cmlResSalDetSummy> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDetSummy>>(oResponse.Content);
 
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {
