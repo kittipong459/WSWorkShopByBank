@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Windows.Forms;
 using WindowsFormsApp1.Service;
 using wModels.Class;
+using wModels.Response;
+using static C1.Util.Win.Win32;
 
 namespace WindowsFormsApp1
 {
@@ -266,6 +268,101 @@ namespace WindowsFormsApp1
 
                         break;
 
+                    case "ogdPdt":
+                        nWidth = poGD.Width;
+                        poGD.ExtendLastCol = true; //ให้ Column สุดท้ายขยายตามความกว้างที่เหลือจนเต็ม Grid
+                        //กำหนดความกว้างของ Column (Set เป็น % รองรับขนาดหน้าจอที่แตกต่างกัน)
+                        poGD.Cols["otbColPdtID"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColPdtCod"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColPdtName"].Width = nWidth * 15 / 100;
+                        poGD.Cols["otbColPdtDes"].Width = nWidth * 20 / 100;
+                        poGD.Cols["otbColPdtQty"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColPdtPri"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColPdtTyp"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColPdtSMPT"].Width = nWidth * 10 / 100;
+
+                        //กำหนด Caption Title หัว Column
+                        poGD.Cols["otbColPdtID"].Caption = "ลำดับ";
+                        poGD.Cols["otbColPdtCod"].Caption = "รหัสสินค้า";
+                        poGD.Cols["otbColPdtName"].Caption = "ชื่อสินค้า";
+                        poGD.Cols["otbColPdtDes"].Caption = "รายละเอียดสินค้า";
+                        poGD.Cols["otbColPdtQty"].Caption = "จำนวนสินค้า";
+                        poGD.Cols["otbColPdtPri"].Caption = "ราคาสินค้า";
+                        poGD.Cols["otbColPdtTyp"].Caption = "ประเภทสินค้า";
+                        poGD.Cols["otbColPdtSMPT"].Caption = "วันที่สร้าง";
+                        poGD.Cols["otbColPdtStat"].Caption = "สถานะสินค้า";
+
+                        //กำหนดตำแหน่งข้อความ Title หัว Column
+                        poGD.Cols["otbColPdtID"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtName"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtDes"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtQty"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtPri"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtTyp"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtSMPT"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtStat"].TextAlignFixed = TextAlignEnum.CenterCenter;
+
+                        //กำหนดตำแหน่งข้อความในส่วนของข้อมูล
+                        poGD.Cols["otbColPdtID"].TextAlign = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdtCod"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtName"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtDes"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtQty"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColPdtPri"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColPdtTyp"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtSMPT"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColPdtStat"].TextAlign = TextAlignEnum.LeftCenter;
+
+                        //กำหนด Column แสดงจำนวนเต็ม
+                        poGD.Cols["otbColPdtQty"].Format = "###,###,##0";
+                        //กำหนด Column แสดงจำนวนเต็มแบบมีทศนิยม
+                        poGD.Cols["otbColPdtPri"].Format = "###,###,##0." + new string('0', 2);
+                        break;
+
+                    case "ogdCst":
+
+                        nWidth = poGD.Width;
+                        poGD.ExtendLastCol = true; //ให้ Column สุดท้ายขยายตามความกว้างที่เหลือจนเต็ม Grid
+                        //กำหนดความกว้างของ Column (Set เป็น % รองรับขนาดหน้าจอที่แตกต่างกัน)
+
+                        poGD.Cols["otbColCstID"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColCstCod"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColCstName"].Width = nWidth * 20 / 100;
+                        poGD.Cols["otbColCstEml"].Width = nWidth * 20 / 100;
+                        poGD.Cols["otbColCstPho"].Width = nWidth * 10 / 100;
+                        poGD.Cols["otbColCstAdr"].Width = nWidth * 25 / 100;
+
+                        //กำหนด Caption Title หัว Column
+                        poGD.Cols["otbColCstID"].Caption = "ลำดับ";
+                        poGD.Cols["otbColCstCod"].Caption = "รหัสลูกค้า";
+                        poGD.Cols["otbColCstName"].Caption = "ชื่อลูกค้า";
+                        poGD.Cols["otbColCstEml"].Caption = "อีเมล";
+                        poGD.Cols["otbColCstPho"].Caption = "เบอร์โทร";
+                        poGD.Cols["otbColCstAdr"].Caption = "ที่อยู่";
+                        poGD.Cols["otbColCstSMPT"].Caption = "วันที่สร้าง";
+
+
+                        //กำหนดตำแหน่งข้อความ Title หัว Column
+                        poGD.Cols["otbColCstID"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstName"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstEml"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstPho"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstAdr"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstSMPT"].TextAlignFixed = TextAlignEnum.CenterCenter;
+
+                        //กำหนดตำแหน่งข้อความในส่วนของข้อมูล
+                        poGD.Cols["otbColCstID"].TextAlign = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColCstCod"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstName"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstEml"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstPho"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstAdr"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColCstSMPT"].TextAlign = TextAlignEnum.CenterCenter;
+
+                        break;
+
 
                     default:
                         // ไม่ทำอะไร
@@ -384,15 +481,36 @@ namespace WindowsFormsApp1
                 //cPstService cPdtService = new cPstService();
                 //cPdtService.C_GETaoProduct();
 
-                ogdPdt.DataSource = aoPdt;
+                /* ogdPdt.DataSource = aoPdt;
 
-                string[] tColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "จำนวน", "ราคา", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
-                for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                 string[] tColsName = { "ลำดับ", "รหัสสินค้า", "ชื่อสินค้า", "รายละเอียด", "จำนวน", "ราคา", "ประเภท", "วันที่สร้างรายการ", "สถานะ" };
+                 for (int nRow = 0; nRow < tColsName.Length; nRow++)
+                 {
+                     ogdPdt.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                 }*/
+
+                ogdPdt.Rows.Count = ogdPdt.Rows.Fixed;
+                if (ogdPdt != null && aoPdt.Count > 0)
                 {
-                    ogdPdt.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                    foreach (cmlResPdt oSalSumy in aoPdt)
+                    {
+                        ogdPdt.Rows.Add();
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtID", oSalSumy.rnPdtID);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtCod", oSalSumy.rtPdtCod);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtName", oSalSumy.rtPdtName);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtDes", oSalSumy.rtPdtDes);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtQty", oSalSumy.rnPdtQty);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtPri", oSalSumy.rcPdtPri);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtTyp", oSalSumy.rnPdtTyp);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtSMPT", oSalSumy.rdPdtSMPT);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtStat", oSalSumy.rtPdtStat);
+                    }
+
                 }
-
-
+                else
+                {
+                    // not anyting
+                }
                 ogdPdt.Refresh();
             }
             catch (Exception oEx)
@@ -407,6 +525,8 @@ namespace WindowsFormsApp1
 
         }
 
+
+
         private void W_GETxCstData() // W_GETxGetCstData
         {
             try
@@ -418,11 +538,32 @@ namespace WindowsFormsApp1
                 // tC_name == gloabal class
                 ogdCst.DataSource = null;
 
-                ogdCst.DataSource = oaCst;
+                /*ogdCst.DataSource = oaCst;
                 string[] tColsName = { "ลำดับ", "รหัสลูกค้า", "ชื่อลูกค้า", "Email", "เบอร์โทร", "ที่อยู่", "วันที่สร้างรายการ" };
                 for (int nRow = 0; nRow < tColsName.Length; nRow++)
                 {
                     ogdCst.Cols[(nRow + 1)].Caption = tColsName[nRow];
+                }*/
+
+
+                ogdCst.Rows.Count = ogdCst.Rows.Fixed;
+                if (ogdPdt != null && oaCst.Count > 0)
+                {
+                    foreach (cmlResCst oSalSumy in oaCst)
+                    {
+                        ogdCst.Rows.Add();
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstID", oSalSumy.rtCstID);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstCod", oSalSumy.rtCstCod);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstName", oSalSumy.rtCstName);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstEml", oSalSumy.rtCstEml);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstPho", oSalSumy.rtCstPho);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstAdr", oSalSumy.rtCstAdr);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstSMPT", oSalSumy.rdCstSMPT);
+                    }
+                }
+                else
+                {
+                    // not anyting
                 }
             }
             catch (Exception oEx)
@@ -661,9 +802,9 @@ namespace WindowsFormsApp1
             try
             {
                 int nIdx = ogdPdt.Row;
-                otbSalPdtCod.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["rtPdtCod"].Index).ToString();
-                otbSalQty.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["rnPdtQty"].Index).ToString();
-                otbSalPri.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["rcPdtPri"].Index).ToString();
+                otbSalPdtCod.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["otbColPdtCod"].Index).ToString();
+                otbSalQty.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["otbColPdtQty"].Index).ToString();
+                otbSalPri.Text = ogdPdt.GetData(nIdx, ogdPdt.Cols["otbColPdtPri"].Index).ToString();
 
             }
             catch (Exception oEx)
@@ -684,7 +825,7 @@ namespace WindowsFormsApp1
             try
             {
                 int nIdx = ogdCst.Row;
-                otbSalCstCod.Text = ogdCst.GetData(nIdx, ogdCst.Cols["rtCstCod"].Index).ToString();
+                otbSalCstCod.Text = ogdCst.GetData(nIdx, ogdCst.Cols["otbColCstCod"].Index).ToString();
 
             }
             catch (Exception oEx)

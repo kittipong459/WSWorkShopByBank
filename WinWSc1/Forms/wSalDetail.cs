@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             {
 
                 W_SETxColSalDel(ogdSalDet);
+                W_SETxColSalDel(ogdSumSal);
 
             }
             catch (Exception oEx)
@@ -195,6 +196,41 @@ namespace WindowsFormsApp1
                         poGD.Cols["otbColPriceSum"].Caption = "ราคารวม";
                         poGD.Cols["otbColAmtSum"].Caption = "ยอดขายรวม";
                         poGD.Cols["otbColPdts"].Caption = "จำนวนประเภทสินค้า";
+
+                        //กำหนดตำแหน่งข้อความ Title หัว Column
+                        poGD.Cols["otbColSalCod"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColQtyMax"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColQtyMin"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColQtySum"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPriMax"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPriMin"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPriceSum"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColAmtSum"].TextAlignFixed = TextAlignEnum.CenterCenter;
+                        poGD.Cols["otbColPdts"].TextAlignFixed = TextAlignEnum.CenterCenter;
+
+
+                        //กำหนดตำแหน่งข้อความในส่วนของข้อมูล
+                        poGD.Cols["otbColSalCod"].TextAlign = TextAlignEnum.LeftCenter;
+                        poGD.Cols["otbColQtyMax"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColQtyMin"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColQtySum"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColPriMax"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColPriMin"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColPriceSum"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColAmtSum"].TextAlign = TextAlignEnum.RightCenter;
+                        poGD.Cols["otbColPdts"].TextAlign = TextAlignEnum.RightCenter;
+
+                        //กำหนด Column แสดงจำนวนเต็ม
+                        poGD.Cols["otbColQtyMax"].Format = "###,###,##0";
+                        poGD.Cols["otbColQtyMin"].Format = "###,###,##0";
+                        poGD.Cols["otbColQtySum"].Format = "###,###,##0";
+                        poGD.Cols["otbColPdts"].Format = "###,###,##0";
+                        //กำหนด Column แสดงจำนวนเต็มแบบมีทศนิยม
+                        poGD.Cols["otbColPriMax"].Format = "###,###,##0." + new string('0', 2);
+                        poGD.Cols["otbColPriMin"].Format = "###,###,##0." + new string('0', 2);
+                        poGD.Cols["otbColPriceSum"].Format = "###,###,##0." + new string('0', 2);
+                        poGD.Cols["otbColAmtSum"].Format = "###,###,##0." + new string('0', 2);
+
                         #endregion end Set Col ogdSumSal
                         break;
 

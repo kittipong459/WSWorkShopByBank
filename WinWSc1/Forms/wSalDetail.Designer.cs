@@ -35,25 +35,25 @@
             this.ocmCls = new C1.Win.C1Input.C1Button();
             this.otdSchSal = new C1.Win.C1Input.C1TextBox();
             this.ocmSsh = new C1.Win.C1Input.C1Button();
-            this.olaBesSalPdtTit = new C1.Win.C1Input.C1Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ogdSumSal = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.olaBesSalPdtTit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSalDet)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ocmCls)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.olaBesSalPdtTit)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSumSal)).BeginInit();
             this.SuspendLayout();
             // 
             // ogdSalDet
             // 
+            this.ogdSalDet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ogdSalDet.ColumnInfo = resources.GetString("ogdSalDet.ColumnInfo");
-            this.ogdSalDet.Location = new System.Drawing.Point(23, 95);
+            this.ogdSalDet.Location = new System.Drawing.Point(23, 82);
             this.ogdSalDet.Name = "ogdSalDet";
-            this.ogdSalDet.Size = new System.Drawing.Size(729, 176);
+            this.ogdSalDet.Size = new System.Drawing.Size(729, 189);
             this.ogdSalDet.StyleInfo = resources.GetString("ogdSalDet.StyleInfo");
             this.ogdSalDet.TabIndex = 0;
             this.ogdSalDet.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2007Blue;
@@ -71,6 +71,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.ocmCls);
             this.panel1.Controls.Add(this.otdSchSal);
             this.panel1.Controls.Add(this.ocmSsh);
@@ -83,20 +84,22 @@
             // 
             // ocmCls
             // 
+            this.ocmCls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ocmCls.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.ocmCls.Location = new System.Drawing.Point(650, 42);
             this.ocmCls.Name = "ocmCls";
             this.ocmCls.Size = new System.Drawing.Size(102, 34);
             this.ocmCls.TabIndex = 4;
             this.ocmCls.Text = "ล้างข้อมูล";
-            this.ocmCls.UseVisualStyleBackColor = true;
+            this.ocmCls.UseVisualStyleBackColor = false;
             this.ocmCls.UseVisualStyleForeColor = true;
             this.ocmCls.Click += new System.EventHandler(this.ocmCls_Click);
             // 
             // otdSchSal
             // 
+            this.otdSchSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.otdSchSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otdSchSal.Location = new System.Drawing.Point(34, 44);
+            this.otdSchSal.Location = new System.Drawing.Point(24, 44);
             this.otdSchSal.Name = "otdSchSal";
             this.otdSchSal.Size = new System.Drawing.Size(488, 27);
             this.otdSchSal.TabIndex = 3;
@@ -105,31 +108,22 @@
             // 
             // ocmSsh
             // 
+            this.ocmSsh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ocmSsh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.ocmSsh.Location = new System.Drawing.Point(542, 42);
             this.ocmSsh.Name = "ocmSsh";
             this.ocmSsh.Size = new System.Drawing.Size(102, 34);
             this.ocmSsh.TabIndex = 2;
             this.ocmSsh.Text = "ค้นหา";
-            this.ocmSsh.UseVisualStyleBackColor = true;
+            this.ocmSsh.UseVisualStyleBackColor = false;
             this.ocmSsh.UseVisualStyleForeColor = true;
             this.ocmSsh.Click += new System.EventHandler(this.ocmSsh_Click);
             // 
-            // olaBesSalPdtTit
-            // 
-            this.olaBesSalPdtTit.AutoSize = true;
-            this.olaBesSalPdtTit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.olaBesSalPdtTit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.olaBesSalPdtTit.Location = new System.Drawing.Point(23, 10);
-            this.olaBesSalPdtTit.Name = "olaBesSalPdtTit";
-            this.olaBesSalPdtTit.Size = new System.Drawing.Size(165, 25);
-            this.olaBesSalPdtTit.TabIndex = 3;
-            this.olaBesSalPdtTit.Tag = null;
-            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.ogdSumSal);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel2.Controls.Add(this.olaBesSalPdtTit);
+            this.panel2.Controls.Add(this.ogdSumSal);
             this.panel2.Location = new System.Drawing.Point(12, 307);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(776, 235);
@@ -137,6 +131,7 @@
             // 
             // ogdSumSal
             // 
+            this.ogdSumSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ogdSumSal.ColumnInfo = resources.GetString("ogdSumSal.ColumnInfo");
             this.ogdSumSal.Location = new System.Drawing.Point(23, 39);
             this.ogdSumSal.Name = "ogdSumSal";
@@ -144,6 +139,16 @@
             this.ogdSumSal.StyleInfo = resources.GetString("ogdSumSal.StyleInfo");
             this.ogdSumSal.TabIndex = 4;
             this.ogdSumSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Silver;
+            // 
+            // olaBesSalPdtTit
+            // 
+            this.olaBesSalPdtTit.AutoSize = true;
+            this.olaBesSalPdtTit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olaBesSalPdtTit.Location = new System.Drawing.Point(20, 9);
+            this.olaBesSalPdtTit.Name = "olaBesSalPdtTit";
+            this.olaBesSalPdtTit.Size = new System.Drawing.Size(170, 24);
+            this.olaBesSalPdtTit.TabIndex = 5;
+            this.olaBesSalPdtTit.Text = "สรุปรายการสินค้าขายดี";
             // 
             // Wform2
             // 
@@ -161,7 +166,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ocmCls)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otdSchSal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ocmSsh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.olaBesSalPdtTit)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSumSal)).EndInit();
@@ -176,9 +180,9 @@
         private System.Windows.Forms.Panel panel1;
         private C1.Win.C1Input.C1TextBox otdSchSal;
         private C1.Win.C1Input.C1Button ocmSsh;
-        private C1.Win.C1Input.C1Label olaBesSalPdtTit;
         private System.Windows.Forms.Panel panel2;
         private C1.Win.C1FlexGrid.C1FlexGrid ogdSumSal;
         private C1.Win.C1Input.C1Button ocmCls;
+        private System.Windows.Forms.Label olaBesSalPdtTit;
     }
 }

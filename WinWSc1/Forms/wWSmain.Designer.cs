@@ -87,8 +87,7 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdPdt.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ogdPdt.ColumnInfo = "10,1,0,0,0,-1,Columns:1{Style:\"BackColor:Window;\";}\t3{Style:\"BackColor:Window;\";}" +
-    "\t";
+            this.ogdPdt.ColumnInfo = resources.GetString("ogdPdt.ColumnInfo");
             this.ogdPdt.Location = new System.Drawing.Point(16, 40);
             this.ogdPdt.Name = "ogdPdt";
             this.ogdPdt.Size = new System.Drawing.Size(643, 148);
@@ -132,7 +131,7 @@ namespace WindowsFormsApp1
             this.ogdCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdCst.BackColor = System.Drawing.Color.MistyRose;
-            this.ogdCst.ColumnInfo = "10,1,0,0,0,-1,Columns:";
+            this.ogdCst.ColumnInfo = resources.GetString("ogdCst.ColumnInfo");
             this.ogdCst.Location = new System.Drawing.Point(16, 34);
             this.ogdCst.Name = "ogdCst";
             this.ogdCst.Size = new System.Drawing.Size(644, 151);
