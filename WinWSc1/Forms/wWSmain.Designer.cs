@@ -59,8 +59,8 @@ namespace WindowsFormsApp1
             this.olaId = new System.Windows.Forms.Label();
             this.olaManeSalTitle = new System.Windows.Forms.Label();
             this.opnSal = new System.Windows.Forms.Panel();
-            this.ogdSal = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.ocmSalDet = new System.Windows.Forms.Button();
+            this.ogdSal = new C1.Win.C1FlexGrid.C1FlexGrid();
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).BeginInit();
             this.opnPdt.SuspendLayout();
@@ -117,7 +117,8 @@ namespace WindowsFormsApp1
             // 
             // ogdCst
             // 
-            this.ogdCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ogdCst.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdCst.BackColor = System.Drawing.Color.MistyRose;
             this.ogdCst.ColumnInfo = resources.GetString("ogdCst.ColumnInfo");
@@ -201,7 +202,8 @@ namespace WindowsFormsApp1
             // 
             // opnPdt
             // 
-            this.opnPdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.opnPdt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opnPdt.BackColor = System.Drawing.Color.CornflowerBlue;
             this.opnPdt.Controls.Add(this.ogdPdt);
@@ -213,7 +215,8 @@ namespace WindowsFormsApp1
             // 
             // opnCst
             // 
-            this.opnCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.opnCst.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opnCst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.opnCst.Controls.Add(this.ogdCst);
@@ -380,6 +383,19 @@ namespace WindowsFormsApp1
             this.opnSal.Size = new System.Drawing.Size(1079, 240);
             this.opnSal.TabIndex = 30;
             // 
+            // ocmSalDet
+            // 
+            this.ocmSalDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ocmSalDet.BackColor = System.Drawing.Color.Lime;
+            this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ocmSalDet.Location = new System.Drawing.Point(823, 4);
+            this.ocmSalDet.Name = "ocmSalDet";
+            this.ocmSalDet.Size = new System.Drawing.Size(237, 32);
+            this.ocmSalDet.TabIndex = 39;
+            this.ocmSalDet.Text = "รายละเอียดการขาย";
+            this.ocmSalDet.UseVisualStyleBackColor = false;
+            this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
+            // 
             // ogdSal
             // 
             this.ogdSal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -395,18 +411,6 @@ namespace WindowsFormsApp1
             this.ogdSal.TabIndex = 3;
             this.ogdSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Blue;
             this.ogdSal.Click += new System.EventHandler(this.odgSal_Click);
-            // 
-            // ocmSalDet
-            // 
-            this.ocmSalDet.BackColor = System.Drawing.Color.Lime;
-            this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ocmSalDet.Location = new System.Drawing.Point(823, 4);
-            this.ocmSalDet.Name = "ocmSalDet";
-            this.ocmSalDet.Size = new System.Drawing.Size(237, 32);
-            this.ocmSalDet.TabIndex = 39;
-            this.ocmSalDet.Text = "รายละเอียดการขาย";
-            this.ocmSalDet.UseVisualStyleBackColor = false;
-            this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
             // 
             // wWSmain
             // 
