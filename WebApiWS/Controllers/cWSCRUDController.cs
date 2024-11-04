@@ -661,7 +661,8 @@ SUM(FCPdtPri) rcPriceSum,
 SUM(FCSalAmt) rcAmtSum,
 COUNT(FTSalPdtCod) rnPdts
 from VIE_WsSal s
-group by FTSalCod ";
+group by FTSalCod
+order by rnQtyMax desc";
 
                 oSql.AppendLine(toSql);
                 List<cmlResSalDetSummy> aoResultSalDetSummy = oDatabase.C_GETaDataQuery<cmlResSalDetSummy>(oSql.ToString());

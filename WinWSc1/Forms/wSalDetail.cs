@@ -479,7 +479,5 @@ namespace WindowsFormsApp1
             }
         }
 
-
-
     } 
 }

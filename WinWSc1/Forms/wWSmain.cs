@@ -578,31 +578,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void ocmAddSal_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cmlReqSale oSale = new cmlReqSale();
-                oSale = W_CHKoCheckSalData();
-                if (oSale != null)
-                {
-                    bool res = new cSaleService().C_POSbSaveSale(oSale);
-                }
-
-                W_RESxResload();
-                W_CLNxTxt();
-            }
-            catch (Exception oEx)
-            {
-                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
-            }
-            finally
-            {
-
-            }
-
-        }
 
         private void otbSalPri_TextChanged(object sender, EventArgs e)
         {
@@ -666,36 +641,6 @@ namespace WindowsFormsApp1
 
             }
         }
-
-
-        private void ocmEdtSal_Click(object sender, EventArgs e)
-        {
-            cmlReqSale mSale;
-            try
-            {
-                mSale = new cmlReqSale();
-
-                mSale = W_CHKoCheckSalData();
-                bool W_res = new cSaleService().C_POSbUpdateSale(mSale);
-                //bRes
-                W_RESxResload();
-                W_CLNxTxt();
-            }
-            catch (Exception oEx)
-            {
-                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
-            }
-            finally
-            {
-                mSale = null;
-            }
-
-
-
-        }
-
-
 
 
         private void odgSal_Click(object sender, EventArgs e)
@@ -779,23 +724,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void comClrSal_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                W_CLNxTxt();
-                W_RESxResload();
-            }
-            catch (Exception oEx)
-            {
-                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
-            }
-            finally
-            {
-
-            }
-        }
+      
 
         private void odgPdt_Click(object sender, EventArgs e)
         {
@@ -873,6 +802,74 @@ namespace WindowsFormsApp1
 
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void ocmAddSal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmlReqSale oSale = new cmlReqSale();
+                oSale = W_CHKoCheckSalData();
+                if (oSale != null)
+                {
+                    bool res = new cSaleService().C_POSbSaveSale(oSale);
+                }
+
+                W_RESxResload();
+                W_CLNxTxt();
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void ocmEdtSal_Click(object sender, EventArgs e)
+        {
+            cmlReqSale mSale;
+            try
+            {
+                mSale = new cmlReqSale();
+
+                mSale = W_CHKoCheckSalData();
+                bool W_res = new cSaleService().C_POSbUpdateSale(mSale);
+                //bRes
+                W_RESxResload();
+                W_CLNxTxt();
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+                mSale = null;
+            }
+
+        }
+
+        private void ocmClsSal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                W_CLNxTxt();
+                W_RESxResload();
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
             }
             finally
             {

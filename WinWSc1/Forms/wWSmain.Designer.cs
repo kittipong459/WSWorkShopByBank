@@ -36,14 +36,6 @@ namespace WindowsFormsApp1
             this.olaPdtTitle = new System.Windows.Forms.Label();
             this.olaCstTitle = new System.Windows.Forms.Label();
             this.ogdCst = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.otbSalCod = new C1.Win.C1Input.C1TextBox();
-            this.otbSalPdtCod = new C1.Win.C1Input.C1TextBox();
-            this.otbSalQty = new C1.Win.C1Input.C1TextBox();
-            this.otbSalPri = new C1.Win.C1Input.C1TextBox();
-            this.otbSalAmt = new C1.Win.C1Input.C1TextBox();
-            this.otbSalCstCod = new C1.Win.C1Input.C1TextBox();
-            this.otbSalDate = new C1.Win.C1Input.C1DateEdit();
-            this.ocmAddSal = new C1.Win.C1Input.C1Button();
             this.olaCod = new System.Windows.Forms.Label();
             this.olaPdtCod = new System.Windows.Forms.Label();
             this.olaQty = new System.Windows.Forms.Label();
@@ -51,33 +43,30 @@ namespace WindowsFormsApp1
             this.olaPriAmt = new System.Windows.Forms.Label();
             this.olaCstCod = new System.Windows.Forms.Label();
             this.olaSalDate = new System.Windows.Forms.Label();
-            this.ocmEdtSal = new C1.Win.C1Input.C1Button();
-            this.comClrSal = new C1.Win.C1Input.C1Button();
             this.opnPdt = new System.Windows.Forms.Panel();
             this.opnCst = new System.Windows.Forms.Panel();
             this.opnManSal = new System.Windows.Forms.Panel();
+            this.ocmClsSal = new System.Windows.Forms.Button();
+            this.ocmEdtSal = new System.Windows.Forms.Button();
+            this.ocmAddSal = new System.Windows.Forms.Button();
+            this.otbSalDate = new System.Windows.Forms.DateTimePicker();
+            this.otbSalCstCod = new System.Windows.Forms.TextBox();
+            this.otbSalAmt = new System.Windows.Forms.TextBox();
+            this.otbSalPri = new System.Windows.Forms.TextBox();
+            this.otbSalQty = new System.Windows.Forms.TextBox();
+            this.otbSalPdtCod = new System.Windows.Forms.TextBox();
+            this.otbSalCod = new System.Windows.Forms.TextBox();
             this.olaId = new System.Windows.Forms.Label();
             this.olaManeSalTitle = new System.Windows.Forms.Label();
             this.opnSal = new System.Windows.Forms.Panel();
-            this.ocmSalDet = new C1.Win.C1Input.C1Button();
             this.ogdSal = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.ocmSalDet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalPdtCod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalQty)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalPri)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalAmt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalCstCod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmAddSal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmEdtSal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comClrSal)).BeginInit();
             this.opnPdt.SuspendLayout();
             this.opnCst.SuspendLayout();
             this.opnManSal.SuspendLayout();
             this.opnSal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmSalDet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,90 +128,6 @@ namespace WindowsFormsApp1
             this.ogdCst.TabIndex = 7;
             this.ogdCst.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2007Blue;
             this.ogdCst.Click += new System.EventHandler(this.odgCst_Click);
-            // 
-            // otbSalCod
-            // 
-            this.otbSalCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalCod.Location = new System.Drawing.Point(119, 40);
-            this.otbSalCod.Name = "otbSalCod";
-            this.otbSalCod.Size = new System.Drawing.Size(252, 29);
-            this.otbSalCod.TabIndex = 8;
-            this.otbSalCod.Tag = null;
-            // 
-            // otbSalPdtCod
-            // 
-            this.otbSalPdtCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalPdtCod.Location = new System.Drawing.Point(119, 85);
-            this.otbSalPdtCod.Name = "otbSalPdtCod";
-            this.otbSalPdtCod.Size = new System.Drawing.Size(252, 29);
-            this.otbSalPdtCod.TabIndex = 9;
-            this.otbSalPdtCod.Tag = null;
-            // 
-            // otbSalQty
-            // 
-            this.otbSalQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalQty.Location = new System.Drawing.Point(119, 130);
-            this.otbSalQty.Name = "otbSalQty";
-            this.otbSalQty.Size = new System.Drawing.Size(252, 29);
-            this.otbSalQty.TabIndex = 10;
-            this.otbSalQty.Tag = null;
-            this.otbSalQty.TextChanged += new System.EventHandler(this.otbSalQty_TextChanged);
-            // 
-            // otbSalPri
-            // 
-            this.otbSalPri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalPri.Location = new System.Drawing.Point(119, 176);
-            this.otbSalPri.Name = "otbSalPri";
-            this.otbSalPri.Size = new System.Drawing.Size(252, 29);
-            this.otbSalPri.TabIndex = 11;
-            this.otbSalPri.Tag = null;
-            this.otbSalPri.TextChanged += new System.EventHandler(this.otbSalPri_TextChanged);
-            // 
-            // otbSalAmt
-            // 
-            this.otbSalAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalAmt.Location = new System.Drawing.Point(119, 223);
-            this.otbSalAmt.Name = "otbSalAmt";
-            this.otbSalAmt.Size = new System.Drawing.Size(252, 29);
-            this.otbSalAmt.TabIndex = 12;
-            this.otbSalAmt.Tag = null;
-            // 
-            // otbSalCstCod
-            // 
-            this.otbSalCstCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalCstCod.Location = new System.Drawing.Point(119, 267);
-            this.otbSalCstCod.Name = "otbSalCstCod";
-            this.otbSalCstCod.Size = new System.Drawing.Size(252, 29);
-            this.otbSalCstCod.TabIndex = 13;
-            this.otbSalCstCod.Tag = null;
-            // 
-            // otbSalDate
-            // 
-            // 
-            // 
-            // 
-            this.otbSalDate.Calendar.DayNameLength = 1;
-            this.otbSalDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.otbSalDate.GapHeight = 0;
-            this.otbSalDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.otbSalDate.Location = new System.Drawing.Point(119, 310);
-            this.otbSalDate.Name = "otbSalDate";
-            this.otbSalDate.Size = new System.Drawing.Size(252, 27);
-            this.otbSalDate.TabIndex = 14;
-            this.otbSalDate.Tag = null;
-            // 
-            // ocmAddSal
-            // 
-            this.ocmAddSal.BackColor = System.Drawing.Color.Lime;
-            this.ocmAddSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmAddSal.Location = new System.Drawing.Point(106, 359);
-            this.ocmAddSal.Name = "ocmAddSal";
-            this.ocmAddSal.Size = new System.Drawing.Size(89, 35);
-            this.ocmAddSal.TabIndex = 16;
-            this.ocmAddSal.Text = "เพิ่ม";
-            this.ocmAddSal.UseVisualStyleBackColor = false;
-            this.ocmAddSal.UseVisualStyleForeColor = true;
-            this.ocmAddSal.Click += new System.EventHandler(this.ocmAddSal_Click);
             // 
             // olaCod
             // 
@@ -294,32 +199,6 @@ namespace WindowsFormsApp1
             this.olaSalDate.TabIndex = 23;
             this.olaSalDate.Text = "วันที่ขาย";
             // 
-            // ocmEdtSal
-            // 
-            this.ocmEdtSal.BackColor = System.Drawing.Color.Orange;
-            this.ocmEdtSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmEdtSal.Location = new System.Drawing.Point(201, 359);
-            this.ocmEdtSal.Name = "ocmEdtSal";
-            this.ocmEdtSal.Size = new System.Drawing.Size(89, 35);
-            this.ocmEdtSal.TabIndex = 24;
-            this.ocmEdtSal.Text = "แก้ไข";
-            this.ocmEdtSal.UseVisualStyleBackColor = false;
-            this.ocmEdtSal.UseVisualStyleForeColor = true;
-            this.ocmEdtSal.Click += new System.EventHandler(this.ocmEdtSal_Click);
-            // 
-            // comClrSal
-            // 
-            this.comClrSal.BackColor = System.Drawing.Color.Gray;
-            this.comClrSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.comClrSal.Location = new System.Drawing.Point(296, 359);
-            this.comClrSal.Name = "comClrSal";
-            this.comClrSal.Size = new System.Drawing.Size(89, 35);
-            this.comClrSal.TabIndex = 26;
-            this.comClrSal.Text = "ล้างข้อมูล";
-            this.comClrSal.UseVisualStyleBackColor = false;
-            this.comClrSal.UseVisualStyleForeColor = true;
-            this.comClrSal.Click += new System.EventHandler(this.comClrSal_Click);
-            // 
             // opnPdt
             // 
             this.opnPdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -347,29 +226,123 @@ namespace WindowsFormsApp1
             // opnManSal
             // 
             this.opnManSal.BackColor = System.Drawing.Color.Cornsilk;
+            this.opnManSal.Controls.Add(this.ocmClsSal);
+            this.opnManSal.Controls.Add(this.ocmEdtSal);
+            this.opnManSal.Controls.Add(this.ocmAddSal);
+            this.opnManSal.Controls.Add(this.otbSalDate);
+            this.opnManSal.Controls.Add(this.otbSalCstCod);
+            this.opnManSal.Controls.Add(this.otbSalAmt);
+            this.opnManSal.Controls.Add(this.otbSalPri);
+            this.opnManSal.Controls.Add(this.otbSalQty);
+            this.opnManSal.Controls.Add(this.otbSalPdtCod);
+            this.opnManSal.Controls.Add(this.otbSalCod);
             this.opnManSal.Controls.Add(this.olaId);
             this.opnManSal.Controls.Add(this.olaManeSalTitle);
-            this.opnManSal.Controls.Add(this.otbSalCod);
-            this.opnManSal.Controls.Add(this.otbSalPdtCod);
-            this.opnManSal.Controls.Add(this.otbSalQty);
             this.opnManSal.Controls.Add(this.olaSalDate);
-            this.opnManSal.Controls.Add(this.ocmEdtSal);
             this.opnManSal.Controls.Add(this.olaCstCod);
             this.opnManSal.Controls.Add(this.olaPriAmt);
-            this.opnManSal.Controls.Add(this.comClrSal);
             this.opnManSal.Controls.Add(this.olaPri);
-            this.opnManSal.Controls.Add(this.otbSalPri);
             this.opnManSal.Controls.Add(this.olaQty);
-            this.opnManSal.Controls.Add(this.otbSalAmt);
             this.opnManSal.Controls.Add(this.olaPdtCod);
-            this.opnManSal.Controls.Add(this.otbSalCstCod);
             this.opnManSal.Controls.Add(this.olaCod);
-            this.opnManSal.Controls.Add(this.otbSalDate);
-            this.opnManSal.Controls.Add(this.ocmAddSal);
             this.opnManSal.Location = new System.Drawing.Point(18, 12);
             this.opnManSal.Name = "opnManSal";
             this.opnManSal.Size = new System.Drawing.Size(395, 406);
             this.opnManSal.TabIndex = 29;
+            // 
+            // ocmClsSal
+            // 
+            this.ocmClsSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ocmClsSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ocmClsSal.Location = new System.Drawing.Point(289, 359);
+            this.ocmClsSal.Name = "ocmClsSal";
+            this.ocmClsSal.Size = new System.Drawing.Size(79, 35);
+            this.ocmClsSal.TabIndex = 38;
+            this.ocmClsSal.Text = "ล้างข้อมูล";
+            this.ocmClsSal.UseVisualStyleBackColor = false;
+            this.ocmClsSal.Click += new System.EventHandler(this.ocmClsSal_Click);
+            // 
+            // ocmEdtSal
+            // 
+            this.ocmEdtSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.ocmEdtSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ocmEdtSal.Location = new System.Drawing.Point(197, 359);
+            this.ocmEdtSal.Name = "ocmEdtSal";
+            this.ocmEdtSal.Size = new System.Drawing.Size(79, 35);
+            this.ocmEdtSal.TabIndex = 37;
+            this.ocmEdtSal.Text = "แก้ไข";
+            this.ocmEdtSal.UseVisualStyleBackColor = false;
+            this.ocmEdtSal.Click += new System.EventHandler(this.ocmEdtSal_Click);
+            // 
+            // ocmAddSal
+            // 
+            this.ocmAddSal.BackColor = System.Drawing.Color.Lime;
+            this.ocmAddSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ocmAddSal.Location = new System.Drawing.Point(106, 359);
+            this.ocmAddSal.Name = "ocmAddSal";
+            this.ocmAddSal.Size = new System.Drawing.Size(79, 35);
+            this.ocmAddSal.TabIndex = 36;
+            this.ocmAddSal.Text = "เพิ่ม";
+            this.ocmAddSal.UseVisualStyleBackColor = false;
+            this.ocmAddSal.Click += new System.EventHandler(this.ocmAddSal_Click);
+            // 
+            // otbSalDate
+            // 
+            this.otbSalDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalDate.Location = new System.Drawing.Point(106, 310);
+            this.otbSalDate.Name = "otbSalDate";
+            this.otbSalDate.Size = new System.Drawing.Size(262, 29);
+            this.otbSalDate.TabIndex = 35;
+            // 
+            // otbSalCstCod
+            // 
+            this.otbSalCstCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalCstCod.Location = new System.Drawing.Point(106, 268);
+            this.otbSalCstCod.Name = "otbSalCstCod";
+            this.otbSalCstCod.Size = new System.Drawing.Size(262, 29);
+            this.otbSalCstCod.TabIndex = 34;
+            // 
+            // otbSalAmt
+            // 
+            this.otbSalAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalAmt.Location = new System.Drawing.Point(106, 222);
+            this.otbSalAmt.Name = "otbSalAmt";
+            this.otbSalAmt.Size = new System.Drawing.Size(262, 29);
+            this.otbSalAmt.TabIndex = 33;
+            // 
+            // otbSalPri
+            // 
+            this.otbSalPri.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalPri.Location = new System.Drawing.Point(106, 175);
+            this.otbSalPri.Name = "otbSalPri";
+            this.otbSalPri.Size = new System.Drawing.Size(262, 29);
+            this.otbSalPri.TabIndex = 32;
+            this.otbSalPri.TextChanged += new System.EventHandler(this.otbSalPri_TextChanged);
+            // 
+            // otbSalQty
+            // 
+            this.otbSalQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalQty.Location = new System.Drawing.Point(106, 129);
+            this.otbSalQty.Name = "otbSalQty";
+            this.otbSalQty.Size = new System.Drawing.Size(262, 29);
+            this.otbSalQty.TabIndex = 31;
+            this.otbSalQty.TextChanged += new System.EventHandler(this.otbSalQty_TextChanged);
+            // 
+            // otbSalPdtCod
+            // 
+            this.otbSalPdtCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalPdtCod.Location = new System.Drawing.Point(106, 85);
+            this.otbSalPdtCod.Name = "otbSalPdtCod";
+            this.otbSalPdtCod.Size = new System.Drawing.Size(262, 29);
+            this.otbSalPdtCod.TabIndex = 30;
+            // 
+            // otbSalCod
+            // 
+            this.otbSalCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otbSalCod.Location = new System.Drawing.Point(106, 40);
+            this.otbSalCod.Name = "otbSalCod";
+            this.otbSalCod.Size = new System.Drawing.Size(262, 29);
+            this.otbSalCod.TabIndex = 29;
             // 
             // olaId
             // 
@@ -407,20 +380,6 @@ namespace WindowsFormsApp1
             this.opnSal.Size = new System.Drawing.Size(1079, 240);
             this.opnSal.TabIndex = 30;
             // 
-            // ocmSalDet
-            // 
-            this.ocmSalDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ocmSalDet.BackColor = System.Drawing.Color.Lime;
-            this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ocmSalDet.Location = new System.Drawing.Point(817, 5);
-            this.ocmSalDet.Name = "ocmSalDet";
-            this.ocmSalDet.Size = new System.Drawing.Size(243, 33);
-            this.ocmSalDet.TabIndex = 31;
-            this.ocmSalDet.Text = "รายละเอียดการขาย";
-            this.ocmSalDet.UseVisualStyleBackColor = false;
-            this.ocmSalDet.UseVisualStyleForeColor = true;
-            this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
-            // 
             // ogdSal
             // 
             this.ogdSal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -437,6 +396,18 @@ namespace WindowsFormsApp1
             this.ogdSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Blue;
             this.ogdSal.Click += new System.EventHandler(this.odgSal_Click);
             // 
+            // ocmSalDet
+            // 
+            this.ocmSalDet.BackColor = System.Drawing.Color.Lime;
+            this.ocmSalDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ocmSalDet.Location = new System.Drawing.Point(823, 4);
+            this.ocmSalDet.Name = "ocmSalDet";
+            this.ocmSalDet.Size = new System.Drawing.Size(237, 32);
+            this.ocmSalDet.TabIndex = 39;
+            this.ocmSalDet.Text = "รายละเอียดการขาย";
+            this.ocmSalDet.UseVisualStyleBackColor = false;
+            this.ocmSalDet.Click += new System.EventHandler(this.ocmSalDet_Click);
+            // 
             // wWSmain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,16 +423,6 @@ namespace WindowsFormsApp1
             this.Shown += new System.EventHandler(this.wWSmain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalCod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalPdtCod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalQty)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalPri)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalAmt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalCstCod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.otbSalDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmAddSal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmEdtSal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comClrSal)).EndInit();
             this.opnPdt.ResumeLayout(false);
             this.opnPdt.PerformLayout();
             this.opnCst.ResumeLayout(false);
@@ -470,7 +431,6 @@ namespace WindowsFormsApp1
             this.opnManSal.PerformLayout();
             this.opnSal.ResumeLayout(false);
             this.opnSal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ocmSalDet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSal)).EndInit();
             this.ResumeLayout(false);
 
@@ -483,31 +443,31 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label olaPdtTitle;
         private System.Windows.Forms.Label olaCstTitle;
         private C1.Win.C1FlexGrid.C1FlexGrid ogdCst;
-        private C1.Win.C1Input.C1TextBox otbSalCod;
-        private C1.Win.C1Input.C1TextBox otbSalPdtCod;
-        private C1.Win.C1Input.C1TextBox otbSalQty;
-        private C1.Win.C1Input.C1TextBox otbSalPri;
-        private C1.Win.C1Input.C1TextBox otbSalAmt;
-        private C1.Win.C1Input.C1TextBox otbSalCstCod;
-        private C1.Win.C1Input.C1DateEdit otbSalDate;
-        private C1.Win.C1Input.C1Button ocmAddSal;
         private System.Windows.Forms.Label olaPdtCod;
         private System.Windows.Forms.Label olaQty;
         private System.Windows.Forms.Label olaPri;
         private System.Windows.Forms.Label olaPriAmt;
         private System.Windows.Forms.Label olaCstCod;
         private System.Windows.Forms.Label olaSalDate;
-        private C1.Win.C1Input.C1Button ocmEdtSal;
-        private C1.Win.C1Input.C1Button comClrSal;
         private System.Windows.Forms.Panel opnPdt;
         private System.Windows.Forms.Panel opnCst;
         private System.Windows.Forms.Panel opnManSal;
         private System.Windows.Forms.Label olaManeSalTitle;
         private System.Windows.Forms.Panel opnSal;
-        private C1.Win.C1Input.C1Button ocmSalDet;
         private C1.Win.C1FlexGrid.C1FlexGrid ogdSal;
         private System.Windows.Forms.Label olaId;
         private System.Windows.Forms.Label olaCod;
+        private System.Windows.Forms.DateTimePicker otbSalDate;
+        private System.Windows.Forms.TextBox otbSalCstCod;
+        private System.Windows.Forms.TextBox otbSalAmt;
+        private System.Windows.Forms.TextBox otbSalPri;
+        private System.Windows.Forms.TextBox otbSalQty;
+        private System.Windows.Forms.TextBox otbSalPdtCod;
+        private System.Windows.Forms.TextBox otbSalCod;
+        private System.Windows.Forms.Button ocmClsSal;
+        private System.Windows.Forms.Button ocmEdtSal;
+        private System.Windows.Forms.Button ocmAddSal;
+        private System.Windows.Forms.Button ocmSalDet;
     }
 }
 
