@@ -14,7 +14,6 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Service;
 using wModels.Class;
 using wModels.Response;
-using static C1.Util.Win.Win32;
 
 namespace WindowsFormsApp1
 {
