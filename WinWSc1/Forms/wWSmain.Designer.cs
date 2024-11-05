@@ -72,8 +72,7 @@ namespace WindowsFormsApp1
             // 
             // ogdPdt
             // 
-            this.ogdPdt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ogdPdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdPdt.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ogdPdt.ColumnInfo = resources.GetString("ogdPdt.ColumnInfo");
@@ -117,8 +116,7 @@ namespace WindowsFormsApp1
             // 
             // ogdCst
             // 
-            this.ogdCst.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ogdCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ogdCst.BackColor = System.Drawing.Color.MistyRose;
             this.ogdCst.ColumnInfo = resources.GetString("ogdCst.ColumnInfo");
@@ -202,8 +200,7 @@ namespace WindowsFormsApp1
             // 
             // opnPdt
             // 
-            this.opnPdt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.opnPdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opnPdt.BackColor = System.Drawing.Color.CornflowerBlue;
             this.opnPdt.Controls.Add(this.ogdPdt);
@@ -215,8 +212,7 @@ namespace WindowsFormsApp1
             // 
             // opnCst
             // 
-            this.opnCst.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.opnCst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opnCst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.opnCst.Controls.Add(this.ogdCst);
