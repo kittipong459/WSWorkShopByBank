@@ -404,15 +404,15 @@ namespace WindowsFormsApp1
                             // not anything
                         }
 
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalID"].Index, oSal.rnSalID);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalCod"].Index, oSal.rtSalCod);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalID"].Index, oSal.rnSalID == null?0: oSal.rnSalID);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalCod"].Index, string.IsNullOrEmpty(oSal.rtSalCod)?"": oSal.rtSalCod);
                         ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalPdtCod"].Index, string.IsNullOrEmpty(oSal.rtSalPdtCod) ? "" : oSal.rtSalPdtCod);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalQty"].Index, oSal.rnSalQty);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalPri"].Index, oSal.rcSalPri);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalAmt"].Index, oSal.rcSalAmt);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalCstCod"].Index, oSal.rtSalCstCod);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalDate"].Index, oSal.rdSalDate);
-                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalSMPT"].Index, oSal.rdSalSMPT);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalQty"].Index, oSal.rnSalQty == null ? 0 : oSal.rnSalQty);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalPri"].Index, oSal.rcSalPri == null ? 0 : oSal.rcSalPri);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalAmt"].Index, oSal.rcSalAmt == null ? 0 : oSal.rcSalAmt);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalCstCod"].Index, string.IsNullOrEmpty(oSal.rtSalCstCod)?"": oSal.rtSalCstCod);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalDate"].Index, oSal.rdSalDate == null?DateTime.Now: oSal.rdSalDate);
+                        ogdSal.SetData(ogdSal.Rows.Count - ogdSal.Rows.Fixed, ogdSal.Cols["otbColSalSMPT"].Index, oSal.rdSalSMPT == null?DateTime.Now: oSal.rdSalSMPT);
                         //ogdSal.SetData(nIndex, "rdSalDel", "ลบ");
                         /*Image oImg = new Bitmap("D:\\Bank\\workshop\\showtogit\\AddWSbyBank\\WinWSc1\\Images\\bin.png");
                         // Image = object = o
@@ -488,15 +488,15 @@ namespace WindowsFormsApp1
                     foreach (cmlResPdt oSalSumy in aoPdt)
                     {
                         ogdPdt.Rows.Add();
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtID", oSalSumy.rnPdtID);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtCod", oSalSumy.rtPdtCod);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtName", oSalSumy.rtPdtName);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtDes", oSalSumy.rtPdtDes);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtQty", oSalSumy.rnPdtQty);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtPri", oSalSumy.rcPdtPri);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtTyp", oSalSumy.rnPdtTyp);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtSMPT", oSalSumy.rdPdtSMPT);
-                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtStat", oSalSumy.rtPdtStat);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtID", oSalSumy.rnPdtID==null?0: oSalSumy.rnPdtID);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtCod", string.IsNullOrEmpty(oSalSumy.rtPdtCod)?"": oSalSumy.rtPdtCod);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtName", string.IsNullOrEmpty(oSalSumy.rtPdtName) ? "" : oSalSumy.rtPdtName);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtDes", string.IsNullOrEmpty(oSalSumy.rtPdtDes) ? "" : oSalSumy.rtPdtDes);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtQty", oSalSumy.rnPdtQty ==null?0: oSalSumy.rnPdtQty);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtPri", oSalSumy.rcPdtPri == null ? 0 : oSalSumy.rcPdtPri);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtTyp", oSalSumy.rnPdtTyp == null ? 0 : oSalSumy.rnPdtTyp);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtSMPT", oSalSumy.rdPdtSMPT==null?DateTime.Now: oSalSumy.rdPdtSMPT);
+                        ogdPdt.SetData(ogdPdt.Rows.Count - ogdPdt.Rows.Fixed, "otbColPdtStat", string.IsNullOrEmpty(oSalSumy.rtPdtStat)?"": oSalSumy.rtPdtStat);
                     }
 
                 }
@@ -542,13 +542,13 @@ namespace WindowsFormsApp1
                     foreach (cmlResCst oSalSumy in oaCst)
                     {
                         ogdCst.Rows.Add();
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstID", oSalSumy.rtCstID);
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstCod", oSalSumy.rtCstCod);
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstName", oSalSumy.rtCstName);
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstEml", oSalSumy.rtCstEml);
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstPho", oSalSumy.rtCstPho);
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstAdr", oSalSumy.rtCstAdr);
-                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstSMPT", oSalSumy.rdCstSMPT);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstID", string.IsNullOrEmpty(oSalSumy.rtCstID)?"": oSalSumy.rtCstID);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstCod", string.IsNullOrEmpty(oSalSumy.rtCstCod) ? "" : oSalSumy.rtCstCod);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstName", string.IsNullOrEmpty(oSalSumy.rtCstName) ? "" : oSalSumy.rtCstName);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstEml", string.IsNullOrEmpty(oSalSumy.rtCstEml) ? "" : oSalSumy.rtCstEml);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstPho", string.IsNullOrEmpty(oSalSumy.rtCstPho) ? "" : oSalSumy.rtCstPho);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstAdr", string.IsNullOrEmpty(oSalSumy.rtCstAdr) ? "" : oSalSumy.rtCstAdr);
+                        ogdCst.SetData(ogdCst.Rows.Count - ogdCst.Rows.Fixed, "otbColCstSMPT", oSalSumy.rdCstSMPT==null?DateTime.Now: oSalSumy.rdCstSMPT);
                     }
                 }
                 else
@@ -661,7 +661,6 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
-
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 W_CLNxClnTxt();
             }
