@@ -37,11 +37,11 @@ namespace WebApiWS.Controllers
                 cDatabase oDatabase = new cDatabase();
                 StringBuilder oSql;
                 oSql = new StringBuilder();
-                string toSql = "";
-                toSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
+                string tSql = "";
+                tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
 FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT 
 FROM TWsMPdt With(nolock)";
-                oSql.AppendLine(toSql);
+                oSql.AppendLine(tSql);
                 List<cmlResPdt> oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
                 aoResult.raItems = oResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
