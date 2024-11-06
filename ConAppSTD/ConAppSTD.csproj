@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.csproj" />
+	  <ProjectReference Include="..\ServiceModels\ServiceModels.csproj" />
 	  <ProjectReference Include="..\wModels\wModels.csproj" />
 	</ItemGroup>
 

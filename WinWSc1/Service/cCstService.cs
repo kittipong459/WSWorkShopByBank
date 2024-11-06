@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using wModels.Class;
 
 namespace WindowsFormsApp1.Service
 {
@@ -15,6 +18,7 @@ namespace WindowsFormsApp1.Service
 
         string tC_Access;
         string tC_UrlApi;
+        string tC_ClasName = "cCstService";
         public cCstService()
         {
             try
@@ -27,35 +31,47 @@ namespace WindowsFormsApp1.Service
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " " + oEx.StackTrace);
+                //// // // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
             finally { }
 
         }
 
-        public List<cmlResCst> C_GETaoCustomer()
+        public List<cmlResCst> C_GETaGetCustomer()
         {
             List<cmlResCst> aoResCst = new List<cmlResCst>();
             try
             {
+                //aoResCst = new List<cmlResCst>();
                 RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
                 RestClient oClient = new RestClient(oPtions);
                 RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetCustomer", Method.Get);
                 oRrequest.AddHeader("X-Api-Key", tC_Access);
                 RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
+
                 cmlResList<cmlResCst> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oResponse.Content);
                 //return aoResList.raItems;
-                aoResCst = aoResList.raItems;
+                if (aoResList != null && aoResList.raItems.Count > 0)
+                {
+                    aoResCst = aoResList.raItems;
+
+                }
+                else
+                {
+
+                }
+
                 return aoResCst;
             }
             catch (Exception oEx)
             {
-                throw new Exception(oEx.Message + " : " + oEx.StackTrace);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+                // // throw new Exception(oEx.Message + " : " + oEx.StackTrace);
             }
             finally
             {
-                aoResCst = null;
+                //aoResCst = null;
             }
             return aoResCst;
         }

@@ -6,22 +6,27 @@ using System.Text;
 using System;
 using WebApiSTD.Class;
 using ServiceModels;
+using wModels.Response;
 
 namespace WebApiWS.Controllers
 {
     [Route("api/WSCRUD")]
     [ApiController]
-    public class cProductController : ControllerBase
+    public class cWSCRUDController : ControllerBase
     {
 
         [HttpGet]
         [Route("GetProduct")]
-        public cmlResList<cmlResPdt> GET_GETaoGetPdt()
+        public cmlResList<cmlResPdt> C_GETaGetPdt()
         {
-            cmlResList<cmlResPdt> aoResult = new cmlResList<cmlResPdt>();
+            cmlResList<cmlResPdt> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
+                oDatabase = new cDatabase();
+                aoResult = new cmlResList<cmlResPdt>();
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
                 {
@@ -34,8 +39,7 @@ namespace WebApiWS.Controllers
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+               
                 oSql = new StringBuilder();
                 string tSql = "";
                 tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
@@ -65,15 +69,16 @@ FROM TWsMPdt With(nolock)";
 
         [HttpPost]
         [Route("AddProduct")]
-        public cmlResBase POST_SEToAddPdt([FromBody] cmlReqPdt poDataProduct)
+        public cmlResBase C_POSoPosAddPdt([FromBody] cmlReqPdt poDataProduct) // POST == POS เอา 3 ตัวแรก
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
                 //Check Model
                 if (poDataProduct == null)
                 {
@@ -134,16 +139,16 @@ FROM TWsMPdt With(nolock)";
 
         [HttpPost]
         [Route("UpdateProduct")]
-        //public cmlResBase C_POST_oUpPdt([FromBody] cmlReqPdt poDataProduct)
-        public cmlResBase POST_SEToUpPdt([FromBody] cmlReqPdt poDataProduct)
+        public cmlResBase C_POSoPosUpPdt([FromBody] cmlReqPdt poDataProduct)
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
                 //Check Model
                 if (poDataProduct == null)
                 {
@@ -204,13 +209,15 @@ FROM TWsMPdt With(nolock)";
 
         [HttpGet]
         [Route("GetSale")]
-        public cmlResList<cmlResSale> GET_GETaoGetSale()
+        public cmlResList<cmlResSale> C_GETaGetSale()
         {
-            cmlResList<cmlResSale> aoResult = new cmlResList<cmlResSale>();
+            cmlResList<cmlResSale> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
-
+                aoResult = new cmlResList<cmlResSale>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -224,23 +231,22 @@ FROM TWsMPdt With(nolock)";
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+                oDatabase = new cDatabase();
                 oSql = new StringBuilder();
                 string toSql = "";
-                toSql = @" SELECT FNSalID as rnSalID
-      ,FTSalCod as rtSalCod
-      ,FTSalPdtCod as rtSalPdtCod
-      ,FNSalQty as rnSalQty
-      ,FCSalPri as rcSalPri
-      ,FCSalAmt as rcSalAmt
-      ,FTSalCstCod as rtSalCstCod
-      ,FDSalDate as rdSalDate
-      ,FDSalSMPT as rdSalSMPT
-  FROM TWsTSal With(nolock)";
+                toSql = @"  SELECT FNSalID as rnSalID
+                            ,FTSalCod as rtSalCod
+                            ,FTSalPdtCod as rtSalPdtCod
+                            ,FNSalQty as rnSalQty
+                            ,FCSalPri as rcSalPri
+                            ,FCSalAmt as rcSalAmt
+                            ,FTSalCstCod as rtSalCstCod
+                            ,FDSalDate as rdSalDate
+                            ,FDSalSMPT as rdSalSMPT
+                            FROM TWsTSal With(nolock)";
                 oSql.AppendLine(toSql);
-                List<cmlResSale> oResultPdt = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
-                aoResult.raItems = oResultPdt;
+                List<cmlResSale> aoResultSal = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
+                aoResult.raItems = aoResultSal;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;
@@ -260,13 +266,15 @@ FROM TWsMPdt With(nolock)";
 
         [HttpGet]
         [Route("GetCustomer")]
-        public cmlResList<cmlResCst> GET_GETaoGetCst()
+        public cmlResList<cmlResCst> C_GET_oGetCst()
         {
-            cmlResList<cmlResCst> aoResult = new cmlResList<cmlResCst>();
+            cmlResList<cmlResCst> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
             string tErrAPI;
             try
             {
-                
+                aoResult = new cmlResList<cmlResCst>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -280,21 +288,20 @@ FROM TWsMPdt With(nolock)";
                     //TODO::
                 }
                 //process..
-                cDatabase oDatabase = new cDatabase();
-                StringBuilder oSql;
+                oDatabase = new cDatabase();
                 oSql = new StringBuilder();
                 string toSql = "";
-                toSql = @" SELECT FTCstID as rtCstID
-      ,FTCstCod as rtCstCod
-      ,FTCstName as rtCstName
-      ,FTCstEml as rtCstEml
-      ,FTCstPho as rtCstPho
-      ,FTCstAdr as rtCstAdr
-      ,FDCstSMPT as rdCstSMPT
-  FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
+                toSql = @"   SELECT FTCstID as rtCstID
+                            ,FTCstCod as rtCstCod
+                            ,FTCstName as rtCstName
+                            ,FTCstEml as rtCstEml
+                            ,FTCstPho as rtCstPho
+                            ,FTCstAdr as rtCstAdr
+                            ,FDCstSMPT as rdCstSMPT
+                            FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
                 oSql.AppendLine(toSql);
-                List<cmlResCst> oResultPdt = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
-                aoResult.raItems = oResultPdt;
+                List<cmlResCst> aoResultCst = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
+                aoResult.raItems = aoResultCst;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;
@@ -320,18 +327,19 @@ FROM TWsMPdt With(nolock)";
 
         [HttpPost]
         [Route("AddSale")]
-        public cmlResBase POST_SEToAddSale([FromBody] cmlReqSale paoSale)
+        public cmlResBase C_POSoPosAddSale([FromBody] cmlReqSale poSale)
         {
-            cmlResBase oResult = new cmlResList<cmlResSale>();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-
+                oResult = new cmlResList<cmlResSale>();
+                oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (paoSale == null)
+                if (poSale == null)
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -358,7 +366,7 @@ FROM TWsMPdt With(nolock)";
 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoSale);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "AddSale", true))
                 {
@@ -382,7 +390,7 @@ FROM TWsMPdt With(nolock)";
             }
             finally
             {
-                paoSale = null;
+                poSale = null;
                 oRabbitMQ = null;
                 oResult = null;
             }
@@ -392,18 +400,19 @@ FROM TWsMPdt With(nolock)";
 
         [HttpPost]
         [Route("UpdateSale")]
-        public cmlResBase POST_SEToUpdateSale([FromBody] cmlReqSale paoSale)
+        public cmlResBase C_POSoPosUpdateSale([FromBody] cmlReqSale poSale)
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-               
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (paoSale == null)
+                if (poSale == null)
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -430,7 +439,7 @@ FROM TWsMPdt With(nolock)";
                 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(paoSale);
+                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "UpdateSale", true))
                 {
@@ -454,7 +463,7 @@ FROM TWsMPdt With(nolock)";
             }
             finally
             {
-                paoSale = null;
+                poSale = null;
                 oRabbitMQ = null;
                 oResult = null;
             }
@@ -464,18 +473,19 @@ FROM TWsMPdt With(nolock)";
 
         [HttpDelete]
         [Route("DelSale/{SalId}")]
-        public cmlResBase POST_PRCoDELProduct(string SalId) // PRC == process
+        public cmlResBase C_DELoDelProduct(string ptSalId) // PRC == process
         {
-            cmlResBase oResult = new cmlResBase();
-            cRabbitMQ oRabbitMQ = new cRabbitMQ();
+            cmlResBase oResult;
+            cRabbitMQ oRabbitMQ;
             string tErrAPI;
 
             try
             {
-                
+                oResult = new cmlResBase();
+                oRabbitMQ = new cRabbitMQ();
 
                 //Check Model
-                if (string.IsNullOrEmpty(SalId))
+                if (string.IsNullOrEmpty(ptSalId))
                 {
                     oResult.rtCode = cMS.tMS_RespCode700;
                     oResult.rtDesc = cMS.tMS_RespDesc700;
@@ -501,7 +511,7 @@ FROM TWsMPdt With(nolock)";
                 //To do..
                 
                 //Convert to string json
-                string tMsgJson = SalId;
+                string tMsgJson = ptSalId;
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "DelSale", true))
                 {
@@ -518,6 +528,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+               
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -525,13 +536,163 @@ FROM TWsMPdt With(nolock)";
             }
             finally
             {
-                SalId = null;
+                ptSalId = null;
                 oRabbitMQ = null;
             }
         }
 
+        [HttpGet]
+        [Route("GetSaleDetail/{ptSechSalCode}")]
+        public cmlResList<cmlResSalDet> C_GETaGetSaleDetail(string ptSechSalCode)
+        {
+            cmlResList<cmlResSalDet> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
+            string tErrAPI;
+            try
+            {
+                aoResult = new cmlResList<cmlResSalDet>();
 
+                //Check API Key
+                if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
+                {
+                    aoResult.rtCode = cMS.tMS_RespCode904;
+                    aoResult.rtDesc = cMS.tMS_RespDesc904;
+                    return aoResult;
+                }
+                else
+                {
+                    //TODO::
+                }
+                //process..
+                oDatabase = new cDatabase();
+                oSql = new StringBuilder();
+                string toSql = "";
+                toSql = $@" SELECT 1 rnSalID ,FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
+                        FTPdtName as rtPdtName, FTPdtDes as rtPdtDes, FTPdtTyp as rtPdtTyp,
+                        FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
+                        FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
+                        FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
+                        FROM VIE_WsSal where 1 =1 ";
+                if (ptSechSalCode!= "N")
+                {
+                    toSql += $@" and (
+						FTSalCod like'%{ptSechSalCode}%'
+						or FTSalPdtCod like '%{ptSechSalCode}%'
+						or FTPdtName like '%{ptSechSalCode}%'
+						or FTPdtDes like '%{ptSechSalCode}%'
+						or FTPdtTyp like '%{ptSechSalCode}%'
+						or FTCstAdr like '%{ptSechSalCode}%'
+						or FTCstPho like '%{ptSechSalCode}%'
+						or FTCstEml like '%{ptSechSalCode}%'
+						) ";
+                }
+                else
+                {
 
+                }
+               
+                oSql.AppendLine(toSql);
+                List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
+                aoResult.raItems = aoResultPdt;
+                aoResult.rtCode = cMS.tMS_RespCode001;
+                aoResult.rtDesc = cMS.tMS_RespDesc001;
+
+                if(aoResult != null  && aoResult.raItems.Count > 0)
+                {
+                    return aoResult;
+                }
+                else
+                {
+                    // ไม่ทำอะไร
+                }
+               
+            }
+            catch (Exception oEx)
+            {
+                aoResult = new cmlResList<cmlResSalDet>();
+                aoResult.rtCode = cMS.tMS_RespCode900;
+                aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
+            }
+            finally
+            {
+               
+                ptSechSalCode = null;
+            }
+            return aoResult;
+        }
+
+        // cmlResSalDetSummy
+        [HttpGet]
+        [Route("SalDetSummy")]
+        public cmlResList<cmlResSalDetSummy> C_GETaGetSalDetSummy()
+        {
+            cmlResList<cmlResSalDetSummy> aoResult;
+            cDatabase oDatabase;
+            StringBuilder oSql;
+            string tErrAPI;
+            try
+            {
+                aoResult = new cmlResList<cmlResSalDetSummy>();
+
+                //Check API Key
+                if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
+                {
+                    aoResult.rtCode = cMS.tMS_RespCode904;
+                    aoResult.rtDesc = cMS.tMS_RespDesc904;
+                    return aoResult;
+                }
+                else
+                {
+                    //TODO::
+                }
+                //process..
+                oDatabase = new cDatabase();
+                oSql = new StringBuilder();
+                string toSql = "";
+                toSql = $@" select FTSalCod as rtSalCod,
+max(FNSalQty) rnQtyMax,
+min(FNSalQty) rnQtyMin ,
+SUM(FNSalQty) rnQtySum,
+max(FCPdtPri) rcPriMax,
+min(FCPdtPri) rcPriMin,
+SUM(FCPdtPri) rcPriceSum,
+SUM(FCSalAmt) rcAmtSum,
+COUNT(FTSalPdtCod) rnPdts
+from VIE_WsSal s
+group by FTSalCod
+order by rnQtyMax desc";
+
+                oSql.AppendLine(toSql);
+                List<cmlResSalDetSummy> aoResultSalDetSummy = oDatabase.C_GETaDataQuery<cmlResSalDetSummy>(oSql.ToString());
+                aoResult.raItems = aoResultSalDetSummy;
+                aoResult.rtCode = cMS.tMS_RespCode001;
+                aoResult.rtDesc = cMS.tMS_RespDesc001;
+
+                if (aoResult != null && aoResult.raItems.Count > 0)
+                {
+                    return aoResult;
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception oEx)
+            {
+                aoResult = new cmlResList<cmlResSalDetSummy>();
+                aoResult.rtCode = cMS.tMS_RespCode900;
+                aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
+            }
+            finally
+            {
+                // ไม่ต้องทำอะไร
+            }
+            return aoResult;
+        }
+
+        
 
 
         ///////////

@@ -217,7 +217,7 @@ namespace ConAppSTD.Class
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_ADPbAddPdtTransaction(oPdtData);
+                                        bPrc = cExample.C_ADDbAddPdtTransaction(oPdtData);
 
                                         if (bPrc)
                                         {
@@ -258,7 +258,7 @@ namespace ConAppSTD.Class
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_UPPbUpdPdtTransaction(oPdtData);
+                                        bPrc = cExample.C_UPDbUpdPdtTransaction(oPdtData);
 
                                         if (bPrc)
                                         {
@@ -299,7 +299,7 @@ namespace ConAppSTD.Class
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_ADSbAddSaleTransaction(oSalData);
+                                        bPrc = cExample.C_ADDbAddSaleTransaction(oSalData);
 
                                         if (bPrc)
                                         {
@@ -340,7 +340,7 @@ namespace ConAppSTD.Class
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_UPSbUpdateSaleTransaction(oSalData);
+                                        bPrc = cExample.C_UPDbUpdSaleTransaction(oSalData);
 
                                         if (bPrc)
                                         {
@@ -381,7 +381,7 @@ namespace ConAppSTD.Class
 
                                         cExample oExample = new cExample();
                                         string tMsgErr = "";
-                                        bPrc = cExample.C_PRCxDelPdtTransaction(tPdtCode);
+                                        bPrc = cExample.C_DELbDelPdtTransaction(tPdtCode);
 
                                         if (bPrc)
                                         {
