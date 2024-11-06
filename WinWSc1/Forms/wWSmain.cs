@@ -24,14 +24,11 @@ namespace WindowsFormsApp1
             try
             {
                 InitializeComponent();
-                W_SETxDesign();
-                W_SETxText();
-                W_GETxPdtData();
-                //W_GETxGetPdtData();
-                W_GETxSalData();
-                // W_GETxGetSalData();
-                W_GETxCstData();
-                //W_GETxGetCstData();
+                W_SETxSetDesign();
+                W_SETxSetText();
+                W_GETxGetPdtData();
+                W_GETxGetSalData();
+                W_GETxGetCstData();
             }
             catch (Exception oEx)
             {
@@ -40,17 +37,19 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
 
-        private void W_SETxDesign()  // W_SETxSetDesign
+        private void W_SETxSetDesign()  // W_SETxSetDesign
         {
             try
             {
 
-
+                W_SETxColSal(ogdSal);
+                W_SETxColSal(ogdPdt);
+                W_SETxColSal(ogdCst);
 
             }
             catch (Exception oEx)
@@ -60,11 +59,11 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
-        private void W_SETxText()  // W_SETxSetText
+        private void W_SETxSetText()  // W_SETxSetText
         {
             try
             {
@@ -85,7 +84,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
@@ -116,7 +115,6 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("ระบุรหัสิสนค้า");
                 }
-
                 else
                 {
                     oSale.ptSalPdtCod = otbSalPdtCod.Text;
@@ -126,7 +124,6 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("ระบุรหัสลูกค้า");
                 }
-
                 else
                 {
                     oSale.ptSalCstCod = otbSalCstCod.Text;
@@ -136,7 +133,6 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("ระบุราคา");
                 }
-
                 else
                 {
                     oSale.pcSalPri = decimal.Parse(otbSalPri.Text);
@@ -146,7 +142,6 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("ระบุจำนวน");
                 }
-
                 else
                 {
                     oSale.pnSalQty = int.Parse(otbSalQty.Text);
@@ -156,7 +151,6 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("ราคารวม");
                 }
-
                 else
                 {
                     oSale.pcSalAmt = decimal.Parse(otbSalAmt.Text);
@@ -166,7 +160,6 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("ระบุวันที่ขาย");
                 }
-
                 else
                 {
                     oSale.pdSalDate = DateTime.Parse(otbSalDate.Value.ToString());
@@ -182,7 +175,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
             return oSale;
         }
@@ -376,11 +369,11 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
-        private void W_GETxSalData()  // W_GETxGetSalData
+        private void W_GETxGetSalData()  // W_GETxGetSalData
         {
             List<cmlResSale> aoSale;
             try
@@ -469,11 +462,12 @@ namespace WindowsFormsApp1
         }
 
 
-        private void W_GETxPdtData() // W_GETxGetPdtData
+        private void W_GETxGetPdtData() // W_GETxGetPdtData
         {
+            List<cmlResPdt> aoPdt;
             try
             {
-                List<cmlResPdt> aoPdt = new cPdtService().C_GETaGetProduct(); // return object
+                aoPdt = new cPdtService().C_GETaGetProduct(); // return object
 
                 ogdPdt.DataSource = null;
 
@@ -519,20 +513,19 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
 
         }
 
 
 
-        private void W_GETxCstData() // W_GETxGetCstData
+        private void W_GETxGetCstData() // W_GETxGetCstData
         {
+            List<cmlResCst> oaCst;
             try
             {
-
-
-                List<cmlResCst> oaCst = new cCstService().C_GETaGetCustomer();
+                oaCst = new cCstService().C_GETaGetCustomer();
                 // tW_name  == global from
                 // tC_name == gloabal class
                 ogdCst.DataSource = null;
@@ -572,7 +565,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
 
         }
@@ -583,7 +576,7 @@ namespace WindowsFormsApp1
             try
             {
                 // W_SETxSetAmt();
-                W_SETxAmt();
+                W_SETxSetAmt();
             }
             catch (Exception oEx)
             {
@@ -592,7 +585,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
         }
 
@@ -600,7 +593,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                W_SETxAmt();
+                W_SETxSetAmt();
             }
             catch (Exception oEx)
             {
@@ -609,12 +602,12 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
         }
 
 
-        private void W_SETxAmt()
+        private void W_SETxSetAmt()
         {
             try
             {
@@ -637,7 +630,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
         }
 
@@ -672,11 +665,11 @@ namespace WindowsFormsApp1
             {
 
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                W_CLNxTxt();
+                W_CLNxClnTxt();
             }
             finally
             {
-
+                // not anyting
             }
 
         }
@@ -700,7 +693,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void W_CLNxTxt()
+        private void W_CLNxClnTxt()
         {
             try
             {
@@ -719,7 +712,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
         }
 
@@ -739,11 +732,11 @@ namespace WindowsFormsApp1
             {
 
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                W_CLNxTxt();
+                W_CLNxClnTxt();
             }
             finally
             {
-
+                // not anyting
             }
 
         }
@@ -758,13 +751,13 @@ namespace WindowsFormsApp1
             }
             catch (Exception oEx)
             {
-                W_CLNxTxt();
+                W_CLNxClnTxt();
                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
             }
             finally
             {
-
+                // not anyting
             }
         }
 
@@ -772,9 +765,9 @@ namespace WindowsFormsApp1
         {
             try
             {
-                W_GETxPdtData();
-                W_GETxSalData();
-                W_GETxCstData();
+                W_GETxGetPdtData();
+                W_GETxGetSalData();
+                W_GETxGetCstData();
             }
             catch (Exception oEx)
             {
@@ -784,7 +777,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
 
         }
@@ -794,7 +787,6 @@ namespace WindowsFormsApp1
             try
             {
 
-                W_SETxColSal(ogdSal);
             }
             catch (Exception oEx)
             {
@@ -810,9 +802,10 @@ namespace WindowsFormsApp1
 
         private void ocmAddSal_Click(object sender, EventArgs e)
         {
+            cmlReqSale oSale;
             try
             {
-                cmlReqSale oSale = new cmlReqSale();
+                oSale = new cmlReqSale();
                 oSale = W_CHKoCheckSalData();
                 if (oSale != null)
                 {
@@ -820,7 +813,7 @@ namespace WindowsFormsApp1
                 }
 
                 W_RESxResload();
-                W_CLNxTxt();
+                W_CLNxClnTxt();
             }
             catch (Exception oEx)
             {
@@ -829,7 +822,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
         }
 
@@ -844,7 +837,7 @@ namespace WindowsFormsApp1
                 bool W_res = new cSaleService().C_POSbUpdateSale(mSale);
                 //bRes
                 W_RESxResload();
-                W_CLNxTxt();
+                W_CLNxClnTxt();
             }
             catch (Exception oEx)
             {
@@ -862,7 +855,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                W_CLNxTxt();
+                W_CLNxClnTxt();
                 W_RESxResload();
             }
             catch (Exception oEx)
@@ -872,7 +865,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anyting
             }
         }
     }

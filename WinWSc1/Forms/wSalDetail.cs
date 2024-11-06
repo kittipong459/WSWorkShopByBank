@@ -22,21 +22,33 @@ namespace WindowsFormsApp1
         string tW_ClasName = "wSalDetail";
         public Wform2()
         {
-            InitializeComponent();
-            W_SETxDesign();
-            W_SETxText();
-            W_GETxGetSalDetail();
-            W_GETxGetSalDetSummy();
+            try
+            {
+                InitializeComponent();
+                W_SETxSetDesign();
+                W_SETxSetText();
+                W_GETxGetSalDetail();
+                W_GETxGetSalDetSummy();
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+                // not anything
+            }
         }
 
 
-        private void W_SETxDesign()  // W_SETxSetDesign
+        private void W_SETxSetDesign()  // W_SETxSetDesign
         {
             try
             {
 
-                W_SETxColSalDel(ogdSalDet);
-                W_SETxColSalDel(ogdSumSal);
+                W_SETxSetColSalDel(ogdSalDet);
+                W_SETxSetColSalDel(ogdSumSal);
 
             }
             catch (Exception oEx)
@@ -46,15 +58,15 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
-        private void W_SETxText()  // W_SETxSetText
+        private void W_SETxSetText()  // W_SETxSetText
         {
             try
             {
-
+                // not anything
             }
             catch (Exception oEx)
             {
@@ -63,11 +75,11 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
-        private void W_SETxColSalDel(C1FlexGrid poGD)  // W_SETxSetColSal
+        private void W_SETxSetColSalDel(C1FlexGrid poGD)  // W_SETxSetColSal
         {
             int nWidth = 0;
             string tNameGrid = poGD.Name;
@@ -246,7 +258,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
         private void W_GETxGetSalDetail()
@@ -318,54 +330,54 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
-        private void ocmSetImg_Click_1(object sender, EventArgs e)
-        {
-            // ไม่ได้ใช้แล้ว
-            try
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                ofd.Title = "Select an Image";
-                Image oImg;
-                // Show the dialog and check if the user selected a file
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    // Get the file path
-                    string sFilePath = ofd.FileName;
+        /* private void ocmSetImg_Click_1(object sender, EventArgs e)
+         {
+             // ไม่ได้ใช้แล้ว
+             try
+             {
+                 OpenFileDialog ofd = new OpenFileDialog();
+                 ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                 ofd.Title = "Select an Image";
+                 Image oImg;
+                 // Show the dialog and check if the user selected a file
+                 if (ofd.ShowDialog() == DialogResult.OK)
+                 {
+                     // Get the file path
+                     string sFilePath = ofd.FileName;
 
-                    // Check if file exists
-                    if (File.Exists(sFilePath))
-                    {
-                        oImg = Image.FromFile(ofd.FileName);
-                        // uploadedImage.Save("E:\\ada\\expros\\testImgs\\"+DateTime.Now.ToString("yyyymmddmm")+"tre489464534" +".png");
+                     // Check if file exists
+                     if (File.Exists(sFilePath))
+                     {
+                         oImg = Image.FromFile(ofd.FileName);
+                         // uploadedImage.Save("E:\\ada\\expros\\testImgs\\"+DateTime.Now.ToString("yyyymmddmm")+"tre489464534" +".png");
 
-                        //uploadedImage = Image.FromFile("E:\\ada\\testpros\\testImgs\\2024241724tre489464534.png");
-                        //c1PictureBox1.Image = oImg;
-                        //c1PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                         //uploadedImage = Image.FromFile("E:\\ada\\testpros\\testImgs\\2024241724tre489464534.png");
+                         //c1PictureBox1.Image = oImg;
+                         //c1PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                        //pictureBox1.Image = new Bitmap(sFilePath);
-                        //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }
-                    else
-                    {
-                        MessageBox.Show("File not found!");
-                    }
-                }
-            }
-            catch (Exception oEx)
-            {
-                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
-            }
-            finally
-            {
+                         //pictureBox1.Image = new Bitmap(sFilePath);
+                         //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                     }
+                     else
+                     {
+                         MessageBox.Show("File not found!");
+                     }
+                 }
+             }
+             catch (Exception oEx)
+             {
+                 cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+             }
+             finally
+             {
 
-            }
-        }
+             }
+         }*/
 
         private void ocmSsh_Click(object sender, EventArgs e)
         {
@@ -380,7 +392,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
@@ -400,14 +412,26 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
         private void ocmCls_Click(object sender, EventArgs e)
         {
-            otdSchSal.Text = "";
-            W_GETxGetSalDetail();
+            try
+            {
+                otdSchSal.Text = "";
+                W_GETxGetSalDetail();
+            }
+            catch (Exception oEx)
+            {
+                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
+            }
+            finally
+            {
+                // not anything
+            }
         }
 
         private void otdSchSal_KeyUp(object sender, KeyEventArgs e)
@@ -427,7 +451,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
@@ -448,11 +472,11 @@ namespace WindowsFormsApp1
                     foreach (cmlResSalDetSummy oSalSumy in aoResSalSumys)
                     {
                         ogdSumSal.Rows.Add();
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColSalCod", oSalSumy.rtSalCod);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColQtyMax", oSalSumy.rnQtyMax);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColQtyMin", oSalSumy.rnQtyMin);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColQtySum", oSalSumy.rnQtySum);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed,"otbColPriMax", oSalSumy.rcPriMax);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColSalCod", oSalSumy.rtSalCod);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtyMax", oSalSumy.rnQtyMax);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtyMin", oSalSumy.rnQtyMin);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtySum", oSalSumy.rnQtySum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMax", oSalSumy.rcPriMax);
                         ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMin", oSalSumy.rcPriMin);
                         ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriceSum", oSalSumy.rcPriceSum);
                         ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColAmtSum", oSalSumy.rcAmtSum);
@@ -474,9 +498,9 @@ namespace WindowsFormsApp1
             }
             finally
             {
-
+                // not anything
             }
         }
 
-    } 
+    }
 }
