@@ -7,6 +7,7 @@ using System;
 using WebApiSTD.Class;
 using ServiceModels;
 using wModels.Response;
+using wModels.Class;
 
 namespace WebApiWS.Controllers
 {
@@ -36,10 +37,10 @@ namespace WebApiWS.Controllers
                 }
                 else
                 {
-                    //TODO::
+                    // ไม่ทำอะไร
                 }
                 //process..
-               
+
                 oSql = new StringBuilder();
                 string tSql = "";
                 tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
@@ -54,6 +55,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", "GetProduct :" + oEx.Message);
                 aoResult = new cmlResList<cmlResPdt>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
                 aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -88,7 +90,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //Check API Key
@@ -100,7 +102,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //To do..
@@ -123,6 +125,8 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", "AddProduct :" + oEx.Message);
+
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -158,7 +162,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //Check API Key
@@ -170,7 +174,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //To do..
@@ -193,6 +197,8 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " UpdateProduct:" + oEx.Message);
+
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -228,7 +234,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-                    //TODO::
+                    // ไม่ทำอะไร
                 }
                 //process..
                 oDatabase = new cDatabase();
@@ -253,6 +259,8 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " GetSale:" + oEx.Message);
+
                 aoResult = new cmlResList<cmlResSale>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
                 aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -266,7 +274,7 @@ FROM TWsMPdt With(nolock)";
 
         [HttpGet]
         [Route("GetCustomer")]
-        public cmlResList<cmlResCst> C_GET_oGetCst()
+        public cmlResList<cmlResCst> C_GEToGetCst()
         {
             cmlResList<cmlResCst> aoResult;
             cDatabase oDatabase;
@@ -285,7 +293,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-                    //TODO::
+                    // ไม่ทำอะไร
                 }
                 //process..
                 oDatabase = new cDatabase();
@@ -308,6 +316,8 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " GetCustomer:" + oEx.Message);
+
                 aoResult = new cmlResList<cmlResCst>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
                 aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -347,7 +357,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //Check API Key
@@ -359,7 +369,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //To do..
@@ -383,10 +393,12 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " AddSale:" + oEx.Message);
+
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-               
+
             }
             finally
             {
@@ -420,7 +432,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //Check API Key
@@ -432,11 +444,11 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //To do..
-                
+
 
                 //Convert to string json
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
@@ -456,10 +468,12 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " UpdateSale:" + oEx.Message);
+
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
-                
+
             }
             finally
             {
@@ -493,7 +507,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //Check API Key
@@ -505,11 +519,11 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
                 //To do..
-                
+
                 //Convert to string json
                 string tMsgJson = ptSalId;
                 //Publish to rabbitMQ
@@ -528,7 +542,8 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-               
+                cLog.C_WRTxLog("API", " DelSale/{SalId}:" + oEx.Message);
+
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
                 oResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -562,7 +577,7 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-                    //TODO::
+                    // ไม่ทำอะไร
                 }
                 //process..
                 oDatabase = new cDatabase();
@@ -574,7 +589,7 @@ FROM TWsMPdt With(nolock)";
                         FTSalCstCod as rtSalCstCod, FTCstName as rtCstName,
                         FTCstAdr as rtCstAdr, FTCstPho as rtCstPho, FTCstEml as rtCstEml, FDSalSMPT as rdSalSMPT
                         FROM VIE_WsSal where 1 =1 ";
-                if (ptSechSalCode!= "N")
+                if (ptSechSalCode != "N")
                 {
                     toSql += $@" and (
 						FTSalCod like'%{ptSechSalCode}%'
@@ -589,16 +604,16 @@ FROM TWsMPdt With(nolock)";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
-               
+
                 oSql.AppendLine(toSql);
                 List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
                 aoResult.raItems = aoResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
 
-                if(aoResult != null  && aoResult.raItems.Count > 0)
+                if (aoResult != null && aoResult.raItems.Count > 0)
                 {
                     return aoResult;
                 }
@@ -606,17 +621,19 @@ FROM TWsMPdt With(nolock)";
                 {
                     // ไม่ทำอะไร
                 }
-               
+
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " GetSaleDetail/{ptSechSalCode}:" + oEx.Message);
+
                 aoResult = new cmlResList<cmlResSalDet>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
                 aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
             }
             finally
             {
-               
+
                 ptSechSalCode = null;
             }
             return aoResult;
@@ -645,6 +662,7 @@ FROM TWsMPdt With(nolock)";
                 else
                 {
                     //TODO::
+                    // ไม่ทำอะไร
                 }
                 //process..
                 oDatabase = new cDatabase();
@@ -675,12 +693,14 @@ order by rnQtyMax desc";
                 }
                 else
                 {
-
+                    // ไม่ทำอะไร
                 }
 
             }
             catch (Exception oEx)
             {
+                cLog.C_WRTxLog("API", " SalDetSummy:" + oEx.Message);
+
                 aoResult = new cmlResList<cmlResSalDetSummy>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
                 aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -692,7 +712,7 @@ order by rnQtyMax desc";
             return aoResult;
         }
 
-        
+
 
 
         ///////////
