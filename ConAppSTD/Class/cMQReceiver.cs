@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using wModels.Class;
 
 namespace ConAppSTD.Class
 {
@@ -137,9 +139,10 @@ namespace ConAppSTD.Class
                     Task.Delay(10000).Wait();
                 }
             }
-            catch (Exception oExn)
+            catch (Exception oEx)
             {
-                Console.WriteLine(oExn.Message.ToString());
+                cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                Console.WriteLine(oEx.Message.ToString());
                 Task.Delay(10000).Wait();
             }
             finally
@@ -244,7 +247,7 @@ namespace ConAppSTD.Class
                                     }
                                     catch (Exception oEx)
                                     {
-
+                                        cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                                     }
                                     Console.WriteLine("Receive Queue Nmae: " + ptQueue + " end.");
                                     Thread.Sleep(500);
@@ -285,7 +288,7 @@ namespace ConAppSTD.Class
                                     }
                                     catch (Exception oEx)
                                     {
-
+                                        cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                                     }
                                     Console.WriteLine("Receive Queue Nmae: " + ptQueue + " end.");
                                     Thread.Sleep(500);
@@ -326,7 +329,7 @@ namespace ConAppSTD.Class
                                     }
                                     catch (Exception oEx)
                                     {
-
+                                        cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                                     }
                                     Console.WriteLine("Receive Queue Nmae: " + ptQueue + " end.");
                                     Thread.Sleep(500);
@@ -367,7 +370,7 @@ namespace ConAppSTD.Class
                                     }
                                     catch (Exception oEx)
                                     {
-
+                                        cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                                     }
                                     Console.WriteLine("Receive Queue Nmae: " + ptQueue + " end.");
                                     Thread.Sleep(500);
@@ -395,7 +398,7 @@ namespace ConAppSTD.Class
                                     }
                                     catch (Exception oEx)
                                     {
-
+                                        cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                                     }
                                     Console.WriteLine("Receive Queue Nmae: " + ptQueue + " end.");
                                     Thread.Sleep(500);
@@ -424,12 +427,14 @@ namespace ConAppSTD.Class
                     }
                     catch (Exception oEx)
                     {
+                        cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                         tMessage = oEx.Message.ToString();
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception oEx)
             {
+                cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 Console.WriteLine(DateTime.Now.ToLongTimeString() + " " + ptQueue + " : Exception");
                 Console.ReadLine();
             }

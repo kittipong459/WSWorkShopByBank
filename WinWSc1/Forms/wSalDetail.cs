@@ -1,4 +1,5 @@
 ﻿using C1.Win.C1FlexGrid;
+using ConAppSTD.Class;
 using ServiceModels;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1
                 W_SETxSetText();
                 W_GETxGetSalDetail();
                 W_GETxGetSalDetSummy();
+               
             }
             catch (Exception oEx)
             {

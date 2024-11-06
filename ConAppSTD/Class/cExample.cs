@@ -10,7 +10,6 @@ namespace ConAppSTD.Class
 
     public class cExample
     {
-        string tC_ClasName = "cExample";
         public static bool C_ADDbAddPdtTransaction(cmlReqPdt poPdt)
         {
             cDatabase oDB = new cDatabase();
@@ -39,8 +38,8 @@ namespace ConAppSTD.Class
             }
             catch (Exception oEx)
             {
-               // cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                Console.WriteLine(oEx.Message);
+                cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+               // Console.WriteLine(oEx.Message);
             }
             finally
             {
@@ -81,8 +80,8 @@ namespace ConAppSTD.Class
             }
             catch (Exception oEx)
             {
-               // cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                Console.WriteLine(oEx.Message);
+                cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                // Console.WriteLine(oEx.Message);
             }
             finally
             {
@@ -121,8 +120,8 @@ namespace ConAppSTD.Class
             }
             catch (Exception oEx)
             {
-               // cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                Console.WriteLine(oEx.Message);
+                cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                // Console.WriteLine(oEx.Message);
             }
             finally
             {
@@ -161,8 +160,8 @@ namespace ConAppSTD.Class
             }
             catch (Exception oEx)
             {
-               // cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
-                Console.WriteLine(oEx.Message);
+                cLog.C_WRTxLog(typeof(cExample).Name, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+                // Console.WriteLine(oEx.Message);
             }
             finally
             {
