@@ -78,6 +78,8 @@ namespace WindowsFormsApp1
             this.ogdPdt.ColumnInfo = resources.GetString("ogdPdt.ColumnInfo");
             this.ogdPdt.Location = new System.Drawing.Point(16, 40);
             this.ogdPdt.Name = "ogdPdt";
+            this.ogdPdt.Rows.MaxSize = 25;
+            this.ogdPdt.Rows.MinSize = 25;
             this.ogdPdt.Size = new System.Drawing.Size(643, 148);
             this.ogdPdt.StyleInfo = resources.GetString("ogdPdt.StyleInfo");
             this.ogdPdt.TabIndex = 0;
@@ -122,6 +124,8 @@ namespace WindowsFormsApp1
             this.ogdCst.ColumnInfo = resources.GetString("ogdCst.ColumnInfo");
             this.ogdCst.Location = new System.Drawing.Point(16, 34);
             this.ogdCst.Name = "ogdCst";
+            this.ogdCst.Rows.MaxSize = 25;
+            this.ogdCst.Rows.MinSize = 25;
             this.ogdCst.Size = new System.Drawing.Size(644, 151);
             this.ogdCst.StyleInfo = resources.GetString("ogdCst.StyleInfo");
             this.ogdCst.TabIndex = 7;

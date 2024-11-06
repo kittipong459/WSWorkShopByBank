@@ -36,11 +36,13 @@
     <Reference Include="BuildingBlocks">
       <HintPath>..\BuildingBlocks\bin\Debug\net5.0\BuildingBlocks.dll</HintPath>
     </Reference>
-    <Reference Include="C1.Win.4.5.2">
-      <HintPath>..\..\..\c1sll\C1.Win.4.5.2.dll</HintPath>
+    <Reference Include="C1.Win.4.5.2, Version=4.5.20201.416, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\WorkShopC1FlexGrid_00.02.00\WorkShopC1FlexGrid\WorkShopC1FlexGrid\bin\Debug\C1.Win.4.5.2.dll</HintPath>
     </Reference>
-    <Reference Include="C1.Win.C1FlexGrid.4.5.2">
-      <HintPath>..\..\..\c1sll\C1.Win.C1FlexGrid.4.5.2.dll</HintPath>
+    <Reference Include="C1.Win.C1FlexGrid.4.5.2, Version=4.5.20201.416, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\WorkShopC1FlexGrid_00.02.00\WorkShopC1FlexGrid\WorkShopC1FlexGrid\bin\Debug\C1.Win.C1FlexGrid.4.5.2.dll</HintPath>
     </Reference>
     <Reference Include="ConAppSTD">
       <HintPath>..\ConAppSTD\bin\Debug\net5.0\ConAppSTD.dll</HintPath>

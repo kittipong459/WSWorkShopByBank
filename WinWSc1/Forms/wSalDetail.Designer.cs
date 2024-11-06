@@ -53,6 +53,8 @@
             this.ogdSalDet.ColumnInfo = resources.GetString("ogdSalDet.ColumnInfo");
             this.ogdSalDet.Location = new System.Drawing.Point(23, 82);
             this.ogdSalDet.Name = "ogdSalDet";
+            this.ogdSalDet.Rows.MaxSize = 30;
+            this.ogdSalDet.Rows.MinSize = 30;
             this.ogdSalDet.Size = new System.Drawing.Size(729, 189);
             this.ogdSalDet.StyleInfo = resources.GetString("ogdSalDet.StyleInfo");
             this.ogdSalDet.TabIndex = 0;
@@ -154,6 +156,8 @@
             this.ogdSumSal.ColumnInfo = resources.GetString("ogdSumSal.ColumnInfo");
             this.ogdSumSal.Location = new System.Drawing.Point(23, 39);
             this.ogdSumSal.Name = "ogdSumSal";
+            this.ogdSumSal.Rows.MaxSize = 30;
+            this.ogdSumSal.Rows.MinSize = 30;
             this.ogdSumSal.Size = new System.Drawing.Size(729, 182);
             this.ogdSumSal.StyleInfo = resources.GetString("ogdSumSal.StyleInfo");
             this.ogdSumSal.TabIndex = 4;

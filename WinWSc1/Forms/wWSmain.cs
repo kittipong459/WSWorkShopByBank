@@ -50,7 +50,9 @@ namespace WindowsFormsApp1
             try
             {
 
-
+                W_SETxColSal(ogdSal);
+                W_SETxColSal(ogdPdt);
+                W_SETxColSal(ogdCst);
 
             }
             catch (Exception oEx)
@@ -794,7 +796,7 @@ namespace WindowsFormsApp1
             try
             {
 
-                W_SETxColSal(ogdSal);
+               // W_SETxColSal(ogdSal);
             }
             catch (Exception oEx)
             {
