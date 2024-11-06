@@ -8,6 +8,7 @@ using WebApiSTD.Class;
 using ServiceModels;
 using wModels.Response;
 using wModels.Class;
+using System.Reflection;
 
 namespace WebApiWS.Controllers
 {
@@ -15,7 +16,7 @@ namespace WebApiWS.Controllers
     [ApiController]
     public class cWSCRUDController : ControllerBase
     {
-
+        string tC_ClasName = "API cWSCRUDController";
         [HttpGet]
         [Route("GetProduct")]
         public cmlResList<cmlResPdt> C_GETaGetPdt()
@@ -55,7 +56,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", "GetProduct :" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
                 aoResult = new cmlResList<cmlResPdt>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
                 aoResult.rtDesc = cMS.tMS_RespDesc900 + " : " + oEx.Message;
@@ -125,7 +126,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", "AddProduct :" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
@@ -197,7 +198,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " UpdateProduct:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
@@ -259,7 +260,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " GetSale:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 aoResult = new cmlResList<cmlResSale>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
@@ -316,7 +317,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " GetCustomer:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 aoResult = new cmlResList<cmlResCst>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
@@ -393,7 +394,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " AddSale:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
@@ -468,7 +469,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " UpdateSale:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
@@ -542,7 +543,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " DelSale/{SalId}:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 oResult = new cmlResBase();
                 oResult.rtCode = cMS.tMS_RespCode900;
@@ -625,7 +626,7 @@ FROM TWsMPdt With(nolock)";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " GetSaleDetail/{ptSechSalCode}:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 aoResult = new cmlResList<cmlResSalDet>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
@@ -699,7 +700,7 @@ order by rnQtyMax desc";
             }
             catch (Exception oEx)
             {
-                cLog.C_WRTxLog("API", " SalDetSummy:" + oEx.Message);
+                cLog.C_WRTxLog(tC_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
                 aoResult = new cmlResList<cmlResSalDetSummy>();
                 aoResult.rtCode = cMS.tMS_RespCode900;
