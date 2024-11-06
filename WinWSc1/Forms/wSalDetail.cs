@@ -298,22 +298,22 @@ namespace WindowsFormsApp1
                         }
 
 
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalID", oSalDet.rnSalID);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCod", oSalDet.rtSalCod);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPdtCod", oSalDet.rtSalPdtCod);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtName", oSalDet.rtPdtName);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtDes", oSalDet.rtPdtDes);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtTyp", oSalDet.rtPdtTyp);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalQty", oSalDet.rnSalQty);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPri", oSalDet.rcSalPri);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalAmt", oSalDet.rcSalAmt);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalDate", oSalDet.rdSalDate);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCstCod", oSalDet.rtSalCstCod);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstName", oSalDet.rtCstName);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstAdr", oSalDet.rtCstAdr);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstPho", oSalDet.rtCstPho);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstEml", oSalDet.rtCstEml);
-                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalSMPT", oSalDet.rdSalSMPT);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalID", oSalDet.rnSalID == null?0: oSalDet.rnSalID);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCod", string.IsNullOrEmpty(oSalDet.rtSalCod)?"": oSalDet.rtSalCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPdtCod", string.IsNullOrEmpty(oSalDet.rtSalPdtCod)?"": oSalDet.rtSalPdtCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtName", string.IsNullOrEmpty(oSalDet.rtPdtName) ? "" : oSalDet.rtPdtName);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtDes", string.IsNullOrEmpty(oSalDet.rtPdtDes) ? "" : oSalDet.rtPdtDes);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColPdtTyp", string.IsNullOrEmpty(oSalDet.rtPdtTyp) ? "" : oSalDet.rtPdtTyp);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalQty", oSalDet.rnSalQty == null?0: oSalDet.rnSalQty);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalPri", oSalDet.rcSalPri == null ? 0 : oSalDet.rcSalPri);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalAmt", oSalDet.rcSalAmt == null ? 0 : oSalDet.rcSalAmt);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalDate", oSalDet.rdSalDate == null?DateTime.Now: oSalDet.rdSalDate);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalCstCod", string.IsNullOrEmpty(oSalDet.rtSalCstCod) ? "" : oSalDet.rtSalCstCod);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstName", string.IsNullOrEmpty(oSalDet.rtCstName) ? "" : oSalDet.rtCstName);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstAdr", string.IsNullOrEmpty(oSalDet.rtCstAdr) ? "" : oSalDet.rtCstAdr);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstPho", string.IsNullOrEmpty(oSalDet.rtCstPho) ? "" : oSalDet.rtCstPho);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColCstEml", string.IsNullOrEmpty(oSalDet.rtCstEml) ? "" : oSalDet.rtCstEml);
+                        ogdSalDet.SetData(ogdSalDet.Rows.Count - ogdSalDet.Rows.Fixed, "otbColSalSMPT", oSalDet.rdSalSMPT==null?DateTime.Now: oSalDet.rdSalSMPT);
 
                     }
 
@@ -476,15 +476,15 @@ namespace WindowsFormsApp1
                     foreach (cmlResSalDetSummy oSalSumy in aoResSalSumys)
                     {
                         ogdSumSal.Rows.Add();
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColSalCod", oSalSumy.rtSalCod);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtyMax", oSalSumy.rnQtyMax);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtyMin", oSalSumy.rnQtyMin);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtySum", oSalSumy.rnQtySum);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMax", oSalSumy.rcPriMax);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMin", oSalSumy.rcPriMin);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriceSum", oSalSumy.rcPriceSum);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColAmtSum", oSalSumy.rcAmtSum);
-                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPdts", oSalSumy.rnPdts);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColSalCod", string.IsNullOrEmpty(oSalSumy.rtSalCod)?"": oSalSumy.rtSalCod);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtyMax", oSalSumy.rnQtyMax==null?0: oSalSumy.rnQtyMax);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtyMin", oSalSumy.rnQtyMin == null ? 0 : oSalSumy.rnQtyMin);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColQtySum", oSalSumy.rnQtySum == null ? 0 : oSalSumy.rnQtySum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMax", oSalSumy.rcPriMax == null ? 0 : oSalSumy.rcPriMax);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriMin", oSalSumy.rcPriMin == null ? 0 : oSalSumy.rcPriMin);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriceSum", oSalSumy.rcPriceSum == null ? 0 : oSalSumy.rcPriceSum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColAmtSum", oSalSumy.rcAmtSum == null ? 0 : oSalSumy.rcAmtSum);
+                        ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPdts", oSalSumy.rnPdts == null ? 0 : oSalSumy.rnPdts);
                         olvSalList.Items.Add(oSalSumy.rtSalCod);
                     }
 
