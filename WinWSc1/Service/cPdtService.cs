@@ -18,6 +18,10 @@ namespace WindowsFormsApp1.Service
         string tC_Access;
         string tC_UrlApi;
         string tW_ClasName = "cPdtService";
+        RestClientOptions oC_Ptions;
+        RestClient oC_Client;
+        RestRequest oC_Rrequest;
+        RestResponse oC_Response;
         public cPdtService()
         {
             try
@@ -34,29 +38,32 @@ namespace WindowsFormsApp1.Service
                 MessageBox.Show(oEx.Message + " " + oEx.StackTrace.ToString());
                 // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
-            finally { }
+            finally {
+            // not anything
+            }
         }
 
         public List<cmlResPdt> C_GETaGetProduct()
         {
             List<cmlResPdt> aoResPdt = new List<cmlResPdt>();
+           
             try
             {
                 //aoResPdt = new List<cmlResPdt>();
-                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
-                RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetProduct", Method.Get);
-                oRrequest.AddHeader("X-Api-Key", tC_Access);
-                RestResponse oResponse = oClient.Execute(oRrequest);
+                oC_Ptions = new RestClientOptions(tC_UrlApi);
+                oC_Client = new RestClient(oC_Ptions);
+                oC_Rrequest = new RestRequest($"/api/WSCRUD/GetProduct", Method.Get);
+                oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
+                oC_Response = oC_Client.Execute(oC_Rrequest);
 
-                cmlResList<cmlResPdt> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oResponse.Content);
+                cmlResList<cmlResPdt> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResPdt>>(oC_Response.Content);
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {
-                        aoResPdt = aoResList.raItems;
+                    aoResPdt = aoResList.raItems;
                 }
                 else
                 {
-
+                    // not anything
                 }
                 // check null model
                 return aoResPdt;
@@ -70,6 +77,7 @@ namespace WindowsFormsApp1.Service
             finally
             {
                 //aoResPdt = null;
+                // not anything
             }
             return aoResPdt;
         }

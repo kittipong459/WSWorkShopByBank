@@ -19,6 +19,10 @@ namespace WindowsFormsApp1.Service
         string tC_Access;
         string tC_UrlApi;
         string tC_ClasName = "cCstService";
+        RestClientOptions oC_Ptions;
+        RestClient oC_Client;
+        RestRequest oC_Rrequest;
+        RestResponse oC_Response;
         public cCstService()
         {
             try
@@ -33,23 +37,27 @@ namespace WindowsFormsApp1.Service
             {
                 //// // // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
-            finally { }
+            finally
+            {
+                // not anything
+            }
 
         }
 
         public List<cmlResCst> C_GETaGetCustomer()
         {
             List<cmlResCst> aoResCst = new List<cmlResCst>();
+            
             try
             {
                 //aoResCst = new List<cmlResCst>();
-                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
-                RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetCustomer", Method.Get);
-                oRrequest.AddHeader("X-Api-Key", tC_Access);
-                RestResponse oResponse = oClient.Execute(oRrequest);
+                oC_Ptions = new RestClientOptions(tC_UrlApi);
+                oC_Client = new RestClient(oC_Ptions);
+                oC_Rrequest = new RestRequest($"/api/WSCRUD/GetCustomer", Method.Get);
+                oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
+                oC_Response = oC_Client.Execute(oC_Rrequest);
 
-                cmlResList<cmlResCst> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oResponse.Content);
+                cmlResList<cmlResCst> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oC_Response.Content);
                 //return aoResList.raItems;
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {
@@ -58,7 +66,7 @@ namespace WindowsFormsApp1.Service
                 }
                 else
                 {
-
+                    // not anything
                 }
 
                 return aoResCst;
@@ -72,6 +80,7 @@ namespace WindowsFormsApp1.Service
             finally
             {
                 //aoResCst = null;
+                // not anything
             }
             return aoResCst;
         }

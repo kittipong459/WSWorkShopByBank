@@ -424,7 +424,7 @@ namespace WindowsFormsApp1
             this.Name = "wWSmain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ระบบขายสินค้า";
-            this.Shown += new System.EventHandler(this.wWSmain_Shown);
+           // this.Shown += new System.EventHandler(this.wWSmain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ogdPdt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ogdCst)).EndInit();
             this.opnPdt.ResumeLayout(false);

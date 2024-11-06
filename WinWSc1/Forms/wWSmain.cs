@@ -47,9 +47,9 @@ namespace WindowsFormsApp1
             try
             {
 
-                W_SETxColSal(ogdSal);
-                W_SETxColSal(ogdPdt);
-                W_SETxColSal(ogdCst);
+                W_SETxSetColSal(ogdSal);
+                W_SETxSetColSal(ogdPdt);
+                W_SETxSetColSal(ogdCst);
 
             }
             catch (Exception oEx)
@@ -180,7 +180,7 @@ namespace WindowsFormsApp1
             return oSale;
         }
 
-        private void W_SETxColSal(C1FlexGrid poGD)  // W_SETxSetColSal
+        private void W_SETxSetColSal(C1FlexGrid poGD)  // W_SETxSetColSal
         {
             int nWidth = 0;
             string tNameGrid = poGD.Name;
@@ -378,7 +378,7 @@ namespace WindowsFormsApp1
             List<cmlResSale> aoSale;
             try
             {
-                aoSale = new cSaleService().C_GETaSale();
+                aoSale = new cSaleService().C_GETaGetSale();
                 //ogdSal.Clear();
                 //  ogdSal.DataSource = null;
 
@@ -518,8 +518,6 @@ namespace WindowsFormsApp1
 
         }
 
-
-
         private void W_GETxGetCstData() // W_GETxGetCstData
         {
             List<cmlResCst> oaCst;
@@ -642,7 +640,7 @@ namespace WindowsFormsApp1
                 if (ogdSal.ColSel == ogdSal.Cols["ocmColSalDel"].Index)
                 {
                     int nSalID = int.Parse(ogdSal.GetData(ogdSal.Row, ogdSal.Cols["otbColSalID"].Index).ToString());
-                    bool bRes = new cSaleService().C_POSbDelSale(nSalID.ToString());
+                    bool bRes = new cSaleService().C_POSbPosDelSale(nSalID.ToString());
                     W_RESxResload();
 
                 }
@@ -782,24 +780,24 @@ namespace WindowsFormsApp1
 
         }
 
-        private void wWSmain_Shown(object sender, EventArgs e)
-        {
-            try
-            {
+        //private void wWSmain_Shown(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
 
-               // W_SETxColSal(ogdSal);
-            }
-            catch (Exception oEx)
-            {
+        //       // W_SETxColSal(ogdSal);
+        //    }
+        //    catch (Exception oEx)
+        //    {
 
-                cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
+        //        cLog.C_WRTxLog(tW_ClasName, $"{MethodBase.GetCurrentMethod().Name}:" + oEx.Message);
 
-            }
-            finally
-            {
-
-            }
-        }
+        //    }
+        //    finally
+        //    {
+        //        // not anyting
+        //    }
+        //}
 
         private void ocmAddSal_Click(object sender, EventArgs e)
         {
@@ -810,7 +808,7 @@ namespace WindowsFormsApp1
                 oSale = W_CHKoCheckSalData();
                 if (oSale != null)
                 {
-                    bool res = new cSaleService().C_POSbSaveSale(oSale);
+                    bool res = new cSaleService().C_POSbPosSaveSale(oSale);
                 }
 
                 W_RESxResload();
@@ -829,13 +827,13 @@ namespace WindowsFormsApp1
 
         private void ocmEdtSal_Click(object sender, EventArgs e)
         {
-            cmlReqSale mSale;
+            cmlReqSale oSale;
             try
             {
-                mSale = new cmlReqSale();
+                oSale = new cmlReqSale();
 
-                mSale = W_CHKoCheckSalData();
-                bool W_res = new cSaleService().C_POSbUpdateSale(mSale);
+                oSale = W_CHKoCheckSalData();
+                bool W_res = new cSaleService().C_POSbPosUpdateSale(oSale);
                 //bRes
                 W_RESxResload();
                 W_CLNxClnTxt();
@@ -847,7 +845,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-                mSale = null;
+                oSale = null;
             }
 
         }

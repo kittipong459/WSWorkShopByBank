@@ -263,10 +263,11 @@ namespace WindowsFormsApp1
         }
         private void W_GETxGetSalDetail()
         {
+            List<cmlResSalDet> aoResSalDets;
             try
             {
                 ogdSalDet.DataSource = null;
-                List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
+                aoResSalDets = new List<cmlResSalDet>();
                 aoResSalDets = new cSaldetService().C_GETaGetSaleDet(otdSchSal.Text);
                 //ogdSalDet.DataSource = aoResSalDets;
 

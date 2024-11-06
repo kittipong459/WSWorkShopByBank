@@ -21,6 +21,10 @@ namespace WindowsFormsApp1.Service
         string tC_Access;
         string tC_UrlApi;
         string tC_ClasName = "cSaleService";
+        RestClientOptions oC_Ptions;
+        RestClient oC_Client;
+        RestRequest oC_Rrequest;
+        RestResponse oC_Response;
         public cSaleService()
         {
             try
@@ -35,29 +39,33 @@ namespace WindowsFormsApp1.Service
             {
                 // throw new Exception(oEx.Message + " " + oEx.StackTrace);
             }
-            finally { }
+            finally
+            {
+                // not anything
+            }
         }
 
-        public List<cmlResSale> C_GETaSale()  // C_GETaGetSale
+        public List<cmlResSale> C_GETaGetSale()  // C_GETaGetSale
         {
             List<cmlResSale> aoResSal = new List<cmlResSale>();
+            
 
             try
             {
                 //aoResSal = new List<cmlResSale>();
-                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
-                RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/GetSale", Method.Get);
-                oRrequest.AddHeader("X-Api-Key", tC_Access);
-                RestResponse oResponse = oClient.Execute(oRrequest);
-                cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
+                oC_Ptions = new RestClientOptions(tC_UrlApi);
+                oC_Client = new RestClient(oC_Ptions);
+                oC_Rrequest = new RestRequest($"/api/WSCRUD/GetSale", Method.Get);
+                oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
+                oC_Response = oC_Client.Execute(oC_Rrequest);
+                cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oC_Response.Content);
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {
                     aoResSal = aoResList.raItems;
                 }
                 else
                 {
-
+                    // not anything
                 }
 
                 return aoResSal;
@@ -71,12 +79,13 @@ namespace WindowsFormsApp1.Service
             finally
             {
                 //aoResSal = null;
+                // not anything
             }
             return aoResSal;
         }
 
 
-        public bool C_POSbSaveSale(cmlReqSale poSalData) // C_POSbPosSaveSale
+        public bool C_POSbPosSaveSale(cmlReqSale poSalData) // C_POSbPosSaveSale
         {
             bool bReqAddsal = false;
             cmlResList<cmlResSale> aoAddSal;
@@ -84,14 +93,14 @@ namespace WindowsFormsApp1.Service
             {
                 aoAddSal = new cmlResList<cmlResSale>();
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
-                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
-                RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/AddSale", Method.Post);
-                oRrequest.AddHeader("X-Api-Key", tC_Access);
-                oRrequest.AddHeader("Content-Type", "application/json");
-                oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
-                RestResponse oResponse = oClient.Execute(oRrequest);
-                aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
+                oC_Ptions = new RestClientOptions(tC_UrlApi);
+                oC_Client = new RestClient(oC_Ptions);
+                oC_Rrequest = new RestRequest($"/api/WSCRUD/AddSale", Method.Post);
+                oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
+                oC_Rrequest.AddHeader("Content-Type", "application/json");
+                oC_Rrequest.AddStringBody(tMsgJson, DataFormat.Json);
+                oC_Response = oC_Client.Execute(oC_Rrequest);
+                aoAddSal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oC_Response.Content);
                 if (aoAddSal != null && aoAddSal.rtCode == "001")
                 {
                     bReqAddsal = true;
@@ -112,29 +121,31 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-               // aoAddSal = null;
+                // aoAddSal = null;
+                // not anything
             }
             return bReqAddsal;
         }
 
-        public bool C_POSbUpdateSale(cmlReqSale poSalData)  // C_POSbPosUpdateSale
+        public bool C_POSbPosUpdateSale(cmlReqSale poSalData)  // C_POSbPosUpdateSale
         {
             bool bReqUpSal = false;
             cmlResList<cmlResSale> aoUpsal;
+
             try
             {
                 aoUpsal = new cmlResList<cmlResSale>();
                 string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
-                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
-                RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/UpdateSale", Method.Post);
-                oRrequest.AddHeader("X-Api-Key", tC_Access);
-                oRrequest.AddHeader("Content-Type", "application/json");
-                oRrequest.AddStringBody(tMsgJson, DataFormat.Json);
-                RestResponse oResponse = oClient.Execute(oRrequest);
-                aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oResponse.Content);
+                oC_Ptions = new RestClientOptions(tC_UrlApi);
+                oC_Client = new RestClient(oC_Ptions);
+                oC_Rrequest = new RestRequest($"/api/WSCRUD/UpdateSale", Method.Post);
+                oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
+                oC_Rrequest.AddHeader("Content-Type", "application/json");
+                oC_Rrequest.AddStringBody(tMsgJson, DataFormat.Json);
+                oC_Response = oC_Client.Execute(oC_Rrequest);
+                aoUpsal = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oC_Response.Content);
 
-                if (aoUpsal != null && aoUpsal.rtCode == "001" )
+                if (aoUpsal != null && aoUpsal.rtCode == "001")
                 {
                     bReqUpSal = true;
                 }
@@ -155,24 +166,25 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-               // aoUpsal = null;
+                // aoUpsal = null;
+                // not anything
             }
             return bReqUpSal;
         }
 
-        public bool C_POSbDelSale(string ptSalId)  // C_POSbPosDelSale
+        public bool C_POSbPosDelSale(string ptSalId)  // C_POSbPosDelSale
         {
             cmlResBase oRes;
             try
             {
                 oRes = new cmlResBase();
-                RestClientOptions oPtions = new RestClientOptions(tC_UrlApi);
-                RestClient oClient = new RestClient(oPtions);
-                RestRequest oRrequest = new RestRequest($"/api/WSCRUD/DelSale/{ptSalId}", Method.Delete);
-                oRrequest.AddHeader("X-Api-Key", tC_Access);
-                RestResponse oResponse = oClient.Execute(oRrequest);
-                Console.WriteLine(oResponse.Content);
-                oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResBase>(oResponse.Content);
+                oC_Ptions = new RestClientOptions(tC_UrlApi);
+                oC_Client = new RestClient(oC_Ptions);
+                oC_Rrequest = new RestRequest($"/api/WSCRUD/DelSale/{ptSalId}", Method.Delete);
+                oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
+                oC_Response = oC_Client.Execute(oC_Rrequest);
+                Console.WriteLine(oC_Response.Content);
+                oRes = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResBase>(oC_Response.Content);
                 if (oRes != null && oRes.rtCode == "001")
                 {
                     return true;
@@ -181,7 +193,6 @@ namespace WindowsFormsApp1.Service
                 {
                     return false;
                 }
-                return false;
             }
             catch (Exception oEx)
             {
@@ -191,7 +202,7 @@ namespace WindowsFormsApp1.Service
             }
             finally
             {
-
+                // not anything
             }
         }
 
