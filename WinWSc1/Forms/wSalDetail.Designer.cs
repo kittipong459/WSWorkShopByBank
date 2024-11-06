@@ -38,6 +38,7 @@
             this.opnBestSal = new System.Windows.Forms.Panel();
             this.olaBesSalPdtTit = new System.Windows.Forms.Label();
             this.ogdSumSal = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.olvSalList = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.ogdSalDet)).BeginInit();
             this.opnSalDet.SuspendLayout();
             this.opnBestSal.SuspendLayout();
@@ -121,7 +122,7 @@
             this.otdSchSal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otdSchSal.Location = new System.Drawing.Point(24, 44);
             this.otdSchSal.Name = "otdSchSal";
-            this.otdSchSal.Size = new System.Drawing.Size(502, 29);
+            this.otdSchSal.Size = new System.Drawing.Size(520, 29);
             this.otdSchSal.TabIndex = 5;
             this.otdSchSal.KeyUp += new System.Windows.Forms.KeyEventHandler(this.otdSchSal_KeyUp);
             // 
@@ -130,6 +131,7 @@
             this.opnBestSal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opnBestSal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.opnBestSal.Controls.Add(this.olvSalList);
             this.opnBestSal.Controls.Add(this.olaBesSalPdtTit);
             this.opnBestSal.Controls.Add(this.ogdSumSal);
             this.opnBestSal.Location = new System.Drawing.Point(12, 307);
@@ -163,6 +165,20 @@
             this.ogdSumSal.TabIndex = 4;
             this.ogdSumSal.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2010Silver;
             // 
+            // olvSalList
+            // 
+            this.olvSalList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.olvSalList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.olvSalList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.olvSalList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olvSalList.HideSelection = false;
+            this.olvSalList.Location = new System.Drawing.Point(196, 3);
+            this.olvSalList.Name = "olvSalList";
+            this.olvSalList.Size = new System.Drawing.Size(556, 32);
+            this.olvSalList.TabIndex = 8;
+            this.olvSalList.UseCompatibleStateImageBehavior = false;
+            // 
             // Wform2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,5 +210,6 @@
         private System.Windows.Forms.TextBox otdSchSal;
         private System.Windows.Forms.Button ocmSsh;
         private System.Windows.Forms.Button ocmCls;
+        private System.Windows.Forms.ListView olvSalList;
     }
 }
