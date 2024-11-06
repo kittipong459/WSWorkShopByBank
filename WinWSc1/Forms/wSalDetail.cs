@@ -469,6 +469,7 @@ namespace WindowsFormsApp1
                 ogdSumSal.Rows.Count = ogdSumSal.Rows.Fixed;
                 if (ogdSumSal != null && aoResSalSumys.Count > 0)
                 {
+                    olvSalList.Items.Add("เรียงจากมากไปน้อย");
                     foreach (cmlResSalDetSummy oSalSumy in aoResSalSumys)
                     {
                         ogdSumSal.Rows.Add();
@@ -481,6 +482,7 @@ namespace WindowsFormsApp1
                         ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPriceSum", oSalSumy.rcPriceSum);
                         ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColAmtSum", oSalSumy.rcAmtSum);
                         ogdSumSal.SetData(ogdSumSal.Rows.Count - ogdSumSal.Rows.Fixed, "otbColPdts", oSalSumy.rnPdts);
+                        olvSalList.Items.Add(oSalSumy.rtSalCod);
                     }
 
 

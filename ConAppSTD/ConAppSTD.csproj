@@ -13,13 +13,14 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.csproj" />
-	  <ProjectReference Include="..\ServiceModels\ServiceModels.csproj" />
-	  <ProjectReference Include="..\wModels\wModels.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Reference Include="ServiceModels">
 	    <HintPath>..\ServiceModels\bin\Debug\ServiceModels.dll</HintPath>
+	  </Reference>
+	  <Reference Include="wModels">
+	    <HintPath>..\..\..\..\..\testpros\WSbyBank\wModels\bin\Debug\wModels.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

@@ -787,6 +787,7 @@ namespace WindowsFormsApp1
             try
             {
 
+               // W_SETxColSal(ogdSal);
             }
             catch (Exception oEx)
             {

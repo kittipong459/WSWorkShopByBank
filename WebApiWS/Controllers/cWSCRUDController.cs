@@ -42,13 +42,12 @@ namespace WebApiWS.Controllers
                
                 oSql = new StringBuilder();
                 string tSql = "";
-                tSql = @"  SELECT   FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
-                                    FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,
-                                    FDPdtSMPT as rdPdtSMPT ,FTPdtStat as rtPdtStat
-                                    FROM TWsMPdt With(nolock) where FTPdtStat = 'Y'";
+                tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
+FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT 
+FROM TWsMPdt With(nolock)";
                 oSql.AppendLine(tSql);
-                List<cmlResPdt> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
-                aoResult.raItems = aoResultPdt;
+                List<cmlResPdt> oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
+                aoResult.raItems = oResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
                 return aoResult;
