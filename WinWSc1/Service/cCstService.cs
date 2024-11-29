@@ -46,18 +46,19 @@ namespace WindowsFormsApp1.Service
 
         public List<cmlResCst> C_GETaGetCustomer()
         {
-            List<cmlResCst> aoResCst = new List<cmlResCst>();
-            
+            List<cmlResCst> aoResCst = new List<cmlResCst>();  // ต้องประกาศ ไม่งั้นติด error Use of unassigned local variable
+            cmlResList<cmlResCst> aoResList;
             try
             {
                 //aoResCst = new List<cmlResCst>();
+                aoResList = new cmlResList<cmlResCst>();
                 oC_Ptions = new RestClientOptions(tC_UrlApi);
                 oC_Client = new RestClient(oC_Ptions);
                 oC_Rrequest = new RestRequest($"/api/WSCRUD/GetCustomer", Method.Get);
                 oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
                 oC_Response = oC_Client.Execute(oC_Rrequest);
 
-                cmlResList<cmlResCst> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oC_Response.Content);
+                aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResCst>>(oC_Response.Content);
                 //return aoResList.raItems;
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {

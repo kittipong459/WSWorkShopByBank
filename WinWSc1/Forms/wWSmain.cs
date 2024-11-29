@@ -91,9 +91,10 @@ namespace WindowsFormsApp1
 
         private cmlReqSale W_CHKoCheckSalData()
         {
-            cmlReqSale oSale = new cmlReqSale();
+            cmlReqSale oSale = new cmlReqSale();    // ต้องประกาศ ไม่งั้นติด error Use of unassigned local variable
             try
             {
+                //oSale = new cmlReqSale();
                 if (!string.IsNullOrEmpty(olaId.Text))
                 {
                     oSale.pnSalID = int.Parse(olaId.Text);

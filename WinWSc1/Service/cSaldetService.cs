@@ -50,11 +50,13 @@ namespace WindowsFormsApp1.Service
 
         public List<cmlResSalDet> C_GETaGetSaleDet(string ptSechSalCode)
         {
-            List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();
-           
+            List<cmlResSalDet> aoResSalDets = new List<cmlResSalDet>();  // ต้องประกาศ ไม่งั้นติด error Use of unassigned local variable
+            cmlResList<cmlResSalDet> aoResList;
 
             try
             {
+                aoResSalDets = new List<cmlResSalDet>();
+                aoResList = new cmlResList<cmlResSalDet>();
                 ptSechSalCode = string.IsNullOrEmpty(ptSechSalCode) ? "N" : ptSechSalCode;
                 //aoResSalDets = new List<cmlResSalDet>();
                 oC_Ptions = new RestClientOptions(tC_UrlApi);
@@ -63,7 +65,7 @@ namespace WindowsFormsApp1.Service
                 oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
                 oC_Response = oC_Client.Execute(oC_Rrequest);
                 Console.WriteLine(oC_Response.Content);
-                cmlResList<cmlResSalDet> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDet>>(oC_Response.Content);
+                aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDet>>(oC_Response.Content);
 
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {
@@ -92,19 +94,20 @@ namespace WindowsFormsApp1.Service
 
         public List<cmlResSalDetSummy> C_GETaGetSalDetSummy()
         {
-            List<cmlResSalDetSummy> aoResSalDets = new List<cmlResSalDetSummy>();
-       
+            List<cmlResSalDetSummy> aoResSalDets = new List<cmlResSalDetSummy>();  // ต้องประกาศ ไม่งั้นติด error Use of unassigned local variable
+            cmlResList<cmlResSalDetSummy> aoResList;
+
             try
             {
-
-                //aoResSalDets = new List<cmlResSalDet>();
+                aoResSalDets = new List<cmlResSalDetSummy>();
+                aoResList = new cmlResList<cmlResSalDetSummy> ();
                 oC_Ptions = new RestClientOptions(tC_UrlApi);
                  oC_Client = new RestClient(oC_Ptions);
                 oC_Rrequest = new RestRequest($"/api/WSCRUD/SalDetSummy", Method.Get);
                 oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
                 oC_Response = oC_Client.Execute(oC_Rrequest);
                 Console.WriteLine(oC_Response.Content);
-                cmlResList<cmlResSalDetSummy> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDetSummy>>(oC_Response.Content);
+                aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSalDetSummy>>(oC_Response.Content);
 
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {

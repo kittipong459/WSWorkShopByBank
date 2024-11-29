@@ -47,18 +47,19 @@ namespace WindowsFormsApp1.Service
 
         public List<cmlResSale> C_GETaGetSale()  // C_GETaGetSale
         {
-            List<cmlResSale> aoResSal = new List<cmlResSale>();
-            
+            List<cmlResSale> aoResSal = new List<cmlResSale>();  // ต้องประกาศ ไม่งั้นติด error Use of unassigned local variable
+            cmlResList<cmlResSale> aoResList;
 
             try
             {
                 //aoResSal = new List<cmlResSale>();
+                aoResList = new cmlResList<cmlResSale>();
                 oC_Ptions = new RestClientOptions(tC_UrlApi);
                 oC_Client = new RestClient(oC_Ptions);
                 oC_Rrequest = new RestRequest($"/api/WSCRUD/GetSale", Method.Get);
                 oC_Rrequest.AddHeader("X-Api-Key", tC_Access);
                 oC_Response = oC_Client.Execute(oC_Rrequest);
-                cmlResList<cmlResSale> aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oC_Response.Content);
+                aoResList = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlResList<cmlResSale>>(oC_Response.Content);
                 if (aoResList != null && aoResList.raItems.Count > 0)
                 {
                     aoResSal = aoResList.raItems;
@@ -89,10 +90,11 @@ namespace WindowsFormsApp1.Service
         {
             bool bReqAddsal = false;
             cmlResList<cmlResSale> aoAddSal;
+            string tMsgJson;
             try
             {
                 aoAddSal = new cmlResList<cmlResSale>();
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
+                tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
                 oC_Ptions = new RestClientOptions(tC_UrlApi);
                 oC_Client = new RestClient(oC_Ptions);
                 oC_Rrequest = new RestRequest($"/api/WSCRUD/AddSale", Method.Post);
@@ -131,11 +133,12 @@ namespace WindowsFormsApp1.Service
         {
             bool bReqUpSal = false;
             cmlResList<cmlResSale> aoUpsal;
+            string tMsgJson;
 
             try
             {
                 aoUpsal = new cmlResList<cmlResSale>();
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
+                tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSalData);
                 oC_Ptions = new RestClientOptions(tC_UrlApi);
                 oC_Client = new RestClient(oC_Ptions);
                 oC_Rrequest = new RestRequest($"/api/WSCRUD/UpdateSale", Method.Post);

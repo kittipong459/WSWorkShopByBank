@@ -401,9 +401,10 @@ namespace WindowsFormsApp1
 
         private void ogdSalDet_Click(object sender, EventArgs e)
         {
+            int nIdx = 0;
             try
             {
-                int nIdx = ogdSalDet.Row;
+                nIdx = ogdSalDet.Row;
                 otdSchSal.Text = ogdSalDet.GetData(nIdx, ogdSalDet.ColSel).ToString();
 
 
