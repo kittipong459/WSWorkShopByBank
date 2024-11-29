@@ -25,10 +25,13 @@ namespace WebApiWS.Controllers
             cDatabase oDatabase;
             StringBuilder oSql;
             string tErrAPI;
+            List<cmlResPdt> oResultPdt;
+            string tSql;
             try
             {
                 oDatabase = new cDatabase();
                 aoResult = new cmlResList<cmlResPdt>();
+                oResultPdt = new List<cmlResPdt>();
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
                 {
@@ -43,12 +46,12 @@ namespace WebApiWS.Controllers
                 //process..
 
                 oSql = new StringBuilder();
-                string tSql = "";
+
                 tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
 FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT 
 FROM TWsMPdt With(nolock)";
                 oSql.AppendLine(tSql);
-                List<cmlResPdt> oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
+                oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
                 aoResult.raItems = oResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
@@ -65,6 +68,9 @@ FROM TWsMPdt With(nolock)";
             finally
             {
                 aoResult = null;
+                oSql = null;
+                oResultPdt = null;
+                tSql = null;
             }
             return aoResult;
         }
@@ -77,6 +83,7 @@ FROM TWsMPdt With(nolock)";
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
             string tErrAPI;
+            string tMsgJson;
 
             try
             {
@@ -110,7 +117,7 @@ FROM TWsMPdt With(nolock)";
 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poDataProduct);
+                tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poDataProduct);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "AddPdt", true))
                 {
@@ -149,6 +156,7 @@ FROM TWsMPdt With(nolock)";
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
             string tErrAPI;
+            string tMsgJson;
 
             try
             {
@@ -181,7 +189,7 @@ FROM TWsMPdt With(nolock)";
                 //To do..
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poDataProduct);
+                tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poDataProduct);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "UpdatePdt", true))
                 {
@@ -222,9 +230,12 @@ FROM TWsMPdt With(nolock)";
             cDatabase oDatabase;
             StringBuilder oSql;
             string tErrAPI;
+            string toSql;
+            List<cmlResSale> aoResultSal;
             try
             {
                 aoResult = new cmlResList<cmlResSale>();
+                aoResultSal = new List<cmlResSale>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -240,7 +251,7 @@ FROM TWsMPdt With(nolock)";
                 //process..
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
-                string toSql = "";
+
                 toSql = @"  SELECT FNSalID as rnSalID
                             ,FTSalCod as rtSalCod
                             ,FTSalPdtCod as rtSalPdtCod
@@ -252,7 +263,7 @@ FROM TWsMPdt With(nolock)";
                             ,FDSalSMPT as rdSalSMPT
                             FROM TWsTSal With(nolock)";
                 oSql.AppendLine(toSql);
-                List<cmlResSale> aoResultSal = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
+                aoResultSal = oDatabase.C_GETaDataQuery<cmlResSale>(oSql.ToString());
                 aoResult.raItems = aoResultSal;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
@@ -269,6 +280,8 @@ FROM TWsMPdt With(nolock)";
             finally
             {
                 aoResult = null;
+                oSql = null;
+                toSql = null;
             }
             return aoResult;
         }
@@ -281,9 +294,12 @@ FROM TWsMPdt With(nolock)";
             cDatabase oDatabase;
             StringBuilder oSql;
             string tErrAPI;
+            string toSql;
+            List<cmlResCst> aoResultCst;
             try
             {
                 aoResult = new cmlResList<cmlResCst>();
+                aoResultCst = new List<cmlResCst>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -299,7 +315,7 @@ FROM TWsMPdt With(nolock)";
                 //process..
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
-                string toSql = "";
+
                 toSql = @"   SELECT FTCstID as rtCstID
                             ,FTCstCod as rtCstCod
                             ,FTCstName as rtCstName
@@ -309,7 +325,7 @@ FROM TWsMPdt With(nolock)";
                             ,FDCstSMPT as rdCstSMPT
                             FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
                 oSql.AppendLine(toSql);
-                List<cmlResCst> aoResultCst = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
+                aoResultCst = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
                 aoResult.raItems = aoResultCst;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
@@ -326,6 +342,9 @@ FROM TWsMPdt With(nolock)";
             finally
             {
                 aoResult = null;
+                aoResultCst = null;
+                oSql = null;
+                toSql = null;
             }
             return aoResult;
         }
@@ -343,6 +362,7 @@ FROM TWsMPdt With(nolock)";
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
             string tErrAPI;
+            string tMsgJson;
 
             try
             {
@@ -377,7 +397,7 @@ FROM TWsMPdt With(nolock)";
 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
+                tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "AddSale", true))
                 {
@@ -418,6 +438,7 @@ FROM TWsMPdt With(nolock)";
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
             string tErrAPI;
+            string tMsgJson;
 
             try
             {
@@ -452,7 +473,7 @@ FROM TWsMPdt With(nolock)";
 
 
                 //Convert to string json
-                string tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
+                tMsgJson = Newtonsoft.Json.JsonConvert.SerializeObject(poSale);
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "UpdateSale", true))
                 {
@@ -493,6 +514,7 @@ FROM TWsMPdt With(nolock)";
             cmlResBase oResult;
             cRabbitMQ oRabbitMQ;
             string tErrAPI;
+            string tMsgJson;
 
             try
             {
@@ -526,7 +548,7 @@ FROM TWsMPdt With(nolock)";
                 //To do..
 
                 //Convert to string json
-                string tMsgJson = ptSalId;
+                tMsgJson = ptSalId;
                 //Publish to rabbitMQ
                 if (oRabbitMQ.C_PRCbSendData2Srv(tMsgJson, "DelSale", true))
                 {
@@ -554,6 +576,7 @@ FROM TWsMPdt With(nolock)";
             {
                 ptSalId = null;
                 oRabbitMQ = null;
+                oResult = null;
             }
         }
 
@@ -565,9 +588,12 @@ FROM TWsMPdt With(nolock)";
             cDatabase oDatabase;
             StringBuilder oSql;
             string tErrAPI;
+            string toSql;
+            List<cmlResSalDet> aoResultPdt;
             try
             {
                 aoResult = new cmlResList<cmlResSalDet>();
+                aoResultPdt = new List<cmlResSalDet>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -583,7 +609,7 @@ FROM TWsMPdt With(nolock)";
                 //process..
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
-                string toSql = "";
+
                 toSql = $@" SELECT 1 rnSalID ,FTSalCod as rtSalCod  , FTSalPdtCod as rtSalPdtCod, 
                         FTPdtName as rtPdtName, FTPdtDes as rtPdtDes, FTPdtTyp as rtPdtTyp,
                         FNSalQty as rnSalQty, FCSalPri as rcSalPri, FCSalAmt as rcSalAmt, FDSalDate as rdSalDate,
@@ -609,7 +635,7 @@ FROM TWsMPdt With(nolock)";
                 }
 
                 oSql.AppendLine(toSql);
-                List<cmlResSalDet> aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
+                aoResultPdt = oDatabase.C_GETaDataQuery<cmlResSalDet>(oSql.ToString());
                 aoResult.raItems = aoResultPdt;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
@@ -634,7 +660,9 @@ FROM TWsMPdt With(nolock)";
             }
             finally
             {
-
+                aoResult = null;
+                aoResultPdt = null;
+                oSql = null;
                 ptSechSalCode = null;
             }
             return aoResult;
@@ -649,9 +677,12 @@ FROM TWsMPdt With(nolock)";
             cDatabase oDatabase;
             StringBuilder oSql;
             string tErrAPI;
+            List<cmlResSalDetSummy> aoResultSalDetSummy;
+            string toSql;
             try
             {
                 aoResult = new cmlResList<cmlResSalDetSummy>();
+                aoResultSalDetSummy = new List<cmlResSalDetSummy>();
 
                 //Check API Key
                 if (!new cSP().C_CHKbKeyApiConfig(HttpContext, out tErrAPI))
@@ -668,22 +699,21 @@ FROM TWsMPdt With(nolock)";
                 //process..
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
-                string toSql = "";
                 toSql = $@" select FTSalCod as rtSalCod,
-max(FNSalQty) rnQtyMax,
-min(FNSalQty) rnQtyMin ,
-SUM(FNSalQty) rnQtySum,
-max(FCPdtPri) rcPriMax,
-min(FCPdtPri) rcPriMin,
-SUM(FCPdtPri) rcPriceSum,
-SUM(FCSalAmt) rcAmtSum,
-COUNT(FTSalPdtCod) rnPdts
-from VIE_WsSal s
-group by FTSalCod
-order by rnQtyMax desc";
+                            max(FNSalQty) rnQtyMax,
+                            min(FNSalQty) rnQtyMin ,
+                            SUM(FNSalQty) rnQtySum,
+                            max(FCPdtPri) rcPriMax,
+                            min(FCPdtPri) rcPriMin,
+                            SUM(FCPdtPri) rcPriceSum,
+                            SUM(FCSalAmt) rcAmtSum,
+                            COUNT(FTSalPdtCod) rnPdts
+                            from VIE_WsSal s
+                            group by FTSalCod
+                            order by rnQtyMax desc";
 
                 oSql.AppendLine(toSql);
-                List<cmlResSalDetSummy> aoResultSalDetSummy = oDatabase.C_GETaDataQuery<cmlResSalDetSummy>(oSql.ToString());
+                aoResultSalDetSummy = oDatabase.C_GETaDataQuery<cmlResSalDetSummy>(oSql.ToString());
                 aoResult.raItems = aoResultSalDetSummy;
                 aoResult.rtCode = cMS.tMS_RespCode001;
                 aoResult.rtDesc = cMS.tMS_RespDesc001;
@@ -708,7 +738,9 @@ order by rnQtyMax desc";
             }
             finally
             {
-                // ไม่ต้องทำอะไร
+                aoResult = null;
+                oSql = null;
+                aoResultSalDetSummy = null;
             }
             return aoResult;
         }
