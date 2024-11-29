@@ -226,7 +226,7 @@ namespace ConAppSTD.Class
                                         {
                                             //delete this message queue
                                             poChannel.BasicAck(oEevntArgs.DeliveryTag, false);
-                                            string ptMsgErr = "";
+                                            
                                             //Publish
                                             try
                                             {
@@ -267,7 +267,7 @@ namespace ConAppSTD.Class
                                         {
                                             //delete this message queue
                                             poChannel.BasicAck(oEevntArgs.DeliveryTag, false);
-                                            string ptMsgErr = "";
+                                            
                                             //Publish
                                             try
                                             {
@@ -308,7 +308,7 @@ namespace ConAppSTD.Class
                                         {
                                             //delete this message queue
                                             poChannel.BasicAck(oEevntArgs.DeliveryTag, false);
-                                            string ptMsgErr = "";
+                                            
                                             //Publish
                                             try
                                             {
@@ -349,7 +349,7 @@ namespace ConAppSTD.Class
                                         {
                                             //delete this message queue
                                             poChannel.BasicAck(oEevntArgs.DeliveryTag, false);
-                                            string ptMsgErr = "";
+                                            
                                             //Publish
                                             try
                                             {
