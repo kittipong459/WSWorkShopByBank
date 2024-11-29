@@ -47,9 +47,9 @@ namespace WebApiWS.Controllers
 
                 oSql = new StringBuilder();
 
-                tSql = @"  SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
-FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT 
-FROM TWsMPdt With(nolock)";
+                tSql = @"SELECT FNPdtID as rnPdtID,FTPdtCod as rtPdtCod,FTPdtName as rtPdtName,
+                         FTPdtDes as rtPdtDes,FCPdtPri as rcPdtPri,FNPdtQty as rnPdtQty,FDPdtSMPT as rdPdtSMPT 
+                         FROM TWsMPdt With(nolock)";
                 oSql.AppendLine(tSql);
                 oResultPdt = oDatabase.C_GETaDataQuery<cmlResPdt>(oSql.ToString());
                 aoResult.raItems = oResultPdt;
@@ -316,14 +316,14 @@ FROM TWsMPdt With(nolock)";
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
 
-                toSql = @"   SELECT FTCstID as rtCstID
-                            ,FTCstCod as rtCstCod
-                            ,FTCstName as rtCstName
-                            ,FTCstEml as rtCstEml
-                            ,FTCstPho as rtCstPho
-                            ,FTCstAdr as rtCstAdr
-                            ,FDCstSMPT as rdCstSMPT
-                            FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
+                toSql = @"SELECT FTCstID as rtCstID
+                          ,FTCstCod as rtCstCod
+                          ,FTCstName as rtCstName
+                          ,FTCstEml as rtCstEml
+                          ,FTCstPho as rtCstPho
+                          ,FTCstAdr as rtCstAdr
+                          ,FDCstSMPT as rdCstSMPT
+                          FROM AdaWSbyBank.dbo.TWsMCst With(nolock)";
                 oSql.AppendLine(toSql);
                 aoResultCst = oDatabase.C_GETaDataQuery<cmlResCst>(oSql.ToString());
                 aoResult.raItems = aoResultCst;
@@ -699,18 +699,18 @@ FROM TWsMPdt With(nolock)";
                 //process..
                 oDatabase = new cDatabase();
                 oSql = new StringBuilder();
-                toSql = $@" select FTSalCod as rtSalCod,
-                            max(FNSalQty) rnQtyMax,
-                            min(FNSalQty) rnQtyMin ,
-                            SUM(FNSalQty) rnQtySum,
-                            max(FCPdtPri) rcPriMax,
-                            min(FCPdtPri) rcPriMin,
-                            SUM(FCPdtPri) rcPriceSum,
-                            SUM(FCSalAmt) rcAmtSum,
-                            COUNT(FTSalPdtCod) rnPdts
-                            from VIE_WsSal s
-                            group by FTSalCod
-                            order by rnQtyMax desc";
+                toSql = $@"select FTSalCod as rtSalCod,
+                           max(FNSalQty) rnQtyMax,
+                           min(FNSalQty) rnQtyMin ,
+                           SUM(FNSalQty) rnQtySum,
+                           max(FCPdtPri) rcPriMax,
+                           min(FCPdtPri) rcPriMin,
+                           SUM(FCPdtPri) rcPriceSum,
+                           SUM(FCSalAmt) rcAmtSum,
+                           COUNT(FTSalPdtCod) rnPdts
+                           from VIE_WsSal s
+                           group by FTSalCod
+                           order by rnQtyMax desc";
 
                 oSql.AppendLine(toSql);
                 aoResultSalDetSummy = oDatabase.C_GETaDataQuery<cmlResSalDetSummy>(oSql.ToString());
