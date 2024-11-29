@@ -166,7 +166,7 @@ namespace ConAppSTD.Class
             EventingBasicConsumer oConsumer;
             string tMessage = "";
             string tQueueID = "";
-            string tMsgErr = "";
+
             byte[] aoBody;
             bool bStaConsume;
             bool bPrc = true;
@@ -219,7 +219,7 @@ namespace ConAppSTD.Class
                                         cmlReqPdt oPdtData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqPdt>(tMessage);
 
                                         cExample oExample = new cExample();
-                                        string tMsgErr = "";
+
                                         bPrc = cExample.C_ADDbAddPdtTransaction(oPdtData);
 
                                         if (bPrc)
@@ -260,7 +260,7 @@ namespace ConAppSTD.Class
                                         cmlReqPdt oPdtData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqPdt>(tMessage);
 
                                         cExample oExample = new cExample();
-                                        string tMsgErr = "";
+
                                         bPrc = cExample.C_UPDbUpdPdtTransaction(oPdtData);
 
                                         if (bPrc)
@@ -301,7 +301,7 @@ namespace ConAppSTD.Class
                                         cmlReqSale oSalData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqSale>(tMessage);
 
                                         cExample oExample = new cExample();
-                                        string tMsgErr = "";
+
                                         bPrc = cExample.C_ADDbAddSaleTransaction(oSalData);
 
                                         if (bPrc)
@@ -342,7 +342,7 @@ namespace ConAppSTD.Class
                                         cmlReqSale oSalData = Newtonsoft.Json.JsonConvert.DeserializeObject<cmlReqSale>(tMessage);
 
                                         cExample oExample = new cExample();
-                                        string tMsgErr = "";
+
                                         bPrc = cExample.C_UPDbUpdSaleTransaction(oSalData);
 
                                         if (bPrc)
@@ -383,7 +383,7 @@ namespace ConAppSTD.Class
                                         int tPdtCode = int.Parse(tMessage);
 
                                         cExample oExample = new cExample();
-                                        string tMsgErr = "";
+
                                         bPrc = cExample.C_DELbDelPdtTransaction(tPdtCode);
 
                                         if (bPrc)

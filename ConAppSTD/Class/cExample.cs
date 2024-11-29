@@ -12,10 +12,12 @@ namespace ConAppSTD.Class
     {
         public static bool C_ADDbAddPdtTransaction(cmlReqPdt poPdt)
         {
-            cDatabase oDB = new cDatabase();
-            StringBuilder oSql = new StringBuilder();
+            cDatabase oDB;
+            StringBuilder oSql;
             try
             {
+                oDB = new cDatabase();
+                oSql = new StringBuilder();
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
@@ -51,10 +53,12 @@ namespace ConAppSTD.Class
 
         public static bool C_UPDbUpdPdtTransaction(cmlReqPdt poPdt)
         {
-            cDatabase oDB = new cDatabase();
-            StringBuilder oSql = new StringBuilder();
+            cDatabase oDB;
+            StringBuilder oSql;
             try
             {
+                oDB = new cDatabase();
+                oSql = new StringBuilder();
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
@@ -93,10 +97,12 @@ namespace ConAppSTD.Class
 
         public static bool C_ADDbAddSaleTransaction(cmlReqSale poSal)
         {
-            cDatabase oDB = new cDatabase();
-            StringBuilder oSql = new StringBuilder();
+            cDatabase oDB;
+            StringBuilder oSql;
             try
             {
+                oDB = new cDatabase();
+                oSql = new StringBuilder();
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
@@ -133,10 +139,12 @@ namespace ConAppSTD.Class
 
         public static bool C_UPDbUpdSaleTransaction(cmlReqSale poSal)
         {
-            cDatabase oDB = new cDatabase();
-            StringBuilder oSql = new StringBuilder();
+            cDatabase oDB;
+            StringBuilder oSql;
             try
             {
+                oDB = new cDatabase();
+                oSql = new StringBuilder();
                 oSql.AppendLine("BEGIN TRY");
                 oSql.AppendLine("    BEGIN TRAN");
 
